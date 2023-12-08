@@ -1,0 +1,219 @@
+\chapter{Week 12}
+
+\section{Fields}
+
+In general, a \italicize{Smiley} field in $ \mathbb{R}^n$ means that there is a \italicize{smiley} for every point in $ \mathbb{R}^n$
+
+\subsection{Vector Fields}
+
+Recall that the gradient of a scalar field is a vector field.
+
+\textbf{In 2D}
+\[
+   \vec{F} = \vec{F_x} \hat{i} + \vec{F_x} \hat{j}
+\]  
+
+Some easy-to-remember planar vector fields include
+\begin{itemize}
+   \item the rotational vector field: $\vec{F}  = -y \hat{i} + x \hat{j}$
+   \item the saddle vector field: $\vec{F}  = x \hat{i} - y \hat{j}$
+   \item radial vector fields: $\vec{F}  = \sum\limits_{i=1}^{n} x_i  \underline{e_i}$
+\end{itemize}
+
+\subsection{Other fields}
+More generally, there are other fields that could be useful, such as
+\begin{itemize}
+   \item Taylor polynomial field: every point is associated with a Taylor Expansion
+   \item Derivative: the derivative $\left[ D f \right]_{} $ of $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ is a $m \times n$ matrix field over $ \mathbb{R}^n$
+\end{itemize}
+
+\section{Path Integrals}
+
+\subsection{Integrating a scalar field}
+\begin{framed}
+   Given a vector field $f: \mathbb{R}^n \rightarrow \mathbb{R}$ and a path $ \gamma: [a, b] \rightarrow \mathbb{R}^n$ \\
+   
+   The path integral can be computed by integrating the arc length element, weighted by the scalar field
+   \begin{align*}
+      &\int_{\gamma} f dl \\
+      =& \int_{\gamma} f \left| \gamma ' \right|  dt \\
+      =& \int_{t = a}^{b} f \left( \gamma \left( t \right)  \right) \left| \gamma ' \left( t \right)  \right| dt 
+   \end{align*}
+\end{framed}
+
+\subsection{The standard single-variable integral as a path integral}
+
+The standard single variable integral
+\[
+   \int_{x=1}^{b} f(x) dx  
+\] 
+Is really the path integral from $a$ to $b$ of a path 
+\[
+  \gamma (t) = t: a \leq t \leq b
+\] 
+Based on the parameterization
+\[
+  \left| \gamma ' (t)  \right| = 1
+\] 
+
+Hence 
+\[
+   \int_{\gamma} f\ dl = \int_{t= 1}^{b}  f(t) dt 
+\]  
+
+\subsection{Rules for a scalar path integral}
+
+Since the scalar path integral is what lines behind standard single variable integral, many of the rules are to be as expected
+  \begin{itemize}
+     \item Linearity: $\int_{\gamma}^{}  c f + g dl = c \int_{\gamma}^{} f dl + \int_{x}^{} $
+     \item additivity $\int_{\gamma + \delta}^{}  = \int_{\gamma}^{} f dl + \int_{\delta}^{} fdl$
+     \item reversal $\int_{-\gamma}^{}  = \int_{\gamma}^{} f dl   $
+  \end{itemize}
+
+\subsection{Independence of path in scalar fields}
+
+Path integrals are independent of the parameterization of the path
+
+\section{Integrating 1-forms}
+
+\begin{framed}
+   Given a vector field $ \vec{F}$ on $ \mathbb{R}^n$ and a parameterized path $ \gamma: [a,b] \rightarrow \mathbb{R}^n$  
+   \[
+      \int_{\gamma} \vec{F} \cdot d \underline{x} = \int_{\gamma} \alpha_{\vec{F} } = \int_{\gamma} F_1 dx_1 + \hdots + F_n dx_n
+   \]  
+\end{framed} 
+
+\subsection{1-Forms}
+
+\begin{framed}
+   \textbf{Definition:} a differential 1-form on $ \mathbb{R}^n$ is a linear function $\alpha$ that takes in a vector $ \underline{v}$ in $ \mathbb{R}^n$ and returns a scalar $ \alpha( \underline{v})$ linearly
+\end{framed}
+
+
+For example, in $ \mathbb{R}^3$, for a vector $ \underline{v}$ 
+\[
+  \underline{v} = \begin{pmatrix} v_x \\ v_y \\ v_z \end{pmatrix} 
+\] 
+\begin{align*}
+   dx \left( \underline{v} \right) & = v_x  \\
+   dy \left( \underline{v} \right) & = v_y  \\
+   dz \left( \underline{v} \right) & = v_z  \\
+\end{align*}
+
+$dx$ can be thought of as an operator
+\[
+   dx \sim \hat{i} \cdot \text{ OR } \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \cdot 
+\] 
+
+\subsection{Gradient vector field, gradient 1-form field, and the derivative}
+
+For a function $ f: \mathbb{R}^n \rightarrow \mathbb{R}$, we have
+
+\textbf{The gradient field}
+\[
+  \nabla f = \begin{bmatrix} 
+    \frac{\partial f}{\partial x_1} \\
+    \vdots \\
+    \frac{\partial f }{\partial x_n}
+  \end{bmatrix}
+\] 
+
+\textbf{The 1-form field}
+\[
+  df = \frac{\partial f}{\partial x_1} dx_1 + \hdots \frac{\partial f}{\partial x_n} dx_n
+\] 
+
+\textbf{The derivative}
+\[
+  \left[ D f \right]_{} = \begin{bmatrix} 
+    \frac{\partial f}{\partial x_1} \hdots \frac{\partial f}{\partial x_n}  
+  \end{bmatrix}
+\] 
+
+For a rate of change of input denoted by $ \underline{u}$
+\[
+  df( \underline{u}) = \nabla f \cdot \underline{u} = \left[ D f \right]_{} \underline{u}
+\] 
+
+\subsection{Integrating 1-forms}
+
+\begin{framed}
+   Given a 1-form field $ \alpha$ and a parameterized path $ \gamma : [a,b] \rightarrow \mathbb{R}^n$ 
+   \[
+      \int_{\gamma} \alpha = \int_{t = a}^{b}  \alpha_{\gamma (t)} \left( \gamma ' \left( t \right)  \right) dt
+   \] 
+\end{framed}
+
+\section{Independence of Path}
+
+\begin{framed}
+   \textbf{Theorem:} let $\gamma : [a,b] \rightarrow \mathbb{R}^n$ be a path and given a scalar field $f: \mathbb{R}^n \rightarrow \mathbb{R}$
+
+   The integral of the gradient 1-form  $df$ equals
+   \[
+      \int_{\gamma} df = \left. f \right|_{\gamma(a)}^{\gamma(b)}  = f( \gamma(b)) - f( \gamma(a))
+   \]  
+\end{framed}
+
+\section{Detecting gradients}
+
+\begin{framed}
+   \textbf{Lemma:} for a 1-form $\alpha$  where
+   \[
+      \alpha = \sum\limits_{i}^{} \alpha_i dx_i
+   \]  on $ \mathbb{R}^n$  is a gradient if and only if 
+   \[
+     \frac{\partial \alpha_i}{\partial x_j} = \frac{\partial \alpha_j}{\partial x_i}
+   \]  for all $i \neq j$
+  
+\end{framed}
+
+
+
+\section{Work, Circulation and Flux}
+
+\subsection{Work}
+\begin{framed}
+For a planar vector field
+\[
+   \vec{F} = F_x i + F_y j
+\] 
+
+The work 1-form is
+\[
+   \alpha_{\vec{F}} F_x dx + F_y dy
+\] 
+
+The work done is
+\[
+   W = \int_{\gamma} \alpha_{\vec{F}}
+\] 
+\end{framed}
+
+\subsection{Circulation}
+Circulation denotes work done around a closed loop \\
+
+Gradient 1-forms have vanishing integrals around all closed loops
+
+
+\subsection{Flux}
+
+\begin{framed}
+
+For a planar vector field
+\[
+   \vec{F} = F_x i + F_y j
+\] 
+
+The flux 1-form is
+\[
+   \phi{\vec{F}} F_x dy - F_y dx
+\] 
+
+We can compute the flux by
+\[
+   \phi_{\gamma} = \int_{\gamma} \phi_{\vec{F}} = \int_{\gamma} F_x dy - F_y dx
+\] 
+
+\end{framed}
+

@@ -1,0 +1,259 @@
+\chapter{Week 8}
+
+\section{Critical points and extrema}
+
+\subsection{Critical points}
+\begin{framed}
+   For a function $f: \mathbb{R}^n \rightarrow \mathbb{R}$, a critical point is an input whose derivative is zero or undefined (i.e. all partials are zero or undefined) \\
+
+   $f$ attains a local maximum or minimum at $ \underline{a}$ only if the input $ \underline{a}$ is a critical point \\
+
+   Said contrapositively, non-critical points cannot be local maxima or minima
+  
+\end{framed}
+
+\subsection{Trace-Determinant Method}
+
+Recall that 
+\[
+  f( \underline{a} + \underline{h}) = f( \underline{a}) + \left[ D f \right]_{ \underline{a}} \underline{h} + \frac{1}{2!} \underline{h}^T \left[ D^2 f \right]_{ \underline{a}} \underline{h} + O( \lVert h \rVert^3)
+\] 
+
+Since at a critical point, $ \left[ D f \right]_{ \underline{a}} = 0 $, the second derivative dominates the local behavior \\
+
+For all $ \underline{h} \neq 0$, 
+\begin{itemize}
+   \item if $ \underline{h}^T \left[ D^2 f \right]_{ \underline{a}} \underline{h} > 0$ then critical point is a local minimum 
+   \item if $ \underline{h}^T \left[ D^2 f \right]_{ \underline{a}} \underline{h} > 0$ then critical point is a local maximum 
+\end{itemize}
+
+However, to compute the result requires eigenvalues beyond the scope of this course.
+
+
+Hence, we focus on the case
+\[
+   f: \mathbb{R}^2 \rightarrow \mathbb{R}
+\] 
+
+\begin{framed}
+   The second order derivative is
+   \[
+     \left[ D^2 f \right]_{}  = \begin{bmatrix} 
+        a & b \\ c & d  
+     \end{bmatrix}
+   \] 
+   Recall that the determinant is
+   \[
+     Det = ad - bc
+   \] 
+
+   The trace is given by
+   \[
+     TR = a + d
+   \] 
+\end{framed}
+
+We can follow the following steps 
+\begin{itemize} 
+   \item if $Det < 0$
+      \begin{itemize}
+         \item saddle point
+      \end{itemize}
+   \item if  $Det > 0$ 
+      \begin{itemize}
+         \item  if $ trace > 0$
+            \begin{itemize}
+               \item local minima
+            \end{itemize}
+         \item  if $ trace < 0$ 
+            \begin{itemize}
+               \item local maxima
+            \end{itemize}
+      \end{itemize}
+\end{itemize}
+
+
+\section{Optimization \& Linear regression}
+Linear regression refers to finding the best fit line for a dataset.
+
+\subsection{Least-squares method}
+The least squares method is one of the most common forms of computing a best fit line.
+
+\begin{framed}
+   \textbf{Given} data presented as $n$ pairs of $( x_i, y_i)$, find a best fit line given by 
+    \[
+     y = mx + b
+   \] 
+   By minimizing the squared sum of vertical differences between points and the line. The sum is given by
+   \[
+      f(m, b) = \sum \limits_{i}^{} \left( y_i - \left( m x_i + b \right)  \right)^2 
+   \] 
+\end{framed}
+
+To minimize \[
+   f(m, b) = \sum \limits_{i}^{} \left( y_i - \left( mx_i + b \right)  \right)^2
+\]
+\begin{align*}
+   \frac{\partial f}{\partial m} &= \sum \limits_{i}^{} \frac{\partial }{\partial m} \left( y_i - \left( mx_i + b \right)  \right)^2 \\
+                                 &= \sum \limits_{i}^{}2 \left( y_i - \left( mx_i + b \right)  \right) \frac{\partial }{\partial m} \left( y_i - \left( mx_i  + b\right)  \right)  \\
+                                 &= \sum \limits_{i}^{} 2 \left( y_i - \left( mx_i + b \right)  \right) \left( -x_i \right) \\
+                                 &= \sum \limits_{i}^{} -2x_i \left( y_i - \left( mx_i + b \right)  \right) 
+\end{align*}
+
+\begin{align*}
+   \frac{\partial f}{\partial b} &= \sum \limits_{i}^{} 2 \left( y_i - \left( mx_i + b \right)  \right)  \frac{\partial }{\partial b} \left( y_i - \left( mx_i + b \right)  \right)  \\ 
+                                 &= \sum \limits_{i}^{} -2 \left( y_i - \left( mx_i + b \right)  \right) 
+\end{align*}
+
+To find the critical points wrt $m$ and $b$, we solve for when the partial derivatives are $0$
+
+Solving for $ \frac{\partial f}{\partial m}$
+\begin{align*}
+      & \sum_i x_i \left( y_i - mx_i - b \right)  = 0 \\
+      & \sum_i x_i y_i - \sum_i mx_i^2 - \sum_i bx_i = 0 \\
+      & \sum_i x_i y_i - m\sum_i x_i^2 - b\sum_i x_i = 0\\
+      &m\sum_i x_i^2 + b\sum_i x_i = \sum_i x_i y_i
+\end{align*}
+
+Solving for $ \frac{\partial f}{\partial b}$
+\begin{align*}
+      &\sum_i \left( y_i - mx_i - b \right)  = 0 \\
+      &\sum_i y_i - \sum_i mx_i - \sum_i b  = 0 \\
+      &\sum_i y_i - m\sum_i x_i - b\sum_1 b = 0 \\
+      & m\sum_i x_i + b\sum_1 b = \sum_i y_i 
+\end{align*}
+
+Notice that we end up with a linear system of the form
+\[
+  A \underline{x} = \underline{b}
+\] 
+Written as
+\[
+  \begin{bmatrix} 
+     \sum x_i^2 & \sum x_i \\ \sum x_i & \sum 1  
+  \end{bmatrix} \begin{pmatrix} m \\ b \end{pmatrix} = 
+  \begin{pmatrix} \sum x_i y_i \\ \sum y_i \end{pmatrix} 
+\] 
+
+To solve the system of linear equations, recall that we can find the inverse of linear transformation $A$, and find $A^{-1} \underline{b}$ \\
+
+Notice that \[
+  Det\ A = \sum 1 \sum x_i^2 - \left( \sum x_i \right)^2 = n \sum x_i^2 - \left( \sum x_i \right)^2 \\
+\] 
+
+Hence the inverse $A^{-1}$ is
+ \[
+  \frac{1}{n  \sum x_i^2 - \left( \sum x_i \right)^2} \begin{bmatrix} 
+     n & - \sum x_i \\ - \sum x_i & \sum x_i^2
+  \end{bmatrix}
+\] 
+
+Finally, we can solve for \[
+   \begin{pmatrix} m \\ b \end{pmatrix}  = A^{-1} \underline{b}
+\] 
+
+
+\subsection{Optimization \& Nash Equilibria}
+
+In some games, choosing strategies at random with a probability distribution could lead to predictable expected outcome, and can be optimized.
+
+Given a payoff matrix for player $A$ \[
+  P = \begin{bmatrix} 
+     -2 & 3 \\ 3 & -4  
+  \end{bmatrix}
+\] 
+
+Suppose players choose their strategy with the following distributions
+\[
+  \underline{a} = \begin{pmatrix} a \\ 1-a \end{pmatrix}, \underline{b} = \begin{pmatrix}  b \\ 1 -b \end{pmatrix} 
+\] 
+
+The expected payoff is
+\[
+  f(a, b) = \underline{a}^T P \underline{b} = -4 + 7a + 7b - 12ab
+\] 
+
+We can optimize $f$ by finding the critical points.
+\[
+  \frac{\partial f}{\partial a} = 7 - 12b = 0
+\] 
+\[
+  \frac{\partial f}{\partial b} = 7 = 12a = 0
+\] 
+\[
+  b = a = \frac{7}{12}
+\] 
+
+By taking the Hessian, we observe that this point is a saddle point. The significance of saddle points is that they are the Nash Equilibrium, where neither players can do any better.
+
+\subsection{The Minimax Theorem}
+
+\begin{framed}
+   \textbf{Theorem}: Given any payoff matrix  $P$, there exists a Nash Equilibrium $ \left(  \underline{a}, \underline{b} \right) $ in mixed strategy such that
+   \[
+     MAX \underline{x}^T (P \underline{b}) = MIN ( \underline{a}^T P) \underline{y}
+   \] 
+  
+\end{framed}
+
+
+\subsection{Constrained Optimization}
+
+Recall that in 1-D, for functions of the form 
+\[
+  f: \mathbb{R} \rightarrow \mathbb{R}
+\] 
+
+Where the input is bounded within an upper and lower bound, to find the local minimum or maximum, we 
+\begin{itemize}
+   \item check within the boundary (differentiate and find the critical points)
+   \item check at the boundary (calculate $f(a)$ where $a$ is the boundary value
+      
+\end{itemize}
+
+In higher dimensions such as 2D or 3D, we can use the constraints to convert the problem into a 2D case of the form
+\[
+  f: \mathbb{R}^2 \rightarrow \mathbb{R}
+\] 
+
+And solve for $ \left[ D f \right]_{ \underline{a}} = 0$
+
+In general, the steps for solving constrained optimization is
+\begin{itemize}
+   \item Solve for $ \left[ D f \right]_{ \underline{a}} = 0$
+   \item Check that the points fall within the constraints
+   \item Classify critical points
+   \item Check the boundaries \& end points 
+\end{itemize}
+
+
+\subsection{The Lagrange Multiplier}
+
+Consider a function of the form $f: \mathbb{R}^2 \rightarrow \mathbb{R}$ and a constraint $G$, one way to approach such a problem would be to parameterize the constraint, and solve as a single variable optimization problem. \\
+
+However, if the constraint cannot be easily parameterized, we will need to solve using level sets. \\
+
+More specifically, at the critical point, the level sets of the function to be optimized and the level sets of the constraints are tangent. Hence, their gradients are parallel.
+
+\begin{framed}
+   Given a differentiable function of the form
+   \[
+     f: \mathbb{R}^n \rightarrow \mathbb{R}
+   \]  and a constraint \[
+     G : \mathbb{R}^n \rightarrow \mathbb{R}
+   \] Any extrenmum $ \underline{a}$ of $f( \underline{x}) $ restricted to $G( \underline{x) = 0} $ must satisfy
+   \[
+     \left[ D f \right]_{ \underline{a}}  = \lambda \left[ D G \right]_{ \underline{a}}
+   \]  for some $\lambda$, provided $ \left[ D G \right]_{ \underline{a} }  \neq 0$ \\
+
+   This is equivalent to finding the unconstrained optima of a new function
+   \[
+      L( \underline{x}, \lambda) = f - \lambda G : \mathbb{R}^{n+1} \rightarrow \mathbb{R}
+   \] 
+\end{framed}
+
+
+
+
+
+

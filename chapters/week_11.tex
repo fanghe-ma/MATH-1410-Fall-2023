@@ -1,0 +1,187 @@
+\chapter{Week 11}
+
+\section{Polar \& Cylindrical coordinates}
+
+\subsection{Polar Coordinates}
+
+\begin{framed}
+   The area element in polar coordinates is given by
+   \[
+     dA = r\ dr\ d \theta
+   \] 
+
+   The infinitesimal area element is given by the product of
+   \begin{itemize}
+      \item $dr$ in the radial direction
+      \item $r d \theta$ in the angular direction
+   \end{itemize}
+
+   The transformation is 
+   \[
+      \begin{array}{c c}
+         x = r cos \theta & r = \sqrt{x^2 + y^2} \\
+         y = r sin \theta & \theta = arctan( \frac{y}{x})
+      \end{array}
+   \] 
+\end{framed}
+
+\subsection{Cylindrical Coordinates}
+\begin{framed}
+   The volume element in cylindrical coordinates is given by
+   \[
+     dV = r\ dr\ d \theta dz
+   \] 
+
+   The infinitesimal volume element is given by the product of
+   \begin{itemize}
+      \item $dr$ in the radial direction
+      \item $r d \theta$ in the angular direction
+      \item $z$ in the $z$ axis
+   \end{itemize}
+
+   The transformation is 
+   \[
+      \begin{array}{c c}
+         x = r cos \theta & r = \sqrt{x^2 + y^2} \\
+         y = r sin \theta & \theta = arctan( \frac{y}{x})
+      \end{array}
+   \] 
+\end{framed}
+
+\section{Spherical coordinates}
+\begin{framed}
+
+   The volume element is given by
+   \[
+     dV = \rho^2 sin\ \phi d \rho\ d \theta\ d \phi
+   \]  
+
+
+   Spherical coordinates are defined by 
+   \begin{itemize}
+      \item radius $\rho$ 
+      \item inclination $\phi$ 
+      \item azimuth $\theta$ 
+   \end{itemize}
+
+   Standard coordinates and spherical coordinates can be translated by
+   \begin{align*}
+      x &= \rho\ cos\ \theta\ sin\ \phi \\
+      y &= \rho\ sin\ \theta\ sin\ \phi \\
+      z &= \rho\ cos\ \phi
+   \end{align*}
+
+   Where 
+   \begin{align*}
+      \rho & \geq 0 \\
+      0  & \leq \theta  \leq 2 \pi \\
+      0  & \leq \phi  \leq \pi \\
+   \end{align*}
+
+   To convert standard coordinates to polar coordinates
+   \begin{align*}
+      \rho &= \sqrt{x^2 + y^2 + z^2}  = \sqrt{r^2 + z^2}\\
+      \theta &= arctan( \frac{y}{x}) \\
+      \phi &= arctan \left( \frac{r}{z} \right) = arccos \left( \frac{z}{\rho } \right) 
+   \end{align*}
+\end{framed}
+
+\section{Change in Variables Theorem}
+
+\subsection{Linear transformations and the volume element}
+
+Recall from earlier in the semester that
+\begin{itemize}
+   \item The determinant of a square matrix computes a volume
+   \item Square matrices encode linear transformation  
+\end{itemize}
+
+For a linear transformation $A$ that takes $ \underline{x}$ coordinates to $ \underline{u} $ coordinates, 
+\[
+  \underline{u} = A \underline{x}
+\] 
+
+The volume element is transformed as 
+\[
+  d \underline{u} = \left| Det \left( A \right)  \right| d \underline{x}
+\] 
+
+
+\subsection{Non-linear transformations and the volume element}
+Given a change of coordinates $F: \mathbb{R}^n \rightarrow \mathbb{R}^n$ of the form 
+\[
+  \underline{ u} = F \left(  \underline{x} \right)
+\] 
+
+The volume element is transformed as
+\[
+   d \underline{u} = \left| Det \left[ D f \right]_{}  \right| d \underline{x}
+\]  
+
+\subsection{Change of variables theorem}
+
+Recall that in single variable integral calculus, u-sub is given by
+\[
+   \int_{u_0}^{u_1}  h(u) du = \int_{x_0}^{x_1}  h(u(x)) \frac{du}{dx} dx  
+\] 
+
+\begin{framed}
+   \textbf{Theorem}: Given a change of coordinates $F: \mathbb{R}^n \rightarrow \mathbb{R}^n$ of the form 
+   \[
+     \underline{u} = F \left( \underline{x} \right) 
+   \] 
+
+   The integral of $h$ over a region $F(R)$ is converted as
+    \[
+       \int_{F(R)} h \left( \underline{u} \right) d \underline{u} = \int_R h \left( F \left( \underline{x} \right)  \right) \left| Det \left[ D F \right]_{}  \right| d \underline{x}
+   \] 
+\end{framed}
+
+\section{Surface Integrals}
+
+\subsection{Parameterized surfaces}
+
+In 3-D, a parameterized surface has two inputs and three outputs, i.e.
+\[
+  G \begin{pmatrix} s\\t \end{pmatrix}  = \begin{pmatrix} x \\ y \\ z \end{pmatrix}  = \begin{pmatrix} 
+    x(s, t)  \\
+    y(s, t)  \\
+    z(s, t)  
+  \end{pmatrix}
+\] 
+
+The derivative is a matrix with two columns, each of which gives a tangent vector.
+\[
+  \left[ D G \right]_{}  = \begin{bmatrix} 
+     & \\
+     \frac{\partial G}{\partial t} & \frac{\partial G}{\partial s} \\
+                                   &
+  \end{bmatrix}
+\] 
+
+The infinitesimal surface area element is given by the area of a parallelogram, bounded by $\frac{\partial G}{\partial t}$ and $\frac{\partial G}{\partial s}$
+\[
+   \text{area of parallelogram} = \left| \frac{\partial G}{\partial t} \times \frac{\partial G}{\partial s} \right| 
+\] 
+
+Hence,
+\begin{framed}
+
+   For a surface $S \in R^3$ parameterized by $ G : \mathbb{R}^2  \rightarrow \mathbb{R}^3 $
+   \[
+     G \begin{pmatrix} s \\t \end{pmatrix}  = \begin{pmatrix}  x \\ y \\z \end{pmatrix} 
+   \] 
+   The surface area $\sigma$ is given by
+   \[
+      \int_{S = G(R)} d \sigma = \iint_R \left| \frac{\partial G}{\partial s} \times \frac{\partial G}{\partial t} \right| ds\ dt
+   \]  
+  
+\end{framed}
+
+
+In spherical coordinates
+\[
+  d \sigma = \mathbb{R}^2 sin \phi d \theta\ d \phi
+\]  
+
+

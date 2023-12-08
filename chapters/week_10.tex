@@ -1,0 +1,127 @@
+\chapter{Week 10}
+
+\section{Centroids \& Centers of mass}
+
+\subsection{Centroids in 2D}
+
+\begin{framed}
+   The centroids of a region between graphs can be found using double integrals and averages
+
+   \begin{align*}
+      \overline{x} &= \frac{1}{A} \iint_{R} x\ dA  \\
+                   &= \frac{1}{A} \int_{x=a}^{b} \int_{y=g(x)}^{f(x)} x\ dy\ dx
+   \end{align*}
+  
+   \begin{align*}
+      \overline{y} &= \frac{1}{A} \iint_{R} y\ dA  \\
+                   &= \frac{1}{A} \int_{x=a}^{b} \int_{y=g(x)}^{f(x)} y\ dy\ dx
+   \end{align*}
+\end{framed}
+
+\subsection{Centroids in 3D}
+\begin{framed}
+
+   The centroid of a region $R$ in $ \mathbb{R}^n$ is the point $ \overline{ \underline{x}} $ with coordinates
+   The $i-th$ component of the centroid coordinates in $x_1, x_2 \hdots x_n$ is
+   \begin{align*}
+      \overline{x_i} &= \frac{1}{V} \int_R x_i d \underline{x} \\
+                     &= \frac{\int_R x_i d \underline{x} }{\int_R 1 d \underline{x}}
+   \end{align*}
+\end{framed}
+
+\subsection{Center of Mass}
+
+\begin{framed}
+   The \textbf{center of mass} of a region $R$ in $ \mathbb{R}^n$ with mass density $ \rho ( \underline{x})$ is the point $ \overline{ \underline{x}}$ with coordinates
+   \begin{align*}
+      \overline{x_i} &= \frac{
+         \int_R x_i \rho( \underline{x}) d \underline{x} 
+      }{
+         \int_R \rho ( \underline{x}) d \underline{x}
+      } \\
+      &= \frac{
+         \int_R x_i dM
+      }{
+         \int_R dM
+      } \\
+      &= \frac{1}{M} \int_R x_i dM
+   \end{align*}
+\end{framed}
+
+\section{Moments of inertia}
+
+\begin{framed}
+   Let $R \in \mathbb{R}^n$ be a solid body to be rotated about an axis
+
+   The moment of inertia measures the resistance to rotation, where
+   \[
+     I = \int_R dI
+   \] 
+
+   and \[
+     dI = r^2 dM
+   \] 
+\end{framed}
+
+\subsection{Parallel Axis Theorem}
+
+\begin{framed}
+   If $I_0$ is the moment of inertia of an object about an axis through its center of mass, then the moment of inertia about a parallel axis $D$ away equals
+   \[
+     I_D = I_0 + MD^2
+   \] 
+\end{framed}
+
+\subsection{Radius of Gyration}
+
+\begin{framed}
+   Let  $ \mathbb{R} \in \mathbb{R}^n$ be a solid body to be rotated about an axis. If all the mass were concentrated at a single point, the radius of gyration is the radius at which the concentrated mass would have the same moment of inertia
+
+   \[
+     I = M r_g^2
+   \] 
+   \[
+      r_g = \sqrt{ \frac{I}{M}}
+   \] 
+  
+\end{framed}
+
+\section{Inertia Matrix}
+\section{Solid Body Mechanics}
+\section{Probability \& Integration}
+
+For a random $ \underline{X}$ taking on values in $R^n$ \\
+
+The probability density function is 
+\[
+  \rho : \mathbb{R}^n \rightarrow \mathbb{R}
+\] 
+
+such that
+\[
+  \rho \geq 0
+\] 
+
+and 
+\[
+   \int_{ \mathbb{R}^n}  \rho ( \underline{x}) d \underline{x} = 1
+\] 
+
+The probability element is given by
+\[
+  dP = \rho ( \underline{x }) d \underline{x}
+\] 
+
+Hence the probability of $P( \underline{X} \in A)$ is 
+ \[
+  P( \underline{X} \in A) = \int_A dP = \int_A \rho ( \underline{x}) d \underline{x}
+\] 
+
+The expectation $E ( \underline{X}) $ is the $\rho$ weighted centroid 
+\[
+   E( \underline{X}) = \int_{ \mathbb{R}^n} \underline{x} \rho ( \underline{x}) d \underline{x}
+\]  
+
+
+\section{Independence \& Covariance}
+\section{Covariance Matrices}

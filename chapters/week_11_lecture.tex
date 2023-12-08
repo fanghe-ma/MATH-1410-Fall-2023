@@ -1,0 +1,323 @@
+\chapter{Week 11 lectures}
+
+\section{Changing coordinates}
+
+\subsection{Polar coordinates}
+
+Consider a circle centered at origin with radius $R$, to compute the area using $x-y$ coordinates, we can evaluate
+\[
+   A = \int_{x = -R}^{R} \int_{y = -\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} dy dx 
+\] 
+
+We could instead convert to polar coordinates, where
+\[
+  dA = r\ dr\ d \theta
+\] 
+
+\begin{align*}
+   A &= \int_{x = -R}^{R} \int_{y = -\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} dy dx  \\
+     &= \int_{ \theta = 0 }^{2 \pi} \int_{r = 0}^{R} dr\ d \theta  \\
+     &= \left. r \right|_{0}^{R} \left. \theta \right|_{0}^{2 \pi} \\
+     &= 2 \pi R
+\end{align*}
+
+\subsection{Cylindrical coordinates}
+\[
+  dV = r\ drd \theta dz
+\] 
+
+\begin{align*}
+   x &= r cos \theta \\
+   y &= r sin \theta \\
+   z &= z
+\end{align*}
+
+Considering finding the moment of inertia of a cylinder of height $h$ and radius $R$ about the $z$ axis
+
+\begin{align*}
+   I &= \int dI \\
+     &= \int r^2 dM \\
+     &= \int_{z= 0}^{h} \int_{ \theta = 0}^{2 \pi}  \int_{r=0}^{R} r^2 \left( r dr d \theta d z \right)  \\
+     &= \frac{2\pi h R^4}{4}
+\end{align*} 
+
+\subsection{Spherical coordinates}
+
+The spherical coordinates are 
+\begin{align*}
+   x &= \rho cos \theta sin \phi \\ 
+   y &= \rho sin \theta sin \phi \\
+   z &= \rho cos \phi \\
+\end{align*}
+
+Where
+\begin{itemize}
+   \item $\rho$ : $0 \leq \rho \leq R$, radius
+   \item $\theta$ : $0 \leq \theta \leq 2 \pi$, azimuth
+   \item $\phi$ : $0 \leq \phi \pi R$, inclination (angle from north pole)
+\end{itemize}
+
+What is the volume element in spherical coordinates? is it perhaps
+\[
+  V = \int dV = \int_{ \phi = 0 }^{ \pi}  \int_{ \theta}^{2 \pi} \int_{ \rho = 0}^{R}   d \rho d \theta d \phi
+\]  
+
+\textbf{NO!!} The volume element is 
+\[
+  dV = \rho^2 sin \phi\ d \rho\ d \phi\ d \theta
+\] 
+
+We can try computing the volume of a sphere to test it out
+\begin{align*}
+   V &= \int dV \\
+     &= \int_{ \phi = 0 }^{ \pi}  \int_{ \theta}^{2 \pi} \int_{ \rho = 0}^{R}  \rho^2 sin \phi  d \rho d \theta d \phi \\
+     &= \frac{R^3}{3} 2 \pi  \times 2 \\
+     &= \frac{4}{3} \pi R^3
+\end{align*}
+
+\subsection{Finding the area element in polar coordinates}
+
+We want to show that \[
+  dA = r\ dr \ d \theta
+\] 
+
+Recall linear transformations from earlier in the semester, and the relationship between the determinant and the scaling of n-volume\\
+
+Consider the transformation into polar coordinates
+\[
+  P \begin{pmatrix}  r \\ \theta \end{pmatrix} = \begin{pmatrix}  x \\ y \end{pmatrix}  = \begin{pmatrix}  r cos \theta \\ r sin \theta \end{pmatrix} 
+\] 
+
+Recall from the chapter on differentiation that 
+\[
+  \left[ D P \right]_{}  = \begin{bmatrix} 
+     cos \theta & -r sin \theta \\ sin \theta & rcos \theta  
+  \end{bmatrix}
+\] 
+
+Hence, 
+\[
+  det \left[ D P \right]_{}  = r \left( cos^2 \theta + sin^2 \theta \right)  = r
+\] 
+
+And
+\[
+  dx dy = r\ dr\ d \theta
+\] 
+
+\subsection{Finding the volume element in spherical coordinates}
+
+The transformation is as such
+\[
+  S \begin{pmatrix} \rho \\ \theta \\ \phi \end{pmatrix}  = \begin{pmatrix} x \\ y \\ z \end{pmatrix}  = \begin{pmatrix} 
+  \rho\ cos \theta\ sin \phi \\
+  \rho\ sin \theta\ sin \phi \\
+  \rho\ cos  \phi 
+\end{pmatrix} 
+\] 
+
+The derivative is 
+\[
+  \left[ D S \right]_{}  = \begin{bmatrix} 
+     cos \theta\ sin \phi & -\rho\ sin \theta\ sin \phi & \rho\ cos \theta\ cos \phi \\  
+     sin \theta\ sin \phi & \rho\ cos \theta\ sin \phi & \rho\ sin \theta\ cos \phi \\  
+     cos \phi  & 0 & - \rho\ sin \phi
+  \end{bmatrix}
+\] 
+
+And 
+\[
+  det \left[ D S \right]_{}  = \rho ^2 sin \phi
+\] 
+
+\section{Change of variables theorem}
+
+\subsection{Recall U-SUBS!!!}
+
+Recall from single variable that we can integrate by substitution via
+\begin{align*}
+   u &= F(x) \\
+   du &= F'(x) dx
+\end{align*}
+
+What we really were doing was
+\begin{enumerate}
+   \item writing down a non-linear coordinate transformation
+   \item finding the new length element
+\end{enumerate}
+
+Now we generalize into higher dimensions. Instead of calling it u-subs, we call it the \textbf{change of variables theorem}
+
+\subsection{Change of variables theorem}
+
+\begin{framed}
+   If
+   \[
+     \underline{u} = F( \underline{x})
+   \] 
+   Then
+   \[
+     d \underline{u} = \left| Det \left[ D F \right]_{}  \right| d \underline{x}
+   \] 
+
+   Expressed in words, in arbitrary dimensions, the n-volume element in a new coordinate system is related to the volume element in the original coordinate system by the absolute value of the determinant of the transformation 
+\end{framed}
+
+This is a good point in the semester to look back and have our little minds blown by how far we've come. We can relate volume elements before and after non-linear transformations using little more than determinants and derivatives.  \\
+
+In old school calculus textbooks that do not formally introduce the derivative as a linear transformation, this theorem would be a lot more verbose (involving a bunch of partial derivatives
+
+\subsection{Examples with coordinate systems}
+
+Consider an inverted cone (with a flat, circular base) symmetrical about the z-axis, with height $h$ , base radius $R$, with its tip at the origin. How would we describe this shape? Which coordinate system would we use? \\
+
+\textbf{Spherical coordinates}
+We can observe that
+\begin{itemize}
+   \item $0 \leq \theta \leq 2 \pi$ 
+   \item $0 \leq \phi \leq arctan \left(  \frac{R}{h} \right) $ 
+   \item $ 0 \leq \rho \leq ???????????$
+\end{itemize}
+
+\textbf{Cylindrical coordinates?}
+\begin{itemize}
+   \item $ 0 \leq z \leq h$ 
+   \item $ 0 \leq \theta \leq 2 \pi$ 
+   \item $ 0 \leq r \leq z \frac{R}{h}$ 
+\end{itemize}
+
+\subsection{Example, 9 Nov}
+
+For a cube centered at origin with length $L$, with density $f = \frac{1}{ \left( x^2 + y^2 + z^2  \right)^{\alpha}}$ for some constant $\alpha > 0$, does the mass converge?
+
+\[
+   M = \int dM = \int_{- \frac{L}{2}}^{ \frac{L}{2}}   \int_{- \frac{L}{2}}^{ \frac{L}{2}}\int_{- \frac{L}{2}}^{ \frac{L}{2}} \left( x^2 + y^2 + z^2 \right)^{- \alpha} dx dy dz = ?????????????????
+\] 
+
+Trying spherical coordinates
+
+\begin{align*}
+   M &= \int dM \\ 
+     &= \iiint \rho^{- 2 \alpha} \rho^2 sin \phi d \rho\ d \phi\ d \theta
+\end{align*}
+
+To determine if mass is finite, we only need to care about the asymptotic behavior, i.e. whether the mass of the infinitesimal sphere near the origin is finite
+
+Hence, we can define the limits of integration as such for some $ \epsilon$
+\begin{align*}
+   M &= \int dM \\ 
+     &= \int_{ \theta = 0}^{2\pi} \int_{ \phi = 0}^{\pi} \int_{\rho = 0}^{\epsilon}     \rho^{- 2 \alpha} \rho^2 sin \phi d \rho\ d \phi\ d \thetan \\
+     &= \left. \frac{4 \pi \rho^{2 - 2\alpha + 1}}{3 - 2 \alpha
+        } \right|_{\rho = 0}^{\epsilon} 
+\end{align*}
+
+Where is the badness here? \\
+
+There are a few actually
+\begin{itemize}
+   \item denominator cannot be zero, hence $ \alpha \neq \frac{3}{2}$ 
+   \item mass cannot be negative, hence $\alpha < \frac{ 3}{2}$ 
+   \item integrating \[
+         \int x^n dx = \frac{x ^{n+1}}{n+1}
+   \] only works for $n \neq -1$, hence  $\alpha \neq \frac{3}{2}$
+\end{itemize}
+
+\subsection{Another example in changing variables}
+
+We want to evaluate 
+\[
+   \iint_{D} xy (x^2 + y^2) dx dy
+\] 
+
+Where
+\[
+  D: 1 \leq xy \leq 4, 1 \leq x^2 - y^2  \leq 3
+\] 
+
+Recall that for
+\[
+  \underline{u} = F( \underline{x})
+\] 
+We have
+\[
+  d \underline{u} = \left| det \left[ D F \right]_{}  \right| d \underline{x}
+\] 
+
+We change coordinates to hopefully make bounds of integration constant!
+
+\textbf{Let}:
+\[
+  F \begin{pmatrix} x \\y \end{pmatrix}  = \begin{pmatrix} u \\v \end{pmatrix}  = \begin{pmatrix}  xy \\ x^2 - y^2 \end{pmatrix} 
+\] 
+
+\[
+  \left[ D F \right]_{} = \begin{bmatrix} 
+     y & x \\ 2x \\ -2y  
+  \end{bmatrix}
+\] 
+
+\[
+  Det \left[ D F \right]_{}  = - 2y^2 - 2x^2
+\] 
+
+Hence we get
+\begin{align*}
+   dudv &= \left| -2y^2 -2x^2 \right| dxdy  \\
+        &= 2 (x^2 + y^2) dx dy \\
+   dxdy &= \frac{dudv}{2(x^2+y^2)}
+\end{align*}
+
+The integral is thus
+\begin{align*}
+   \iint_{D} \frac{xy (x^2 + y^2) dudv}{2 (x^2 + y^2)}  &= \int_{v = 1}^{3}  \int_{u = 1}^{4}  \frac{u}{2} du dv \\
+                                                        &= \left. v \right|_{1}^{3} \left. \frac{u^2}{4} \right|_{1}^{4} 
+\end{align*}
+
+\section{Addenda!}
+
+\subsection{Surface area}
+
+For the surface area of a sphere of radius $R$, the surface area element is given by
+\[
+  d \sigma = R^2 sin \phi d \phi d \theta
+\] 
+
+This can be thought of as the volume element, except $\rho $ is now fixed at $R$
+
+We can verify by taking the integral
+ \[
+  \int_{ \theta = 0}^{ 2 \pi}  \int_{ \phi = 0}^{ \pi}  d \sigma = 4 \pi R^2  
+\] 
+
+\subsection{Gaussian}
+
+In 1D, it is given by
+\[
+   \frac{1}{\\sqrt{{2 \pi}}} e^{- \frac{x^2}{2}}
+\] 
+
+In 2D
+\[
+   \frac{1}{2 \pi} e^{ -\frac{1}{2} \left( x^2 + y^2 \right) } 
+\] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

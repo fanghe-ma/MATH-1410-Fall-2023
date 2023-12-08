@@ -1,0 +1,162 @@
+\chapter{Integration}
+
+Recall from single variable that there were two different kinds of integrals
+
+\begin{tabular}{|r| c| c|}
+   \hline
+   & Definite & Indefinite \\
+   \hline
+   Notation & $ \int_{x = a}^{b} f(x) dx $ & $ \int_{}^{} f(x) dx) $\\ 
+   \hline
+   Result & Scalar value & Class of functions \\
+   \hline
+   Definition & A limit of Riemann Sums & An antiderivative \\
+   \hline
+   Application & Used to compute area, work, force, etc & Used to compute definite integrals \\
+   \hline
+\end{tabular}
+\\
+For this course, we will focus on definite integrals. \\
+
+Recall that the single variable definite integral is defined as 
+\begin{framed}
+  
+
+\[
+   \int_{x=a}^{b}  f(x) dx = \lim \limits_{\triangle x \to 0^+} \sum \limits_{i} f(x_i) \triangle x 
+\] 
+\end{framed}
+
+The two objects are joined by the Fundamental Theorem of Integral Calculus 
+\begin{itemize}
+   \item From the indefinite integral, find the antiderivative, evaluate at the end points and take the difference
+   \item You could think of the indefinite integral as a \textbf{means to an end}
+\end{itemize}
+
+In multivariable calculus, there is \textbf{no longer the indefinite integral}
+\begin{itemize}
+   \item The indefinite integral has no multivariate analogue
+\end{itemize}
+
+There are certain 1-D interpretations of the derivative and integral that do not persist into higher dimensions. For example
+\begin{itemize}
+   \item The derivative as \textit{the slope}
+   \item The integral as \textit{the area}
+\end{itemize}
+
+Instead, we work with the intuition 
+\begin{itemize}
+   \item The derivative as a \textbf{linear transformation}
+   \item The integral as a \textbf{mass} \\
+\end{itemize}
+
+
+
+In the multivariate case, we use the following notation
+\begin{framed}
+  For $f: \mathbb{R}^n \rightarrow R$ the integral is defined as
+  \[
+    \int_{R}^{}  d \underline{x}  
+  \] 
+  OR
+  \[
+     \int_{}^{} \hdots \iint_{R} f dx_1\ dx_2\ \hdots dx_n
+  \] 
+\end{framed}
+
+\section{Computing integrals and the Fubini theorem}
+
+\begin{framed}
+   \textbf{Theorem}: Some complicated stuff
+
+   \textbf{Idea}: For some function which depends on a bunch of variables
+   \[
+     f( \underline{x}) d \underline{x} 
+   \]  
+   where 
+   \[
+   \underline{x} = (x_1, x_2,  \hdots x_n)
+   \] 
+   \[
+   d\underline{x} = dx_1, dx_2,  \hdots dx_n
+   \] 
+
+   The integral over $ \mathbb{R}^n$ with respect to the volume element $d \underline{x}$ is
+   \[
+      \int_{ \mathbb{R}^n} f ( \underline{x}) d \underline{x} =
+        \int \left( 
+           \hdots \left( 
+              \int \left( 
+                 \int f dx_1
+              \right) dx_2
+           \right) 
+        \right)  dx_n
+   \]  
+
+   Most importantly: the order in which the integral is computed does not matter
+  
+\end{framed}
+
+\section{Double \& Triple Integrals}
+
+\begin{framed}
+   A double integral is given by
+   \[
+      \iint_{R} f\ dA = \iint_{R} f(x,y)\ dx\ dy
+   \]  
+
+   A triple integral is given by
+   \[
+      \iiint_{R} f\ dV = \\\int_{R} f(x, y, z)\ dx\ dy\ dz
+   \] 
+\end{framed}
+
+\subsection{Finding the area in 2 dimensions}
+To find the area, we integrate the area element $dA$, 
+\[
+  A = \int dA
+\] 
+Where $dA$, or the area of an infinitesimal rectangle, is given by
+ \[
+  dA = dx\ dy = dy\ dx
+\] 
+Therefore, 
+\[
+  A = \int dA = \iint 1 dx\ dy = \iint 1 dy\ dx
+\] 
+
+\subsection{Changing the limits}
+In general, to figure out the limits of integration, we
+\begin{enumerate}
+   \item choose a variable to integrate with respect to, such as $dy$
+   \item \textbf{fix $x$}, i.e. for a given value of $x$, read the top and bottom boundaries, which are some functions of $y = f(x)$ \\
+   \item determine if integral needs to be split into the sum of multiple integrals 
+   \item move on to the next variable
+\end{enumerate}
+
+
+\section{Averages}
+
+For the classical case, in 0-dimensions
+\[
+   f: {1, 2, \hdots , n} \rightarrow \mathbb{R}
+\] 
+
+$f$ maps discrete values to a point each, the average is
+\[
+   \overline{f} = \frac{1}{n} \sum \limits_{i=1}^{n} f_i
+\] 
+
+In 1-dimension
+\[
+  f: [a,b] -> \mathbb{R} 
+\] 
+$f$ maps values between the boundaries $a, b$ to a value, the average is \[
+   \overline{f} = \frac{1}{b-a} \int_{a}^{b}  f 
+\] 
+
+In the multivariate case
+\[
+   \overline{f} = \frac{ \int_{R}^{} f d \underline{x} }{ \int_{R}^{} d \underline{x}  } = \frac{1}{VOL_n (R)} \int_{R}^{} f d \underline{x} 
+\] 
+

@@ -1,0 +1,522 @@
+\chapter{Week 6 Lecture}
+
+\section{Recap}
+
+Recall from last week that for a function of the form \[
+   f: \mathbb{R}^n \to \mathbb{R}^m
+\] 
+
+The derivative evaluated at $ \underline{a}$ \[
+  \left[ D f \right]_{ \underline{a}} 
+\] 
+
+is a \textbf{linear transformation} \\
+
+This week's focus will be on the rules of differentiation. \\
+
+\section{Rules of differentiation}
+
+\subsection{Linearity of derivatives}
+
+\textbf{Rule 1:} Differentiation is a \textbf{linear operator}
+
+\[
+   \left[ D (f + g) \right]_{}  = \left[ D f \right]_{} + \left[ D g \right]_{}  \quad \text{ (addition)}
+\] 
+
+\[
+   \left[ D (cf) \right]_{}  = c\left[ D f \right]_{}, c \in \mathbb{R} \quad \text{ (scalar multiplication)}
+\] 
+
+\textbf{Rule 2:} The chain rule
+
+Recall from single variable calculus that for two functions $f, g$, their composition $f \circ g$ has derivative \[
+   (f \circ g) ^{\prime}_{a} = f_{g(a)} ^{\prime} g_{a}^{\prime}
+\] 
+
+In the multivariate case, for two functions $f, g$, their composition $ f \circ g$ has derivative
+\[
+ \left[ D (f \circ g) \right]_{ \underline{a}}  = \left[ D f \right]_{g( \underline{a})}  \left[ D g \right]_{ \underline{a}}  
+\] 
+
+\textbf{Rule 3:} The inverse rule
+
+Recall that \[
+   e^{lnx} = x = ln(e^x)
+\] 
+Taking the composition
+\[
+   e \circ ln = ID, \text{ the identity function, where } ID(x) = x
+\] 
+
+Taking the derivative of the composition $(e \cdot ln)(x) = x$
+\[
+   e^{lnx} \cdot (lnx) ^{\prime} = 1
+\] 
+Replacing $e^{lnx}$ with $x$ 
+\[
+  x \cdot (lnx) ^{\prime} = 1
+\] 
+Hence we can find the derivative of $lnx$ 
+\[
+   (lnx) ^{\prime} = \frac{1}{x}
+\] 
+
+In the multivariate case, for a function $f$ and its inverse $f^{-1}$
+ \[
+    f \circ f^{-1} = ID = f^{-1} f
+\] 
+Taking the derivative of both sides
+\[
+   \left[ D (f \circ f^{-1} \right]_{} = \left[ D (ID) \right]_{} 
+\] 
+\[
+   \left[ D f \right]_{}  \left[ D (f^{-1}) \right]_{}  = I
+\] 
+
+Recall that if $BA = I, B = A^{-1}$, hence we can conclude that \[
+   \left[ D f^{-1} \right]_{} = \left[ D f \right]_{}^{-1}
+\] 
+
+\textbf{Implications}: we can compute the derivative of the inverse without knowing what the inverse is \\
+
+\textbf{Example:}
+\[
+  P \begin{pmatrix} r \\ \theta \end{pmatrix}  = \begin{pmatrix} x \\y \end{pmatrix} = \begin{pmatrix} r cos \theta \\ r sin \theta \end{pmatrix} 
+\] 
+
+\[
+   P^{-1} \begin{pmatrix} x \\y \end{pmatrix}  = \begin{pmatrix} r \\ \theta \end{pmatrix} = \begin{pmatrix} \sqrt{x^2 + y^2}  \\ arctan( \frac{y}{x})\end{pmatrix} 
+\] 
+
+We can find the derivative  of $\left[ D (P^{-1}) \right]_{} $ without taking the derivative of $P^{-1}$ \\
+
+We start by finding 
+\[
+  \left[ D P \right]_{} = \begin{bmatrix} 
+     cos \theta & -r sin \theta \\  
+     sin \theta & r cos \theta \\  
+  \end{bmatrix}
+\] 
+
+Applying the inverse rule
+\[
+   \left[ D (P^{-1}) \right]_{} = \left[ D P \right]_{} ^{-1} = \begin{bmatrix} 
+      cos \theta & sin \theta \\ 
+      \frac{sin \theta}{r} & \frac{cos \theta}{r}
+   \end{bmatrix}
+\] 
+
+Note that the only place where the inverse is not defined is at the origin of the polar plane, where \[
+  r = 0
+\] 
+
+Note that $r$ is also the determinant of $\left[ D P \right]_{} $ \\
+
+This leads us to the \textbf{inverse function theorem}
+
+\begin{framed}
+   \textbf{Inverse function theorem:} A function $F: \mathbb{R}^n \to \mathbb{R}^m$ is locally invertible at $F ( \underline{a})$ \textbf{if}$\left[ D F \right]_{ \underline{a}}^{-1}$ exists (i.e., $Det \left[ D F \right]_{ \underline{a}} \neq 0$) \\
+
+   \textbf{Note} that the theorem goes if $A$ then $B$, not $A$ does \textbf{NOT} imply not $B$
+    \begin{itemize}
+       \item e.g. $f(x) = x^3$, the derivative at  $x = 0$ is $0$, but the inverse $x^{ \frac{1}{3}}$ exists
+   \end{itemize}
+\end{framed}
+
+
+
+
+
+\begin{framed}
+Points worth taking note of
+\begin{itemize}
+   \item For the single variable chain rule, the evaluation points are intuitive. For example, \[
+     \frac{d}{dx} sin(x^2) = 2x cos(x^2)
+   \] 
+   $f'$ is evaluated at $g(a) = x^2$, NOT $a = x$. The same applies for the multivariate case
+   \item In the single variable case, the derivative obtained by the chain rule is commutative
+      \[
+   (f \circ g) ^{\prime}_{a} = f_{g(a)} ^{\prime} g_{a}^{\prime} = g_{a}^{\prime}f_{g(a)} ^{\prime}   
+\] 
+    The same does NOT hold for the multivariate case
+\[
+ \left[ D (f \circ g) \right]_{ \underline{a}}  = \left[ D f \right]_{g( \underline{a})}  \left[ D g \right]_{ \underline{a}}   \neq \left[ D g \right]_{ \underline{a} } \left[ D f \right]_{g ( \underline{a})} 
+\] 
+\end{itemize}
+\end{framed}
+
+\begin{framed}
+\textbf{As a fun example}: demonstrating the linear property of the derivative using the chain rule \\
+
+\textbf{Give} the single variable functions $u(x), v(x)$  \\
+
+\textbf{Claim}: $(u + v) ^{\prime} = u ^{\prime} + v ^{\prime}$ \\
+
+\textbf{Consider:} two functions, $g, f$ such that  \[
+  g : \mathbb{R}^1 \to \mathbb{R}^2, g(x) = \begin{pmatrix} u(x) \\ v(x) \end{pmatrix} 
+\]
+\[
+  f: \mathbb{R}^2 \to \mathbb{R}^1, f \begin{pmatrix} u \\ v \end{pmatrix} = u + v
+\]  \\
+
+Taking the composition 
+\[
+   (f \circ g)(x) = u(x) + v(x)
+\] 
+Taking the derivatives $\left[ D f \right]_{} , \left[ D g \right]_{}$ \[
+  \left[ D g \right]_{}  = \begin{bmatrix} 
+    u ^{\prime} \\ v ^{\prime}  
+  \end{bmatrix}
+\] 
+
+\[
+  \left[ D f \right]_{} = \begin{bmatrix} 
+     1 & 1  
+  \end{bmatrix}
+\] 
+
+\textbf{Applying the chain rule}: \[
+  \left[ D (f \circ g) \right]_{} = \left[ D f \right]_{} \left[ D g \right]_{} = u ^{\prime} + v ^{\prime}
+\] 
+\end{framed}
+
+
+\begin{framed}
+\textbf{As another fun example}: demonstrating the single variable product rule using the chain rule
+
+\textbf{Give} the single variable functions $u(x), v(x)$  \\
+
+\textbf{Claim}: $(u v) ^{\prime} = vu ^{\prime} + v ^{\prime}u$ \\
+
+\textbf{Consider:} two functions, $g, f$ such that  \[
+  g : \mathbb{R}^1 \to \mathbb{R}^2, g(x) = \begin{pmatrix} u(x) \\ v(x) \end{pmatrix} 
+\]
+\[
+  f: \mathbb{R}^2 \to \mathbb{R}^1, f \begin{pmatrix} u \\ v \end{pmatrix} = uv
+\]  \\
+
+Taking the composition 
+\[
+   (f \circ g)(x) = u(x)v(x)
+\] 
+Taking the derivatives $\left[ D f \right]_{} , \left[ D g \right]_{}$ \[
+  \left[ D g \right]_{}  = \begin{bmatrix} 
+    u ^{\prime} \\ v ^{\prime}  
+  \end{bmatrix}
+\] 
+
+\[
+  \left[ D f \right]_{} = \begin{bmatrix} 
+     v & u
+  \end{bmatrix}
+\] 
+
+\textbf{Applying the chain rule}: \[
+  \left[ D (f \circ g) \right]_{} = \left[ D f \right]_{} \left[ D g \right]_{} = vu ^{\prime} + v ^{\prime} u
+\] 
+\end{framed}
+
+\begin{framed}
+\textbf{The old school way of doing chain rules}
+
+For a function $z = z(x, y), x = x(t), y = y(t)$
+
+\[
+  \frac{dz}{dt} = \frac{\partial z}{\partial x} \frac{dx}{dt} + \frac{\partial z}{\partial y} \frac{dy}{dt}
+\] 
+
+We can arrive at the same derivative by setting up functions $f, g$ correctly 
+\[
+  g(t) = \begin{pmatrix} x(t) \\ y(t) \end{pmatrix} 
+\] 
+\[
+  f \begin{pmatrix} x \\ y \end{pmatrix} = z(x, y)
+\] 
+
+Taking the partial derivatives
+\[
+\left[ D f \right]_{} = \begin{bmatrix} 
+   \frac{\partial z}{\partial x} & \frac{\partial z}{\partial y}  
+\end{bmatrix}
+\] 
+\[
+  \left[ D g \right]_{} = \begin{bmatrix} 
+    \frac{dx}{dt} \\ \frac{dy}{dt}  
+  \end{bmatrix}
+\] 
+
+Applying the chain rule
+\[
+\left[ D (f \circ g) \right]_{} = \left[ D f \right]_{} \left[ D g \right]_{}  = \frac{\partial z}{\partial x} \frac{dx}{dt} + \frac{\partial z}{\partial y} \frac{dy}{dt}
+\] 
+\end{framed}
+
+\section{Another big lift! and purely optional - The implicit function theorem}
+
+\textbf{Recall} a simple example of implicit differentiation
+
+\textbf{Given} \[
+  x^2 + y^2 = 1
+\] 
+Differentiating both sides implicitly
+\[
+  2x dx + 2ydy = 0
+\] 
+
+We can solve for $y = y(x)$ by finding
+\[
+   \frac{dy}{dx} = -\frac{2x}{2y}, \text{ solvable for } y \neq 0
+\] 
+
+This can be rewritten as 
+\[
+  \frac{dy}{dx} = \frac{ - \frac{\partial F}{\partial x}}{ \frac{\partial F}{\partial y}}
+\] 
+
+\begin{framed}
+   \textbf{Implicit function theorem}: states that for \[
+     F( \underline{x}, \underline{y}) = \underline{0}
+  \]
+  Where there are $m$ nonlinear equations and where $ \underline{y}$ has $m$ variables \\
+   We can locally solve for $ \underline{y} = \underline{y}( \underline{x}) $ if \[
+     Det \begin{bmatrix} 
+       \frac{\partial F}{\partial \underline{y}} 
+     \end{bmatrix}\neq 0
+   \] 
+
+   In addition
+   \[
+      \begin{bmatrix} 
+        \frac{\partial \underline{y}}{\partial \underline{x}}  
+     \end{bmatrix}_{ \underline{a}} = 
+     - \begin{bmatrix} 
+       \frac{\partial F}{\partial \underline{y}}  
+    \end{bmatrix}^{-1} \begin{bmatrix} 
+      \frac{\partial F}{\partial \underline{x}}  
+    \end{bmatrix}
+   \] 
+\end{framed}
+
+\section{Chain Rule examples}
+
+\subsection{Example 1}
+For a function \[
+  f \begin{pmatrix} u \\v \end{pmatrix} = \begin{pmatrix} 
+    u^3 + 2uv \\  
+    e^{uv}  \\
+    sin(u^2 + v)
+  \end{pmatrix}
+\] 
+and another function \[
+  g \begin{pmatrix} x \\ y \\ z \end{pmatrix}  = \begin{pmatrix} 
+    xyz \\
+    x + 2y - 3z
+  \end{pmatrix}
+\] 
+The composition $ f \circ g$ and $g \circ f$ both exist \\
+
+We can compute the derivatives \[
+  \left[ D g \right]_{} = \begin{bmatrix} 
+     yz & xz & xy \\
+     1 & 2 & -3
+  \end{bmatrix}
+\] 
+\[
+\left[ D f \right]_{}  = \begin{bmatrix} 
+   3u^2 + 2v & 2u \\
+   ve^{uv} & ue^{uv} \\
+   2u cos(u^2 + v) & cos(u^2 + v)
+\end{bmatrix}
+\] 
+
+By the chain rule, 
+\begin{align*}
+   \left[ D ( f \circ g) \right]_{}  &= \left[ D f \right]_{} \left[ D g \right]_{}  \\
+                                     &= \begin{bmatrix} 
+                                        (3u^2 + 2v)(yz) + 2u & \hdots & \hdots \\
+                                                             \vdots & \ddots & \hdots \\
+                                                             \vdots & \hdots & \ddots
+                                     \end{bmatrix}
+\end{align*}
+
+Note that the result of $ \left[ D f \right]_{} \left[ D g \right]_{} $ will likely have a mix of $x, y,z$ and $u, v$, read the question carefully to determine if there's a need to convert to consistent variables
+
+\subsection{Example 2}
+Recall from single variable calculus that 
+\[
+   (e^x)' = e^x
+\] 
+\[
+   (a^x)' = a^x ln a
+\] 
+What about something such as 
+\[
+   ((u(x))^x)' =   ?????
+\] 
+\[
+   (u(x)^{v(x)})' = ?????
+\] 
+
+For $ u(x)^{v(x)}$, we can derive its derivative using the multivariate chain rule. \\
+
+We start by defining the correct functions 
+\[
+  g(x) = \begin{pmatrix} u(x) \\ v(x) \end{pmatrix} 
+\] 
+
+\[
+  f \begin{pmatrix} u \\ v \end{pmatrix}  = u^v
+\] 
+
+Note that the $u$ and $v$ in $f$ and $g$ stand for generic variables, and are not the same! ($u,v$ are local to the function $f, g$) \\
+
+We can compute the derivatives 
+\[
+  \left[ D g \right]_{} = \begin{bmatrix} 
+    u' \\ v'  
+  \end{bmatrix}
+\] 
+\begin{align*}
+   \left[ D f \right]_{} &= \begin{bmatrix} 
+     \frac{\partial f}{\partial u} & \frac{\partial f}{\partial v}  
+  \end{bmatrix} \\
+                         &= \begin{bmatrix} 
+                            v u^{v-1}  & u^v lnu
+                         \end{bmatrix}
+\end{align*}
+
+Applying the chain rule
+\begin{align*}
+   \left[ D (f \circ g) \right]_{} &= \left[ D f \right]_{} \left[ D g \right]_{} \\
+                                   &= vu^{v-1}u' + (u^v + lnu) v'
+\end{align*}
+
+  
+\textbf{Alternatively, using different variables} \\
+We start by defining the correct functions 
+\[
+  g(x) = \begin{pmatrix} u(x) \\ v(x) \end{pmatrix} 
+\] 
+
+\[
+   f \begin{pmatrix} \xi \\ \eta \end{pmatrix}  = \xi^\eta
+\] 
+
+We can compute the derivatives 
+\[
+  \left[ D g \right]_{} = \begin{bmatrix} 
+    u' \\ v'  
+  \end{bmatrix}
+\] 
+\begin{align*}
+   \left[ D f \right]_{} &= \begin{bmatrix} 
+     \frac{\partial f}{\partial \xi} & \frac{\partial f}{\partial \eta}  
+  \end{bmatrix} \\
+                         &= \begin{bmatrix} 
+                            \eta \xi^{\eta-1}  & \xi^\eta ln\xi
+                         \end{bmatrix}
+\end{align*}
+
+Applying the chain rule
+\begin{align*}
+   \left[ D (f \circ g) \right]_{} &= \left[ D f \right]_{g(u, v)} \left[ D g \right]_{} \\
+                                   &= \left. \left[\eta\xi^{\eta-1}u' + (\xi^\eta + ln\xi) v'\right]\right|_{
+                                      \xi = u, \eta = v
+                                   } \\
+                                   &= vu^{v-1}u' + (u^v + lnu) v'
+\end{align*}
+
+
+\section{Inverse Function Theorem examples}
+
+\begin{framed}
+   The inverse function theorem \textbf{is not} \[
+      \left[ D f^{-1} \right]_{} = \left[ D f \right]_{}^{-1}
+   \] 
+
+   While this statement is true, it is a result of \textbf{the chain rule} \\
+
+   \textbf{The inverse function theorem deals with the existence of the inverse}
+\end{framed}
+
+\subsection{Example 1}
+Given a function \[
+  f \begin{pmatrix} u \\ v \\ w \end{pmatrix}  = \begin{pmatrix} 
+    2w + 3vw \\
+    e^{uv} \\
+    sin(u^2 + v)
+  \end{pmatrix} = \begin{pmatrix}  x \\ y \\ z\end{pmatrix} 
+\] 
+Can we express $u, v, w$ as sum functions of $x, y, z$? (i.e. taking the inverse)\[
+  \begin{pmatrix} u \\ v \\ w \end{pmatrix}  = \begin{pmatrix} 
+    f_1(x, y, z)   \\
+    f_2(x, y, z)   \\
+    f_3(x, y, z)   \\
+  \end{pmatrix}
+\] 
+The short answer is no!! but inverse function theorem lets us find the local inverse. \\
+
+We start by taking the derivative
+
+\[
+  \left[ D f \right]_{} = \begin{bmatrix} 
+     0 & 3w & 2+3v \\  
+     ve^{uv} & ue^{uv} & 0\\  
+     2ucos(u^2 + v) & cos(u^2 + v) & 0
+  \end{bmatrix}
+\] 
+By the inverse function theorem, 
+\[
+   \text{if $ \left[ D f \right]_{}^{-1} $ exists locally, then $f^{-1}$ exists locally}
+\] 
+
+Note that the \textbf{inverse} is not necessarily true, i.e 
+\[
+   \text{if $ \left[ D f \right]_{}^{-1} $ does not exist locally, then we cannot conclude if $f^{-1}$ exists locally}
+\] 
+  
+
+To find out if the inverse exists at $(0, 0, 0)$
+ \[
+  \left[ D f \right]_{ \underline{0}} = \begin{bmatrix} 
+     0 & 0 & 2 \\
+     0 & 0 & 0 \\
+     0 & 1 & 0
+  \end{bmatrix}
+\] 
+We can compute the determinant, \[
+  Det \left[ D f \right]_{ \underline{0}} = 0
+\] 
+
+Hence, we \textbf{cannot conclude} whether the inverse exists at the origin (since the converse of the inverse of the Inverse Function Theorem is not necessarily true
+
+\section{Implicit Function Theorem}
+
+Given a function 
+\[
+   F: \mathbb{R}^{n+m} \to \mathbb{R}^m
+\] 
+With $m$ non-linear equations, where 
+\[
+  F( \underline{x}, \underline{y}) = \underline{0}
+\] 
+and $ \underline{x}$ has $n$ variables and  $ \underline{y}$ has $m$ variables,\\
+
+We can solve locally for $ \underline{y} = \underline{y} ( \underline{x})$ 
+
+
+\subsection{Example 1}
+Given a system 
+\[
+   2x_1^{2} - 3x_2 + y_1^{2} - 4y_2^{2} = 0
+\]  
+\[
+   x_1^{3} - x_1^{2} + 3y_1^{2} -y_2 = 0
+\] 
+
+Can we $y_1$ and $y_2$ as functions $ x_1, x_2$? maybe via some nasty algebra? \\
+ 
+Short answer is no!! and this system involves just polynomials. what if it has a bunch of square roots, logarithms and exponents \\
+
+Instead, we can linearize the system and row reduce

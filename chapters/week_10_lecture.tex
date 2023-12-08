@@ -1,0 +1,245 @@
+\chapter{Week 10 lectures}
+
+This week, we will think about two applications of multivariate integration \\
+
+\textbf{Physical mass}
+The first intuition will require us to think of an integral as physical mass \\
+
+The function $f$ is a function of density. To find the mass between $a$ and $b$, we integrate the mass element
+\[
+  M = \int dM
+\] 
+The mass element is given by
+\[
+  dM = f(x) dx
+\] 
+\[
+   M = \int_{x = a}^{b} dx
+\] 
+
+\textbf{Probability}
+The function $f$ is a probability density function on domain $D$
+    \[
+     f \sim PDF
+    \] 
+
+     where \[
+      f(x) \geq 0, \int_D f = 1
+     \] 
+
+
+To find the probability, we integrate the probability element
+\[
+  P = \int dP
+\] 
+
+For $A \in D$, the probability that  $ \underline{x}$ is in $A $ is 
+\[
+  P( \underline{x}\ in\ A) = \int_A DP = \int_A f( \underline{x}) d \underline{x}
+\] 
+
+Normalized to 
+\[
+  P( \underline{x}\ in\ D) = 1
+\] 
+
+In $ \mathbb{R}^2$, the probability element in domain $D$ is\[
+  dP = \frac{1}{AREA(D)} dx dy
+\] 
+
+
+Note that 
+\[
+   P(x = c) = \int_{\{c\}} dP = \int_{x=c}^{c} f(x) dx = 0
+\] 
+
+\section{Centroids \& Centers of mass}
+
+For the centroid between $f$ and $g$ on domain $D$, whose area is $A$ \\
+
+In high school the formula to memorize would have been
+\[
+   \overline{x} = \frac{1}{A} \int_{x=a}^{b} x (f(x) - g(x)) dx
+\] 
+\[
+   \overline{y} = \frac{1}{2A} \int_{x=a}^{b} (f(x) - g(x))^2 dx
+\] 
+
+Instead, now with the language of double integrals, we can find $\overline{x}, \overline{y}$ using the average formula
+
+ \[
+    \overline{x} = \frac{1}{A} \iint_{D} x dA
+\] 
+ \[
+    \overline{y} = \frac{1}{A} \iint_{D} y dA
+\] 
+
+\textbf{Centroid}
+\[
+   \overline{x} = \frac{\int_{D} x dV}{\int_{D} dV}
+\] 
+
+\textbf{However}, in calculating the centroid this way, we are assuming uniform density. If we want to find the center of mass, we need to use the \textbf{mass element}
+
+\[
+   \overline{x} = \frac{\int_{D} x dM}{\int_{D} dM}
+\] 
+
+where 
+\[
+  dM = f( \underline(x) d \underline{x}
+\] 
+
+\section{Expectation \& Spread}
+
+For probability in $2D$, for a PDF of $f(x,y)$ over domain  $D$ such that $f(x,y) \geq 0$ and  $\iint_{D} f dxdy = 1$ \\
+
+For two random variables $X, Y$ 
+\[
+   E(X) = \overline{x}  = \int_{D} x dP
+\] 
+\[
+   E(Y) = \overline{y}  = \int_{D} y dP
+\]  
+
+The spread is measured by variance and standard deviation
+
+\[
+   V(X) = \int_{D} (x - E(X))^2 dP
+\] 
+
+\[
+  \sigma(X) = \sqrt{V(X)}
+\] 
+
+Why doe the variance formula make sense? If we choose a good coordinate system (domain)  such as $E(X) = 0$, 
+\[
+   V = \int_{D} x^2 dP = \overline{x^2}
+\] 
+
+Now, it is easier to see why the variance is a measure of spread about the mean
+
+\section{Moment of inertia}
+
+For a domain $[-a, a]$ with uniform density, the moment of inertia is given by
+\[
+   \int_{-a}^{a} x^2 dM
+\] 
+
+In general, for a mass element $dM$ at a distance $r$ away from the axis, the integral element is the product of squared distance and the mass element
+\[
+  dI = r^2 dM
+\] 
+
+The moment of inertia is thus
+\[
+  I = \int dI = \int r^2 dM
+\] 
+
+Consider the symmetry between the two concepts \\
+\begin{center}
+   \begin{tabular}{|c | c|}
+      \hline
+      Physical & Probability \\ 
+      \hline
+      Variance & Moment of Inertia \\
+      $V(X)$ & $I$ \\
+      $\int x^2 dP$ & $\int r^2 dM$ \\
+      \hline
+      Standard Deviation & Radius of gyration \\
+      $\sqrt{V(X)}$ & $R_g = \sqrt{ \frac{I}{M}}$ \\
+      \hline
+   \end{tabular}
+\end{center}
+
+\section{Things that we need to learn to compute this week}
+In the language of physics
+\begin{itemize}
+   \item Mass
+   \item Centroid
+   \item Center of mass
+   \item Moment of gyration
+   \item Moments of inertia
+   \item Radius of gyration
+\end{itemize}
+
+In the language of probability
+\begin{itemize}
+   \item Probability
+   \item Expectation
+   \item Variance
+   \item Standard Deviation
+\end{itemize}
+
+\subsection{Example 1 - Probability}
+
+Given a probability density function \[
+   \rho = x^2 + y^2 
+\] 
+
+On a domain \[D = \{ \lVert x \rVert \leq 2, \lVert y \rVert \leq 3 \} \]
+
+Note that total probability must be $1$
+ \[
+    \int \limits_{y = -3}^{3} \int \limits_{x = -2}^{2} C(x^2 + y^2) dx\ dy = 1
+\] 
+
+To find the constant $C$ such that the integral is 1
+\begin{align*}
+   \int \limits_{y = -3}^{3} \int \limits_{x = -2}^{2} C(x^2 + y^2) dx\ dy &= 
+   \left. \left. C \left( \frac{x^3}{3}y + x \frac{y^3}{3} \right) \right|_{y = -3}^{3}  \right|_{x=-2}^{2} \\
+                                                                           &= 104C
+\end{align*}
+
+Hence the probability density \[
+  \rho = \frac{1}{104} \left( x^2 + y^2 \right) 
+\] 
+
+Now we can compute the probability, for example, to find
+\begin{align*}
+   P(\text{ $X \geq$ 1 }) &= \int_{\{ x \geq 1 \}} \rho\ dA  \\
+                          & = \int_{y=-3}^{3} \int_{x=1}^{2} \frac{1}{104} \left( x^2 + y^2 \right) dx\ dy \\
+                          &= \left. \left. \frac{1}{104} \left( \frac{x^3 y + xy^3}{3}\right)  \right|_{y=-3}^{3} \right|_{x=1}^{2}  \\
+                          &= \frac{4}{13}
+\end{align*}
+
+Given the same probability density function, find $ P(\text{ $X \geq 1$ and $Y \leq -1$ }) $ \\
+
+Given the same probability density function, find $ P(\text{ $X \geq 1$ or $Y \leq -1$ }) $
+
+\subsection{Example - Moments of Inertia}
+
+The moment of inertia is calculated by integrating the moment of inertia element
+\[
+   I = \int dI 
+\]  Where $dI$ is given by
+\[
+   dI = r^2 dM
+\] 
+
+Where
+ \begin{itemize}
+    \item $r$ is the radius to axis of rotation
+    \item $dM$ is the mass element, equals to $\rho dV$
+\end{itemize}
+
+\subsection{Example - More probability}
+For a given PDF \[
+   \rho = C e^{- \alpha x}
+\] 
+
+on a domain
+\[
+   D = [0, \infty)
+\] 
+
+Integrating the PDF from $0$ to infinity and setting total probability to 0, we solve for $C = \alpha$, hence the PDF is
+\[
+   \rho = \alpha e^{- \alpha x}
+\] 
+
+We can define a joint PDF for arbitrary number of variables by taking the product of $\rho_i$
+\[
+   \rho(x_1, x_2 \hdots x_n) = \alpha_1 \alpha_2 \hdots \alpha_n e^{- \alpha_1 x - \alpha_2 x - \hdots \alpha_n x}
+\] 
+

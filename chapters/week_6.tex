@@ -1,0 +1,456 @@
+\chapter{Week 6}
+
+   \section{The Chain Rule}
+
+   \subsection{The classical chain rule}
+   \begin{framed}
+      \textbf{The classical chain rule} states that for functions $f$ and $g: \mathbb{R} \to \mathbb{R}$, the composition of $f \circ g$ has derivative \[
+         (f \circ g)'(a) = f' (g(a)) \cdot g ' (a)
+      \] 
+
+      Alternatively, for $y = y(u)$ and $u = u(x)$, \[
+         \left. \frac{dy}{dx} \right|_{a} = \left. \frac{dy}{du} \right|_{u(a)} \cdot \left. \frac{du}{dx} \right|_{a} 
+      \] 
+   \end{framed}
+
+   Take note of where each derivative is evaluated at
+   \begin{itemize}
+      \item $f'$ is evaluated at $g(a)$ 
+      \item $g'$ is evaluated at $a$
+   \end{itemize}
+
+   \subsection{The multivariate chain rule}
+
+   \begin{framed}
+      \textbf{The multivariate chain rule} states that for differentiable functions $f: \mathbb{R}^m \to \mathbb{R}^p$ and $g: \mathbb{R}^n \to \mathbb{R}^m$, the composition $f \cdot g : \mathbb{R}^n \to \mathbb{R}^p$ has derivative 
+         \[
+         \left[ D (f \cdot g)  \right]_{ \underline{a}} = \left[ D f \right]_{g( \underline{a)}}  \cdot \left[ D g \right]_{ \underline{a}} 
+         \] 
+         Or, for $ \underline{y} = \underline{y}(u)$ and $ \underline{u} = \underline{u}(x)$
+         \[
+           \frac{\partial \underline{y}}{ \partial \underline{x} } =  
+           \frac{\partial \underline{y}}{ \partial \underline{u} } \cdot
+           \frac{\partial \underline{u}}{ \partial \underline{x} }
+         \] 
+   \end{framed}
+
+   \subsection{Note on notation}
+
+   Most difficulties with chain rule problems arise due to difficulties with notation. Be careful with variables! \\
+
+   Problem: For example, given a system \[
+     z = uv^3
+   \] 
+   \[
+     u = s^2 - t^2
+   \] 
+   \[
+     v = st
+   \] 
+
+   Compute the partial derivatives of $z$ with respect to $s, t$
+
+   Solution: We let 
+   \[
+     z = z ( \underline{y})
+   \] 
+   \[
+      \underline{y} = \underline{y} ( \underline{x})
+   \] 
+   Where 
+   \[
+     \underline{y} = \begin{pmatrix} u \\ v \end{pmatrix}, \underline{x} = \begin{pmatrix} s \\ t \end{pmatrix} 
+   \] 
+
+   We can compute 
+   \begin{align*}
+      \frac{\partial z }{\partial \underline{y} } &= \begin{bmatrix} 
+         \frac{\partial z}{\partial u} & \frac{\partial z}{ \partial v}  
+      \end{bmatrix} \\ 
+                                                  &=  \begin{bmatrix} 
+                                                     v^3 & 3uv^2  
+                                                  \end{bmatrix}
+   \end{align*}
+
+   and 
+   \begin{align*}
+      \frac{\partial \underline{y}}{ \partial \underline{x}} &= \begin{bmatrix} 
+        \frac{\partial u}{\partial s} & \frac{\partial u}{\partial t} \\
+        \frac{\partial v}{\partial s} & \frac{\partial v}{\partial t}
+     \end{bmatrix}  \\
+                                                             &= \begin{bmatrix} 
+                                                                2s & -2t \\
+                                                                t & s
+                                                             \end{bmatrix}
+   \end{align*}
+
+   Applying the chain rule, 
+   \begin{align*}
+      \frac{\partial z}{\partial \underline{x}} &= \frac{\partial z}{\partial \underline{y}} \cdot \frac{\partial  \underline{y}}{\partial \underline{x}} \\
+                                                &= \begin{bmatrix} 
+                                                   v^3 & 3uv^2  
+                                                \end{bmatrix} \begin{bmatrix} 
+                                                   2s & -2t \\ t & s   
+                                                \end{bmatrix} \\
+                                                &= \begin{bmatrix} 
+                                                   2sv^3 + 3tuv^2 & -2tv^3 + 3suv^2  
+                                                \end{bmatrix} \\
+                                                &= \begin{bmatrix} 
+                                                   5s^4 t^3 - 3s^2t^5 & -5s^3t^4 + 3s^5t^2  
+                                                \end{bmatrix}
+   \end{align*}
+
+   \subsection{Classical chain rules as a variation on the ONE single chain rule}
+   \begin{framed}
+      Classical calculus textbooks state that there are different chain rules, all of which need to be memorized. For example
+
+      1. For a function of the form $y = y(x_1, x_2, \hdots, x_n)$, with each $x_j = x(t)$,  \[
+        \frac{dy}{dt} = \frac{\partial y}{\partial x_1} \frac{dx_1}{dt} + \frac{\partial y}{\partial x_2} \frac{d x_2}{dt} + \hdots + \frac{\partial y}{\partial x_n} \frac{d x_n}{dt}
+      \] 
+
+      2. For a function $u(x, y)$ with $x = x(s, t)$ and $y = y(s, t)$, 
+      \[
+        \frac{\partial u}{\partial s} = \frac{\partial u}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial u}{\partial y} \frac{\partial y}{\partial s}
+      \] 
+   \end{framed}
+
+   However, recognize that all these \emph{special} derivatives can be derived using the one chain rule.  \\
+
+   For example\\
+   \textbf{Given}: a function $u (x, y)$ with $x = x(s, t)$ and $y = y(s, t)$,
+
+   \textbf{Let}: function  $g: g \begin{pmatrix} s \\ t \end{pmatrix}  = \begin{pmatrix} x \\ y \end{pmatrix} $ and $f: f \begin{pmatrix} x  \\ y\end{pmatrix} = u$
+
+   \textbf{Compute:} \[
+      \begin{array}{c c}
+         u = f(x, y) &
+         \left[ D f \right]_{} = \begin{bmatrix} 
+            \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}
+         \end{bmatrix} \\
+
+         \begin{pmatrix} x \\ y \end{pmatrix} = g(s, t) &
+         \left[ D g \right]_{}  = \begin{bmatrix} 
+            \frac{\partial x}{\partial x} & \frac{\partial x}{\partial t} \\  
+            \frac{\partial y}{\partial s} & \frac{\partial y}{\partial t} \\  
+         \end{bmatrix}
+     \end{array}
+   \] 
+
+   \textbf{Applying the chain rule}
+
+   \begin{align*}
+      \left[ D (f \cdot g) \right]_{} &= \begin{bmatrix} 
+            \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}
+         \end{bmatrix}\begin{bmatrix} 
+            \frac{\partial x}{\partial x} & \frac{\partial x}{\partial t} \\  
+            \frac{\partial y}{\partial s} & \frac{\partial y}{\partial t} \\  
+         \end{bmatrix} \\
+                                      &= \begin{bmatrix} 
+                                        \frac{\partial u}{\partial x} \frac{\partial x}{\partial s} + 
+                                        \frac{\partial u}{\partial y} \frac{\partial y}{\partial s} &
+                                        \frac{\partial u}{\partial x} \frac{\partial x}{\partial t} + 
+                                        \frac{\partial u}{\partial y} \frac{\partial y}{\partial t}
+                                      \end{bmatrix}
+   \end{align*}
+
+   \section{Differentiation rules: Linearity of the derivative}
+   \begin{framed}
+      Differentiation is a \textbf{linear operator} on functions
+      \begin{itemize}
+         \item Addition: $\left[ D (f+g) \right]_{} = \left[ D f \right]_{}  + \left[ D g \right]_{} $
+         \item Scalar multiplication: $\left[ D (cf) \right]_{}  = c \left[ D f \right]_{} $
+      \end{itemize}
+   \end{framed}
+
+   For a linear or \textbf{affine} function of the form \[
+     \underline{y} = A \underline{x} + \underline{b}
+   \] 
+
+   \[
+     \frac{\partial \underline{y}}{\partial \underline{x}} = A
+   \] 
+
+   \textbf{Conclusion}: Affine functions have constant derivatives \\
+
+   For the \textbf{identity function} \[
+     \underline{y} = \underline{x}
+   \] 
+   \[
+     \frac{\partial \underline{y}}{\partial \underline{x} } = I = \frac{\partial \underline{x}}{\partial \underline{x}}
+   \] 
+
+   \textbf{Conclusion:} the identity function has the identity matrix as its derivative
+
+   \section{Differentiation rules: Product Rule}
+
+   \begin{framed}
+      For $ \underline{u}, \underline{v}$ dependent on a variable $t$, 
+      \[
+         ( \underline{u} \cdot \underline{v})' = \underline{u}' \cdot \underline{v} + \underline{u} \cdot \underline{v}'
+      \] 
+   \end{framed}
+
+   To prove the rule mentioned above, \\
+
+   \textbf{Claim:}
+      \[
+         ( \underline{u} \cdot \underline{v})' = \underline{u}' \cdot \underline{v} + \underline{u} \cdot \underline{v}'
+      \] 
+
+   \textbf{Let:} 
+   \[
+     g(t) = \begin{pmatrix} \underline{u}(t) \\ \underline{v}(t) \end{pmatrix}  = \begin{pmatrix} 
+     u_1 \\ u_2 \\ \hdots \\\underline{u}_n \\ v_1 \\ v_2 \\ \hdots \\ v_n
+   \end{pmatrix} 
+   \] 
+   and
+   \[
+      f( \underline{u}, \underline{v}) = \underline{u} \cdot \underline{v} = \underline{u}^T \underline{v} = \sum_{j = 1 \hdots n} \underline{u}_j \underline{v}_j
+   \] 
+
+   \textbf{Note}: the various notations that represent the same dot product
+
+   \textbf{Compute}
+   \[
+     \left[ D g \right]_{} = \begin{bmatrix} 
+       \underline{u}' \\
+       \underline{v}'
+     \end{bmatrix} = \begin{bmatrix} 
+       u_1 ^{\prime}   \\ \vdots \\
+       u_n ^{\prime}  
+       v_1 ^{\prime}   \\ \vdots \\
+       v_n ^{\prime}  
+     \end{bmatrix}
+   \] 
+
+   \[
+     \left[ D f \right]_{}  = \begin{bmatrix} 
+        \underline{v}^T & \underline{u}^T  
+     \end{bmatrix} = \begin{bmatrix} 
+        v_1 & \hdots & v_n & u_1 &\hdots   & u_n
+     \end{bmatrix}
+   \] 
+
+   \textbf{Applying the chain rule}
+   \begin{align*}
+      ( \underline{u} \cdot \underline{v} ) ^{\prime} &= \left[ D (f \cdot g) \right]_{} \\
+                                                      &= \left[ D f \right]_{} \left[ D g \right]_{} \\
+                                                      &= \begin{bmatrix} 
+                                                         \underline{v}^T &\underline{u}^T  
+                                                      \end{bmatrix} \begin{bmatrix} 
+                                                        \underline{u}' \\ \underline{v}'  
+                                                      \end{bmatrix} \\
+                                                      &= \underline{v}^T \underline{u}' + \underline{u}^T \underline{v}' \\
+                                                      &= \underline{u}' \cdot \underline{v} + \underline{v}' \cdot \underline{u}
+\end{align*}
+
+Another example with quadratic functions
+
+For a square matrix $A$ with variable $ \underline{x}$, consider the quadratic function \[
+  f( \underline{x}) = \underline{x}^T A \underline{x} = \underline{x} \cdot (A \underline{x})
+\] 
+
+\textbf{Claim}: \[
+  \left[ D f \right]_{} = \underline{x}^T (A + A^T)
+\] 
+
+\textbf{Proof} 
+\begin{align*}
+   \left[ D f \right]_{} &= \left[ D  (\underline{x}^T A \underline{x}) \right]_{}, \quad \text{recall that} \left[ D ( \underline{u}^T \underline{v}) \right]_{} = \underline{u}^T \left[ D v \right]_{}  + \underline{v}^T \left[ D \underline{u} \right]_{} \\
+                         &= \underline{x}^T \left[ D (A \underline{x}) \right]_{}  + (A \underline{x})^T \left[ D  \underline{x} \right]_{}, \quad \text{recall that } \left[ D A \underline{x} \right]_{}  = A, \left[ D \underline{x} \right]_{} = I \\
+                         &= \underline{x}^T A + (A \underline{x})^T I \quad \text{recall that} (AB)^T = B^T A^T \\
+                         &= \underline{x}^T A + \underline{x}^T A^T  \\
+                         &= \underline{x}^T (A + A^T)
+\end{align*}
+
+\subsection{The Material Derivative}
+\begin{framed}
+   For a function $f(t, \underline{x})$ with $ \underline{x} = \underline{x}(t)$, the material derivative is defined as \[
+     \frac{Df}{Dt} = \frac{d}{dt} f(t, \underline{x}(t)) = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial \underline{x}} \frac{dx}{dt}
+   \] 
+\end{framed}
+
+\textbf{Claim}: the material derivative can be proved using the chain rule
+
+\textbf{Proof}: \[
+     \frac{Df}{Dt} = \frac{d}{dt} f(t, \underline{x}(t)) = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial \underline{x}} \frac{dx}{dt} = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial \underline{x}} \underline{v}
+   \] 
+
+\textbf{Let}:
+\[
+  g(t) = \begin{pmatrix} t \\ \underline{x}(t) \end{pmatrix} 
+\] 
+\[
+  f = f(t, \underline{x})
+\] 
+
+We can compute the derivatives \[
+  \left[ D g \right]_{} = \begin{bmatrix} 
+    1 \\ \frac{dx}{dt}   
+  \end{bmatrix}
+\] 
+\[
+ \left[ D f \right]_{} = \begin{bmatrix} 
+    \frac{\partial f}{\partial t} & \frac{\partial f}{\partial \underline{x}}  
+ \end{bmatrix}
+ \begin{bmatrix} 
+   1 \\ \frac{dx}{dt}  
+ \end{bmatrix}
+\] 
+
+\section{The Inverse Function Theorem}
+Recall from single variable calculus that if a function $f: \mathbb{R} \to \mathbb{R}$ has an inverse $f^{-1}$ then  \[
+   \frac{d}{dx}(f^{-1}) = \frac{1}{df / dx}
+\] 
+
+\subsection{Inverse multivariate functions}
+
+\begin{framed}
+   A function $f: \mathbb{R}^n \to \mathbb{R}^n$ has an inverse $f^{-1}$ if and only if  \[
+      f^{-1}(f( \underline{x})) = \underline{x}
+   \]  
+   for all $ \underline{x}$  \\
+
+   The existence of the inverse should not be taken for granted
+\end{framed}
+
+\subsection{Linearization of nonlinear functions}
+\begin{framed}
+   Given a function $f( \underline{x}) = \underline{u}$, we can linearize it locally via Taylor Exapnsion
+\end{framed}
+
+For example
+\textbf{Given} \[
+  \underline{u} = f \begin{pmatrix} x \\ y \end{pmatrix}  = \begin{pmatrix} 
+  e^{x+y} - cos(3x + y) \\
+  xy + sin(x - 2y)
+  \end{pmatrix} 
+\]  
+
+For $x, y$ close to zero, we can take the Taylor expansion 
+\begin{align*}
+   f \begin{pmatrix} x \\ y \end{pmatrix}  &= \begin{pmatrix} 
+    1 + (x + y) + O (\lVert \underline{x} \rVert ^2  ) - (1 - O \left( \lVert \underline{x} \rVert^2 \right) \\ 
+    xy + ((x - 2y) - O \left( \lVert \underline{x} \rVert^3 \right)) 
+  \end{pmatrix} \\
+  &= \begin{pmatrix} x + y + O \left( \lVert \underline{x} \rVert^2 \right)   \\
+     x - 2y + O \left( \lVert \underline{x} \rVert^2 \right) 
+  \end{pmatrix}  \\
+  &= \begin{bmatrix} 
+     1 & 1 \\ 1 & -2  
+  \end{bmatrix} \begin{pmatrix} x \\ y \end{pmatrix}  + O \left( \lVert \underline{x} \rVert^2 \right)
+\end{align*}
+
+
+\subsection{The Inverse Rule}
+\begin{framed}
+   For a function $f: \mathbb{R}^n \to \mathbb{R}^n$ that is invertible
+   \[
+      \left[ D f^{-1} \right]_{} = \left[ D f \right]_{}^{-1}
+   \] 
+\end{framed}
+
+\textbf{Proof}:
+Since $f$ is invertible, \[
+   (f^{-1} \cdot f) \underline{x} = \underline{x}
+\] 
+
+Since the identity function has the identity matrix as its derivative
+\[
+   \left[ D \left(f^{-1} \cdot f  \right)  \right]_{}  = I
+\] 
+By the chain rule
+\[
+   \left[ D f^{-1} \right]_{}  \left[ D f \right]_{} = I
+\] 
+
+Hence \[
+   \left[ D f^{-1} \right]_{}  = \left[ D f \right]_{}^{-1}
+\] 
+
+\subsection{The Inverse Function Theorem}
+
+\begin{framed}
+   A function  $f: \mathbb{R}^n \to \mathbb{R}^n$ is locally invertible near $f( \underline{a})$ if the derivative of $f$ at $ \underline{a} $ is invertible, i.e. \\
+
+   $f$ is invertible near $f( \underline{a})$ if $Det \left[ D f \right]_{ \underline{a}} \neq 0 $
+
+   \textbf{Linear data} controls the existence of \textbf{nonlinear} inverse functions locally
+\end{framed}
+
+\section{The Implicit Function theorem}
+
+\subsection{Implicit differentiation and implicit functions}
+\begin{framed}
+   Recall in the classical case, for an implicit curve given by \[
+     F(x, y) = 0
+   \] 
+   By implicit differentiation, \[
+     dF = \frac{\partial F}{\partial x} dx + \frac{\partial F}{\partial y} dy = 0
+   \] 
+
+   We can solve for the slope \[
+     \frac{dy}{dx} = -\frac{ \frac{\partial F}{\partial x}}{ \frac{\partial F}{\partial y}}
+   \] 
+
+   Hence, we can solve for $y = y(x)$ (expressing $y$ in terms of $x$, as long as $ \frac{\partial F}{\partial y}$ is well defined
+\end{framed}
+
+For example, for a circle in the plane,
+\[
+  F(x,y) = x^2 + y^2 - r^2 = 0
+\] 
+\[
+  \frac{dy}{dx} = - \frac{2x}{2y} = -\frac{x}{y}
+\] 
+
+We can express $y$ in terms of $x$ except for points where $y = 0$
+\[
+   y = \sqrt{r^2 - x^2}, y > 0
+\] 
+\[
+   y = -\sqrt{r^2 - x^2}, y < 0
+\] 
+
+For a sphere in 3d
+\[
+  F(x, y, z) = x^2 + y^2 + z^2 - r^2 = 0
+\] 
+
+$z$ can be expressed in $x, y$ as \[
+   z = \sqrt{r^2 - x^2 - y^2}, z > 0
+\] 
+\[
+   z = -\sqrt{r^2 - x^2 - y^2}, z > 0
+\] 
+
+We can \textbf{locally solve} for $z = z(x, y)$ as long as $z \neq 0$, which coincides with  $ \frac{\partial }{\partial z}( x^2 + y^2 + z^2 -r^2) = 0$
+
+\subsection{The Implicit Function Theorem}
+\begin{framed}
+   Given a collection $F( \underline{x}, \underline{y}) = \underline{0}$ of $m$ equations defined in terms of $ \underline{x}$ ($n$ variables) and $ \underline{y}$ ($m$ variables) \\
+
+   Solutions to $F( \underline{x}, \underline{y}) = \underline{0} $ near a solution point $ \underline{a}$ can be realised as an implicit function 
+   \[
+     \underline{y} = \underline{y} ( \underline{x}) 
+   \] if and only if
+
+   \[
+      Det \left[ \frac{\partial F}{\partial \underline{y}}\right]_{ \underline{a}} \neq 0
+   \] 
+
+   This local solution is unique and differentiable, with \[
+      \left[ \frac{\partial \underline{y}}{\partial \underline{x}} \right]_{ \underline{a} } = 
+      - \left[ \frac{\partial F}{\partial \underline{y}}  \right]^{-1}_{ \underline{a}} \left[ \frac{\partial F}{\partial \underline{x}}\right]_{ \underline{a}}
+   \] 
+  
+\end{framed}
+
+
+
+
+
+
+
+
+

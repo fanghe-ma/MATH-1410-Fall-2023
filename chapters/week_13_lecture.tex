@@ -1,0 +1,359 @@
+\chapter{Week 13 lectures}
+
+Recall from before thanksgiving break our discussion of 1-forms. A 1-form is a operator that takes a vector and spits out a scalar. \\
+
+An example of a 1-form field is
+\[
+  \alpha = xdx - 2ydy
+\] 
+
+1-form fields tend to have some nice geometric interpretation when integrated over a path $\gamma$
+ \[
+    \int_{\gamma} \alpha
+\] 
+
+In particular, we touched briefly on the \textbf{independence of path} theorem. \\
+
+Given some gradient 1-form $df$
+\[
+  \int_{\gamma}^{}   df = \left. f \right|_{\gamma(start)}^{\gamma(end)} 
+\] 
+
+\subsection{Thinking more deeply about form fields}
+
+linear 1-forms fields have the form
+\[
+  \alpha = adx + bdy + cdz
+\] 
+
+for some constant $a, b, c$ \\
+
+The basis 1-forms are \[
+  dx, dy , dz
+\] 
+
+\textbf{Geometric interpretation}: oriented projected length ($dz$ )
+
+linear 2-forms fields have the form
+\[
+  \beta = dx \wedge dy - 2 dy \wedge dz
+\] 
+
+The basis 2-forms are 
+
+\begin{align*}
+   dx \wedge dy &= -dy \wedge dx \\
+   dy \wedge dz &= -dz \wedge dy \\
+   dz \wedge dx &= -dx \wedge dz
+\end{align*}
+
+This field takes 2 vectors and spits out a scalar, based on some computation of the projected area
+
+What does $dx \wedge dy$ mean??
+
+\[
+   (dx \wedge dy) ( \underline{u}, \underline{v}) = Det \begin{bmatrix} u_x & v_x \\ u_y & v_y
+   \end{bmatrix}
+\] 
+
+$(dx \wedge dy)$ tells us which components of $u, v$ we will use to compute the determinant
+
+\textbf{Geometric interpretation}: oriented projected area ($dx \wedge dy$ )
+
+
+\subsection{Generalizing to fields}
+
+Recall for 1-forms, we covered
+\[
+   \text{Basis 1-forms}(dx, dy) \rightarrow \text{Linear 1-forms} (2dx + 5dy) \rightarrow \text{fields}(ydx + xdy)
+\] 
+
+For 2-forms
+\[
+   \text{Basis 2-forms}(dx \wedge dy) \rightarrow \text{Linear 2-forms} (2dx \wedge dy + 5dy \wedge dz) \rightarrow \text{fields}(x^2dx \wedge dy + ydy \wedge dz)
+\] 
+
+\subsection{Algebra of forms}
+
+Very generally, $\wedge \approx$ "wedge" "product"
+
+Consider
+\begin{align*}
+   &(dx + 2dy) \wedge (dy - 3dz) \\
+   =& dx \wedge dy - 3dx \wedge dz + 2 dy\wedge dy - 6 dy \wedge dz
+\end{align*}
+
+The rules
+\begin{itemize}
+   \item $dx \wedge dx = 0$
+   \item $dx \wedge dy = - dy \wedge dx$
+\end{itemize}
+
+\subsection{Calculus of forms}
+
+The idea of forms is connected to the idea of implicit differentiation. \\
+
+Consider $"d"$ as an operator
+
+\[
+   d(\text{0-form field}) = \text{1-form field}
+\] 
+i.e.
+\[
+   f \rightarrow df \text{, which is a gradient 1-form}
+\] 
+
+For example
+\begin{align*}
+   f &= x^2 y - z \\
+   df &= 2xy dx + x^2 dy - dz
+\end{align*}
+
+\begin{framed}
+   \textbf{Rule}: 
+   \[
+     d(f \alpha) = df \wedge \alpha
+   \] 
+\end{framed}
+
+For example
+\begin{align*}
+   &d(x^2 dx - xy dy) \\
+   =& d(x^2 dx) - d(xy\ dy) \\
+   =& (2x\ dx) \wedge dx - (y\ dx + x\ dy) \wedge dy \\
+   =& 0 - y\ dx \wedge dy - 0 \\
+   =& - y\ dx \wedge dy
+\end{align*}
+
+\subsection{Some strange pattern}
+
+A momentary side quest!!!
+\[
+  d(d \alpha) = 0
+\] 
+
+\section{Green's Theorem}
+
+\textbf{In the generic form}
+
+Integrating over some oriented boundary $\partial D$
+\[
+   \int_{\partial D}^{} fdx + gdy  = \iint_{D} \left( \frac{\partial g}{\partial x} - \frac{\partial f}{\partial y} \right) dA
+\] 
+
+\textbf{Work / Circulation}
+
+Given \[
+  \vec{F} = F_x \underline{i} + F_y \underline{j}
+\] 
+
+\[
+  \int_{\partial D}^{} F_x dx + F_y dy = \int_D \left( \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \right)dA
+\] 
+
+Where 
+\[
+   \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = \nabla \times \vec{F} \text{ is known as the \textbf{curl}}
+\] 
+
+
+\textbf{Flux / Divergence}
+
+Given \[
+  \vec{F} = F_x \underline{i} + F_y \underline{j}
+\] 
+
+\[
+  \int_{\partial D}^{} F_x dy - F_y dx = \int_D \left( \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} \right)dA
+\] 
+
+Where 
+\[
+   \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} = \nabla \cdot \vec{F} \text{ is known as the \textbf{divergence}}
+\] 
+
+\section{The end of the story}
+
+\[
+  \int_{\partial D}^{}  \alpha = \int_{D}^{} d\alpha  
+\] 
+
+Given a 1-form
+\[
+  \alpha = fdx + g dy
+\] 
+\begin{align*}
+   d\alpha &= df \wedge dx + dg \wedge dy \\
+           &= \left( \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy \right)  \wedge dx  + \left( \frac{\partial g}{\partial x} dx + \frac{\partial g}{\partial y}dy \right) \wedge dy \\
+           &= \frac{\partial f}{\partial y} dy \wedge dx + \frac{\partial g}{\partial x} dx \wedge dy \\
+           &= \left(   \frac{\partial g}{\partial x} - \frac{\partial f}{\partial y} \right) dx \wedge dy  \\
+           &= \left(   \frac{\partial g}{\partial x} - \frac{\partial f}{\partial y} \right) dA , \text{provided boundary is oriented correctly}
+\end{align*}
+
+
+\section{Continued}
+
+Recall from the previous week the independence of path theorem
+
+\[
+  \int_{\gamma}^{ } df = f(\gamma(end)) - f \left(  \gamma \left( start \right)  \right)  
+\] 
+
+From this week, we have
+\[
+   \int_{\partial D}^{} fdx + gdy = \iint_{D}  \left( \frac{\partial g}{\partial x} - \frac{\partial f}{\partial y}  \right) dA 
+\] 
+
+\subsection{An example}
+
+Given \[
+   \alpha = \left( cos x + 3x^2 - 2y \right) dx + \left( x^3 + 4x - e^{2y} \right) dy
+\] 
+
+Integrated over a circle parameterized by
+\[
+   \gamma(t) = \begin{pmatrix} x_0 + Rcost \\ y_0 + Rsint \end{pmatrix}
+\]
+
+It would be horrible to integrate this via usub. But it is much easier with Green's Theorem
+
+\subsection{More on Green's Theorem}
+
+Recall that for
+\[
+  \alpha = xdy
+\] 
+
+\begin{align*}
+   \int_{\partial D}^{} xdy &= \iint 1 - 0 dA \\
+                            &= A
+\end{align*}
+
+Consider applying Green's Theorem to finding the centroid
+\begin{align*}
+   \overline{X} &= \frac{\iint x dA}{A} = \frac{???????}{\int_{\partial D}^{} x\ dy }
+\end{align*}
+
+\[
+  \iint_D x dA = \int_{\partial D}^{}  f dx +  gdy= \int_{\partial D}^{ }  \frac{1}{2} x^2 dy 
+\] 
+
+Hence 
+\begin{align*}
+   \overline{X} &= \frac{\iint x dA}{A} = \frac{ \frac{1}{2} x^2 dy}{\int_{\partial D}^{} x\ dy } \\
+                &= \frac{1}{2A} \int_{\partial D}^{} x^2 dy 
+\end{align*}
+
+
+\subsection{Another example}
+Given 2 0-forms
+\[
+  f= 3x + 2y - z
+\] 
+
+\[
+  g = 5y - 4z
+\] 
+
+We can compute the gradients
+\[
+  df = 3dx + 2dy - dz
+\] 
+\[
+  dg = 5dy - 4dz
+\] 
+
+What are the gradients of $f, g$?
+ \[
+  \nabla f = \begin{pmatrix} 3 \\ 2\\ 1 \end{pmatrix}  , \nabla g = \begin{pmatrix} 0 \\ 5 \\ -4 \end{pmatrix} 
+\] 
+
+Differentiating the 1-forms gets us
+\[
+  d(df) = 0 = d(dg)
+\] 
+
+Taking the wedge products of $df, dg$,
+\begin{align*}
+   df \wedge dg &= \left( 3dx + 2dy - dz \right) \wedge \left( 5dy - 4dz \right)  \\
+                &= 15 dx \wedge dy - 12 dx \wedge dz - 8 dy \wedge dz - 5dz \wedge dy \\
+                &= 15 dx \wedge dy - 12 dx \wedge dz - 3 dy \wedge dz
+\end{align*}
+
+
+\section{Flux 2-forms}
+
+A 3-D Vector field has associated with it a flux 2-form
+\[
+   \phi_{\vec{F}} = F_x dy \wedge dx + F_y dz \wedge dx + F_z dx\wedge dy
+\] 
+
+The wedge product of 2 scalar fields $f$ and $g$ gives the flux 2-form of a constant vector field, i.e.
+
+If
+\[
+   \phi_{\vec{F}} = 15 dx \wedge dy - 12 dx \wedge dz - 3 dy \wedge dz
+\] 
+
+Then
+\[
+  \vec{F} = \begin{pmatrix} -3 \\ 12 \\ 15 \end{pmatrix}  = \begin{pmatrix} 3 \\ 2 \\ -1 \end{pmatrix}  \times \begin{pmatrix} 0 \\ 5 \\ -4 \end{pmatrix} 
+\] 
+
+\section{Curl, grad, divergence}
+
+In 3D, there are two ways to interpret a vector field
+\[
+  \vec{F} = F_x \underline{i} + F_y \underline{j} + F_x \underline{k}
+\] 
+
+This can be interpreted as 
+\[
+   \alpha_{\vec{F}} \text{1-form}
+\] 
+\[
+   d \alpha_{\vec{F}} \text{ is known as the curl, } \nabla \times \vec{F}\text{, measures rotation, infinitesimal spin}
+\] 
+
+This can also be interpreted as 
+\[
+   \phi_{\vec{F}} \text{2-form}
+\] 
+\[
+   d \phi_{\vec{F}} \text{ is known as the div, } \nabla \cdot \vec{F} \text{, measures expansion, infinitesimal flux}
+\] 
+
+\subsection{Example}
+
+Given
+\[
+  \vec{F} = x \underline{i} + xz \underline{j} + yz \underline{k}
+\] 
+
+For divergence
+\begin{align*}
+   Div( \vec{F}) = \nabla \cdot \vec{F} &= \frac{\partial }{\partial x}x + \frac{\partial }{\partial y} \left( -xz \right)  + \frac{\partial }{\partial z} \left( yz \right)  \\
+   &= 1 + y
+\end{align*}
+
+For curl
+\begin{align*}
+   \nabla \times \vec{F} = \left( z + x \right) \underline{i} + \left( 0 \right) \underline{j} + \left( -z \right) \underline{k}
+\end{align*}
+
+\section{3 non-trivial observations}
+1. "d" is curl (differentiating a 1-form)
+\[
+   d \alpha_{\vec{F}} = \phi_{\nabla \times \vec{F}} 
+\] 
+
+2. "d" is divergence (differentiating a 2-form)
+\[
+   d \phi_{\vec{F}} = \left( \nabla \times \vec{F} \right) dx \wedge dy \wedge dz
+\] 
+
+3. "d" is gradient (differentiating a 0-form)
+\[
+   df = \alpha_{\nabla f}
+\] 
+

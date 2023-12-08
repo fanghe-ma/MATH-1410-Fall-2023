@@ -1,0 +1,145 @@
+\chapter{Week 14}
+
+\section{Integrating 2-forms}
+
+\subsection{Computing the integral}
+\begin{framed}
+A 2-form is a weighted area form.
+\[
+   \int_{D}^{} f(x, y)  dx \wedge dy = \iint_{D} f(x, y) dA 
+\] 
+\end{framed}
+
+Recall Green's Theorem
+
+\[
+  \int_{\partial D}^{} Pdx + Q dy = \iint \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} dx dy 
+\] 
+
+If we define
+\[
+  \alpha = Pdx + Q dy 
+\] 
+then
+\[
+  d\alpha = \frac{\partial P}{\partial y} dy\wedge dx + \frac{\partial Q}{\partial x} dx \wedge dy 
+\] 
+
+More generally,
+
+\[
+  \int_{\partial D}^{}  \alpha = \int_{D}^{} d \alpha  
+\] 
+
+To integrate a 2-form field over a parameterized surface defined by $G(s, t)$, a pair of basis vectors in the input is transformed by  $\left[ D G \right]_{(s, t)} $ to a pair of output vectors \\
+
+At each point on the surface, there is a pair of tangent vectors $ \frac{\partial G}{\partial s} $ and $\frac{\partial G}{\partial t}$, the columns of $\left[ D G \right]_{(s, t)} $
+
+\begin{framed}
+Given a 2-form field $\beta$, we define the integral
+\[
+   \int_{S}^{} \beta = \iint_R \beta_{G(s, t)}  \left[ D G \right]_{(s, t)}   ds dt
+\] 
+\end{framed}
+
+\subsection{Computing flux}
+
+2-forms fields can be thought of as flux forms in 3-D \\
+
+For a 3-D vector field
+\[
+  \vec{F} = F_x \underline{i} + F_y \underline{j} + F_z \underline{k}
+\] 
+
+There is an associated flux 2-form
+\[
+   \Phi_{\vec{F}} = F_x dy \wedge dz + F_y dz \wedge dx + F_z  dx \wedge dy
+\] 
+
+The flux 2-form tells you how much "stuff" is getting pushed through an infinitesimal oriented area  \\
+
+The integral of a flux 2-form gives the net flux, or how much "stuff" is getting pushed through an oriented surface \\
+
+\begin{framed}
+   The flux of $\vec{F}$ across $S$ is
+   \[
+      \int_{S}^{} \vec{F} \cdot \underline{n} d \sigma = \int_{S}^{} \Phi_{\vec{F}} 
+   \] 
+\end{framed}
+
+\section{Gauss' Theorem}
+
+Recall Green's Theorem \\
+
+\textbf{Flux form}
+
+Integrating the flux 1-form over some domain $D \in \mathbb{R}^2$ with oriented boundary $\partial D$ is the same as integrating the \textbf{2-D} divergence with respect to the area element
+\[
+  \int_{\partial D}^{}  F_x dy - F_y dx = \iint_D \nabla \cdot \vec{F} dA 
+\] 
+
+OR
+
+\[
+   \int_{\partial D}^{} \Phi_{\vec{F}} = \int_{D}^{} d \Phi_{\vec{F}}  
+\] 
+
+In 3-D, this is Gauss' Theorem
+
+\subsection{The Theorem}
+\begin{framed}
+   \textbf{Theorem}: Let $D \in \mathbb{R}^3$ be a bounded domain with boundary $\partial D$, oriented by outward-pointing normal $ \underline{n}$. Then, for a smooth vector field $\vec{F}$ on D, 
+   \[
+      \iint_{\partial D}^{}  \vec{F} \cdot \underline{n} d\sigma = \iiint_{D} \nabla \cdot \vec{F} dV 
+   \] 
+   OR
+   \[
+      \int_{\partial D}^{}  \Phi_{\vec{F}} = \int{D} d \Phi_{\vec{F}} 
+   \] 
+\end{framed}
+
+\section{Stoke's Theorem}
+
+Gauss' Theorem is a 3-D generalization of the \textbf{flux form of Green's Theorem}\\
+
+Now we consider the circulation form of Green's Theorem
+
+For a vector field
+\[
+  \vec{F} = F_x \underline{i} + F_y \underline{j}
+\] 
+
+and $D \in \mathbb{R}^2$ a domain with oriented boundary $\partial D$
+
+\[
+  \int_{\partial D}^{} F_x dx + F_y dy = \iint_D \left( \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \right) dA = \iint_D \left( \nabla \times \vec{F} \right) \cdot \underline{k} dA
+\] 
+Or
+
+\[
+   \int_{\partial D}^{}  \alpha_{\vec{F}} = \int_{D}^{} d \alpha_{\vec{F}}  
+\] 
+
+\begin{framed}
+   \textbf{Theorem}: Let $D \in \mathbb{R}^3$ be a bounded surface with boundary $\partial D$ oriented by a field of unit vectors $ \underline{n} $ normal to $D$, then, for a smooth vector field $ \vec{F}$ on $D$, 
+   \[
+   \int_{\partial D}^{} \vec{F} \cdot d l = \iint_{D} \nabla \times \vec{F} \cdot \underline{n} d \sigma  
+   \] 
+
+   Or
+
+   The circulation of a field around the boundary is equal to the net flux of the curl through the surface 
+
+   Or
+   \[
+      \int_{\partial D}^{ } \alpha_{\vec{F}} = \int_{D}^{} d \alpha_{\vec{F}} 
+   \] 
+
+\end{framed}
+
+\subsection{Independence of surface}
+
+For some fixed $\gamma = \partial D$, the choice of $D$ does not matter as long as orientation remains the same
+
+
+\section{Which theorem to use?}

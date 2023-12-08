@@ -1,0 +1,359 @@
+\chapter{Week 4}
+
+\section{Linear Transformations}
+
+\begin{framed}
+   A matrix is a \textbf{linear transformation} sending vectors to vectors \\
+
+   For a $m \times n$ matrix $A$, $A: \mathbb{R}^n \to \mathbb{R}^m$
+
+   \[
+     \underline{u} = A \underline{x}
+   \] 
+
+   $A$ is a \textbf{linear} function, meaning
+   \[
+     A(c \underline{x}) = c A \underline{x}
+   \] 
+   \[
+     A( \underline{x} + \underline{y}) = A \underline{x} + A \underline{y}
+   \] 
+\end{framed}
+
+\subsection{Diagonal matrices as rescaling function}
+\begin{framed}
+   A matrix $A$ of the form \[
+     \begin{bmatrix} 
+      a & 0 \\ 0 & b  
+     \end{bmatrix}
+   \] 
+
+   \textbf{Rescales }each axis independently by factor $a$ and $b$, if $a$ or $b$ is negative, the respective axis flipped
+
+   A special case of the rescaling function is a \textbf{projection}, such as \[
+     \begin{bmatrix} 
+        0 & 0 \\ 0 & a\\  
+     \end{bmatrix}
+   \] 
+
+   \textbf{Note}: some matrices can project along non-axis aligned directions, such as \[
+     \begin{bmatrix} 
+        0 & 1 \\ 0 & 1  
+     \end{bmatrix}
+   \] 
+\end{framed}
+
+\subsection{Shearing matrices}
+\begin{framed}
+   A vector $A$ of the form \[
+     \begin{bmatrix} 
+        a & b \\ 0 & c  
+     \end{bmatrix}
+   \] 
+   \textbf{shears} the plane along the horizontal
+\end{framed}
+
+\subsection{Rotation matrices}
+\begin{framed}
+   A matrix of the form \[
+     \begin{bmatrix} 
+        cos \theta & -sin \theta \\ sin \theta & cos \theta  
+     \end{bmatrix}
+   \] 
+
+   \textbf{rotates} the plane counterclockwise by angle $ \theta$ 
+
+   Note that for \textbf{special angles}, such as $ \frac{\pi}{2}$, the rotation matrix is \[
+     \begin{bmatrix} 
+        0 & -1 \\ 1 & 0  
+     \end{bmatrix}
+   \] 
+\end{framed}
+
+\subsection{Matrix composition}
+\begin{framed}
+   Performing the transformation described by matrix $A$, followed by the transformation described by matrix $B$ gives a composition $C$ \[
+     C = BA
+   \] 
+
+   \textbf{In general}, any linear transformation \[
+      \mathbb{R}^n \to \mathbb{R}^n
+   \]  
+
+   Is a composition of scaling, shearing, rotation, and projection
+\end{framed}
+
+\subsection{Example in Euler Angles, 3D, and 4D matrices}
+\begin{framed}
+
+   \textbf{Euler Angles \& 3D rotation matrices}
+
+   The $roll$, $pitch$ and $yaw$ describes rotations in the  $x, y, z$ planes respectively, by angles $\gamma, \beta, \alpha$ respectively, giving 
+   \begin{align*}
+      Roll &= R_{x:\gamma} = \begin{bmatrix} 
+         1 & 0 & 0\\  
+         0 & cos\gamma & -sin\gamma\\  
+         1 & sin\gamma & cos\gamma\\  
+      \end{bmatrix} \\
+      Pitch &= R_{y:\beta} = \begin{bmatrix} 
+         cos\beta & 0 & sin\beta\\  
+         0 & 1 & 0\\  
+         -sin \beta & 0 & cos\beta\\  
+      \end{bmatrix} \\
+      Yaw &= R_{z\alpha} = \begin{bmatrix} 
+         cos\alpha & -sin \alpha & 0\\  
+         sin\alpha & cos\alpha & 0\\  
+         0 & 0 & 1\\  
+      \end{bmatrix}
+   \end{align*}
+   
+  For a 4D matrix \[
+     A = \begin{bmatrix}
+       cos \alpha & -sin \alpha & 0 & 0   \\
+       sin \alpha & cos \alpha & 0 & 0   \\
+       0 & 0& 1 & 1   \\
+       0 & 0 & 0 & 1   \\
+    \end{bmatrix}
+  \] 
+    Rotates the $x_1 - x_2$ plane by $\alpha$, and shears the  $x_3 - x_4$ plane
+\end{framed}
+
+\section{Change in Basis}
+
+\subsection{Basis vectors} 
+\begin{framed}
+   A basis for $ \mathbb{R}^n$ has exactly $n$ independent vectors \\
+
+   Given a basis $B = \left(u_k \right)_{k = 1 \hdots n}$, any vector can be uniquely expressed as \[
+     \underline{v} = c_1 \underline{u}_1 + c_2 \underline{u}_2 + \hdots c_n \underline{u}_n
+   \] 
+
+   The scalars ${c_i}$ are the \textbf{coordinates} of $ \underline{v}$ in $B$ \\
+
+   A basis is 
+   \begin{itemize}
+      \item \textbf{Orthogonal}, if the basis vectors are mutually orthogonal
+      \item \textbf{Orthonormal}, if the basis vectors are mutually orthogonal \textbf{and} basis vectors are all of \textbf{unit length}
+   \end{itemize}
+
+
+   For an orthonomal basis $B$, the coordinates $c_i$ can be computed as \[
+     c_i = \underline{v} \cdot \underline{u}_i, i \in n
+   \] 
+\end{framed}
+
+\subsection{Coordinate changes}
+\begin{framed}
+   For a vector $ \underline{v} $, expressed in a new coordinate system described by $A$, the coordinates $ \underline{v}$ in the new coordinate system $ \underline{w}$is \[
+      \underline{w} = A^{-1} \underline{v}
+   \]  
+   \[
+     \underline{v} = A \underline{w}
+   \] 
+  
+\end{framed}
+
+\section{The Determinant}
+
+\subsection{Computing the determinant}
+There are a few strategies for computing the determinant
+\begin{enumerate}
+   \item By formula (for cases in $2d$ or $3d$
+   \item By minor expansion
+   \item By row reduction (as an extension of minor expansion)
+   \item By Block Diagonal matrices
+\end{enumerate}
+
+\subsection{By formula}
+\begin{framed}
+  
+
+
+   In 1-by-1, \[
+      \left| [a] \right|  = a
+   \] 
+  
+   In 2-by-2, \[
+      \left| \begin{bmatrix} a & b \\ c& d \end{bmatrix}  \right|  = ad - bc
+   \] 
+
+   In 3-by-3, for matrix $A$ given by \[
+     A = \begin{bmatrix} 
+        a_{11} & a_{12} & a_{13}   \\
+        a_{21} & a_{22} & a_{23}   \\
+        a_{31} & a_{32} & a_{33}   \\
+     \end{bmatrix}
+   \] 
+   \[
+   \left| A \right| = \left( 
+     a_{11} a_{22} a_{33} +  
+     a_{12} a_{23} a_{31} +  
+     a_{13} a_{21} a_{32}
+  \right)  - \left( 
+     a_{13}a_{22}a_{31} + 
+     a_{12}a_{21}a_{31} +
+     a_{11}a_{23}a_{32}
+  \right) 
+   \] 
+\end{framed}
+
+\subsection{By Minor Expansion}
+
+\begin{framed}
+   For a matrix \[
+     A = \begin{bmatrix} 
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33} \\
+     \end{bmatrix}
+   \] 
+
+   \[
+      \left| A \right|  = a_{11} 
+      \left| 
+         \begin{array}{c c c}
+            a_{22} & a_{23} \\
+            a_{32} & a_{33}
+         \end{array}
+      \right|  - a_{12}
+      \left| 
+         \begin{array}{c c c}
+            a_{21} & a_{23} \\
+            a_{31} & a_{33}
+         \end{array}
+      \right|  + a_{13}
+      \left| 
+         \begin{array}{c c c}
+            a_{21} & a_{22} \\
+            a_{31} & a_{32}
+         \end{array}
+      \right| 
+   \] 
+
+   Following the "sign convention", where \begin{itemize}
+      \item odd columns / rows: $+$
+      \item even columns / rows: $-$
+   \end{itemize}
+\end{framed}
+
+
+\subsection{By Row Operations}
+
+\begin{framed}
+   Since triangle matrices can have their determinants easily computed by taking the product of the diagonal, we can perform row operations on the matrix to convert it to a diagonal matrix 
+\end{framed}
+
+\begin{center}
+   \begin{tabular}{|p{3cm}| p{3cm}| p{3cm}| p{5cm}|}
+   \hline
+   Row operation & Matrix multiplication of $A$ by $R$ & Determinant of $R$ & Effect on determinant \\
+   \hline
+   Swapping of rows $1$ and $2$ &  
+   $ \begin{bmatrix} 
+      0 & 1 & 0 & 0\\
+      1 & 0 & 0 & 0\\
+      0 & 0 & 1 & 0\\
+      0 & 0 & 0 & 1\\
+   \end{bmatrix}$ 
+    & $Det(R) =-1$ & $Det(RA) = -Det(A)$ \\ 
+   \hline
+   Scaling a row by factor of $c$ & 
+   $ \begin{bmatrix} 
+      1 & 0 & 0 & 0\\
+      0 & 1 & 0 & 0\\
+      0 & 0 & c & 0\\
+      0 & 0 & 0 & 1\\
+   \end{bmatrix}$  & 
+   $ Det(R) = c$ & 
+    $Det (RA) = cDet(A)$ \\
+   \hline
+   Linear combination of two rows & 
+   $ \begin{bmatrix} 
+      1 & 0 & 0 & 0\\
+      0 & 1 & 0 & 0\\
+      0 & 0 & 1 & 0\\
+      0 & c & 0 & 1\\
+   \end{bmatrix}$  & 
+   $ Det(R)=1$ & 
+   No change
+    \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{By Block Diagonal Matrices}
+\begin{framed}
+   For a matrix  \[
+     A = \begin{bmatrix} 
+        A_1 & \hdots & \hdots \\
+        \vdots & A_2 & \vdots \\
+        \vdots & \hdots & A_3 \\
+     \end{bmatrix}
+   \] 
+   \[
+     \left| A \right| = \left| A_1 \right| \left| A_2 \right| \left| A_3 \right| 
+   \] 
+
+  
+\end{framed}
+
+
+
+
+\section{Geometry of determinants}
+
+In 2D the determinant is related to the area of parallelogram, where
+\begin{framed}
+    \[
+     \text{Area of parallelogram formed by $ \begin{pmatrix} c \\ d \end{pmatrix}, \begin{pmatrix} a \\b \end{pmatrix} $} = \left| DET \begin{bmatrix} 
+     a & c \\ b & d  
+     \end{bmatrix}
+      \right| 
+   \] 
+\end{framed}
+
+In 3D, the determinant is the \emph{oriented volume} of the parallelopiped, where
+\begin{framed}
+    \[
+       \text{Oriented volume of parallelopiped formed by $ \underline{u}, \underline{v}, \underline{w} $} = 
+       \left|  DET 
+        \left[
+             \begin{array} {c|c|c}
+              & & \\
+          \underline{u}& \underline{v}& \underline{w}\\
+        & & \\
+              \end{array}
+        \right]
+      \right| 
+   \] 
+\end{framed}
+
+In the general, the determinant describes how n - dimensional volume changes under a linear transformation $A : \mathbb{R}^n -> \mathbb{R}^n$
+\begin{framed}
+   In arbitrary dimensions, the linear transformation described by $A$ sends the unit \textbf{hypercube} spanned by the unit basis vectors to a \textbf{parllelopiped} with \textbf{"n-volume"} $ \left| DET (A) \right| $
+\end{framed}
+
+\subsection{Properties of the determinant}
+\begin{framed}
+   \[
+     Det (A^T) = Det(A)
+   \] 
+
+   \[
+     Det (AB) = DET (A) DET(B) 
+   \] 
+   \[
+      \text{$A$ is invertible if and only if $Det A \neq 0$}
+   \] 
+
+   \[
+      \text{If $A$ is invertible then } Det (A)^{-1} = \frac{1}{Det A}
+   \] 
+\end{framed}
+
+
+
+
+  
+
+

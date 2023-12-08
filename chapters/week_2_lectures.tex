@@ -1,0 +1,74 @@
+\chapter{Week 2 Lecture 2}
+
+\section{Finding the angle between the grand diagonal and an adjacent vector of a unit cube}
+\begin{framed}
+   In $3-D$, the adjacent vector is $ \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} $ and the grand diagonal is $ \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} $, the angle $ \theta $ is given by \[
+   arccos \frac{1}{\sqrt{3}}
+   \] 
+  
+   In $4-D$, the adjacent vector is $ \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} $ and the grand diagonal is $ \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} $, the angle $ \theta $ is given by \[
+   arccos \frac{1}{\sqrt{4}}
+   \] 
+
+   In the limit of $ n \to \infty$, \[
+      \frac{1}{\sqrt{n}} \to 0
+   \] 
+\end{framed}
+
+
+
+\section{Finding the arclength of a parameterized curve}
+
+\begin{framed}
+   For a curve parameterized by position vector $\gamma$ 
+   \[
+     \gamma(t) = \begin{pmatrix}
+        R_1 cost \\ R_1 sint \\ R_2 cost  \\ R_2 sint
+       
+     \end{pmatrix}
+   \] for $0 \le t \le 2\pi$
+
+   \begin{align*}
+      l &= \int dl \\
+        &= \int_0 ^{2\pi} \lVert \gamma ^{\prime} \rVert dt \\
+        &= \int_0 ^{2\pi} \lVert \begin{pmatrix} 
+        -R_1 sint \\ R_1 cost \\ -R_2 sint  \\ R_2 cost
+        \end{pmatrix}
+     \rVert dt \\
+        &=2 \pi \sqrt{R_1^2 + R_2^2} \\
+   \end{align*}
+
+   Hence, generalizing for a curve in $2n$ dimensions
+   \[
+     \gamma(t) = \begin{pmatrix}
+        R_1 cost \\ R_1 sint \\ R_2 cost  \\ R_2 sint \\ \vdots \\ R_n cost \\ R_n sint
+     \end{pmatrix}
+   \] for $0 \le t \le 2\pi$
+
+   The arclength $l$ is given by 
+   \begin{align*}
+      l &= 2\pi \sqrt{R_1^2 + R_2^2 + \hdots + R_n^2} \\
+        &= 2 \pi \sqrt{ \frac{1}{6} (n) (n+1) (2n+1)}
+   \end{align*}
+\end{framed}
+
+\section{Proving that the unit normal vector is orthogonal to unit tangent}
+\begin{framed}
+   A curve $ \gamma(t)$ has unit tangent vector $ \underline{T} = \frac{ \gamma ^{\prime}(t)}{ \lVert \gamma ^{\prime}(t) \rVert } $ and unit normal vector $ \underline{N} = \frac{ \frac{d}{dt} \underline{T}}{ \lVert \frac{d}{dt} \underline{T} \rVert }$ 
+
+   Claim:
+   \begin{align*}
+      \underline{N} &\perp \underline{T}
+   \end{align*}
+   
+
+   Proof:
+   \begin{align*}
+      \underline{T} \cdot \underline{T} ^{\prime} &= 0 \text{ since } \\
+      \left( \underline{T} \cdot \underline{T} \right) ^{\prime} &= \underline{T} ^{\prime} \cdot \underline{T} + \underline{T} \cdot \underline{T} ^{\prime} \text{ by product rule}\\
+                                                                 &= 2 \underline{T} ^{\prime} \cdot \underline{T} \text{ by commutative property of the dot product, and} \\ 
+      \left( \underline{T} \cdot \underline{T} \right) ^{\prime} &= 0
+   \end{align*}
+\end{framed}
+
+

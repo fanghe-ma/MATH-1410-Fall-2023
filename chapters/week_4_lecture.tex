@@ -1,0 +1,135 @@
+\chapter{Week 4 Lecture}
+
+\section{Coordinates \& Bases}
+
+For two vectors $ \underline{u}_1 = \begin{pmatrix} 3 \\ 1 \end{pmatrix} $ and $ \underline{u}_2 = \begin{pmatrix} 3 \\ -1 \end{pmatrix} $, and a vector $ \underline{v} = \begin{pmatrix} 4 \\ 2 \end{pmatrix} $  \\
+
+$ \underline{v} $ can be written in the $ \left( \underline{u}_1, \underline{u}_2 \right) $ basis as \[
+  \underline{v} = c_1 \underline{u}_1 + c_2 \underline{u}_2
+\] 
+
+The equation can be rewritten as \[
+   \begin{pmatrix} 4 \\ 2 \end{pmatrix}  = \begin{bmatrix} 3 & 2 \\ 1 & -1 \end{bmatrix} \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} 
+\]
+
+
+\section{Orthogonality and orthonormativity}
+\begin{framed}
+\textbf{Definition}: An orthogonal matrix $Q$ is an matrix whose columns are an \textbf{orthonormal} basis
+\end{framed}
+
+For example, \[
+  Q = \begin{bmatrix} 
+     cos \theta & -sin \theta   \\
+     sin \theta & cos \theta
+  \end{bmatrix}
+\] 
+
+Or the Permutation matrix \[
+  P = \begin{bmatrix}  
+     \text{all $0$'s, except for} \\
+     \text{a unique $1$ in each column / row}
+  \end{bmatrix}
+\] such as \[
+  P = \begin{bmatrix} 
+     0 & 1 & 0 & 0 \\  
+     0 & 0 & 1 & 0 \\  
+     1 & 0 & 0 & 0 \\  
+     0 & 0 & 0 & 1 \\  
+  \end{bmatrix}
+\] 
+
+Methods for computing the determinant 
+\begin{enumerate}
+   \item Minor expansion
+   \item Row reduction!
+   \item Block-diagonal matrices
+\end{enumerate}
+
+Specifically regarding block-diagonal matrices, we can find the determinant by taking the product of the respective block matrices along the diagonal
+
+\begin{framed}
+
+   \[
+     A = \begin{pmatrix} 
+        B_1    & \hdots & \hdots & 0 \\  
+         \vdots&   B_2  &        &  \\  
+         \vdots&        &\ddots  &  \\  
+               &        &        &  B_n  \\  
+     \end{pmatrix}
+   \] 
+   \[
+      Det (A) = \Pi_{i=1}^{n} Det B_i
+   \] 
+  
+\end{framed}
+
+Prof-G's improv proof on generalizing block diagonal matrices \\
+
+For a matrix comprised of $2-by-2$ blocks \[ W =
+   \left[
+      \begin{array}{c|c}
+         A & 0 \\
+         \hline
+         B & C 
+     \end{array}
+   \right]
+\] 
+
+We want to proof that \[
+  Det (W) = (Det (A) ) (Det (C))
+\] 
+
+\[
+   \left[
+      \begin{array}{c|c}
+         A & 0 \\
+         \hline
+         B & C 
+     \end{array}
+   \right] = 
+   \left[
+      \begin{array}{c|c}
+         A & 0 \\
+         \hline
+         B & I 
+     \end{array}
+   \right]  
+   \left[
+      \begin{array}{c|c}
+         I & 0 \\
+         \hline
+         B & C 
+     \end{array}
+   \right]
+\] 
+
+Hence
+\[
+   Det \left( \left[
+      \begin{array}{c|c}
+         A & 0 \\
+         \hline
+         B & C 
+     \end{array}
+   \right]  \right) =
+   Det 
+   \left[
+      \begin{array}{c|c}
+         A & 0 \\
+         \hline
+         B & I 
+     \end{array}
+   \right]  
+   \left[
+      \begin{array}{c|c}
+         I & 0 \\
+         \hline
+         B & C 
+     \end{array}
+   \right]
+\] 
+
+
+
+

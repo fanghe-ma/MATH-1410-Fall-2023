@@ -1,0 +1,334 @@
+\chapter{Week 9 Lecture}
+
+\section{Integration}
+
+Integration was tricky in single variable calculus because of all the methods and tricks needed \\
+
+In this course, we will only use integration by substitution in full generality. \\
+
+This will be a slow week! Everyone is back at the same place! \\
+
+\subsection{Integration in 1-D}
+
+Recall the two kinds of integrals in 1-D \\
+
+\begin{itemize}
+   \item The definite integral
+      \[
+         \int_{x = a}^{b} f dx
+      \] 
+
+      The definite integral is a scalar value
+   \item The indefinite integral
+      \[
+         \int_{}^{} f dx
+      \] 
+
+      The indefinite integral is a \textbf{class} of functions
+\end{itemize}
+
+The two objects are joined by the Fundamental Theorem of Integral Calculus 
+\begin{itemize}
+   \item From the indefinite integral, find the antiderivative, evaluate at the end points and take the difference
+   \item You could think of the indefinite integral as a \textbf{means to an end}
+\end{itemize}
+
+In multivariable calculus, there is \textbf{no longer the indefinite integral}
+\begin{itemize}
+   \item The indefinite integral has no multivariate analogue
+\end{itemize}
+
+There are certain 1-D interpretations of the derivative and integral that do not persist into higher dimensions. For example
+\begin{itemize}
+   \item The derivative as \textit{the slope}
+   \item The integral as \textit{the area}
+\end{itemize}
+
+Instead, we work with the intuition 
+\begin{itemize}
+   \item The derivative as a \textbf{linear transformation}
+   \item The integral as a \textbf{mass} \\
+\end{itemize}
+
+\subsection{The integral as a mass}
+Think of $f$ as the density as a function of space. The mass element $dM$ of a infinitesimal length $dx$ is given by
+\[
+  dM = f(x) dx
+\] 
+
+The full mass is 
+\[
+  M = \int dm
+\] 
+
+\begin{framed}
+   The only formula needed for calculating integrals is 
+   \[
+     M = \int dm
+   \] 
+
+   \[
+     L = \int dl
+   \] 
+
+   \[
+     A = \int da
+   \] 
+\end{framed}
+
+Now in the multivariate case \\
+
+For a multivariate density function on domain D, of the form
+\[
+  f: \mathbb{R}^2 \rightarrow \mathbb{R}
+\] 
+
+Where the density at $x_i, y_i$ is given by $ f(x_i, y_i)$ \\
+
+Consider the infinitesimal area element $dA$, its mass is given by
+ \[
+  dM = f dA
+\] 
+\[
+  M = \int f dA
+\] 
+
+Consider that the dimensions of $dA $ is given by
+\begin{itemize}
+   \item height $dy$ 
+   \item width $dx$
+\end{itemize}
+
+Hence we get
+\[
+  M = \int f dA = \iint f(x,y) dx dy
+\] 
+
+The double integral is really
+\[
+   \lim_{\substack{\triangle x \to 0 \\ \triangle y \to 0}} \sum_{j} \sum_{i} f(x_i, y_j) \triangle x_i \triangle y_j
+\] 
+
+Likewise in 3-D, for a function $f(x, y, z)$
+
+\[
+  M = \int f dV = \iiint f(x, y, z) dx dy dz
+\] 
+
+\textbf{General intuition about integrals}
+
+If $f > 0$, what can you say about \[
+   \iint_{D} f(x,y) dx dy
+\] 
+
+We can conclude that \[
+   \iint_{D} f(x,y) dx dy > 0
+\] 
+
+\section{Computing integrals and the Fubini theorem}
+
+\begin{framed}
+   \textbf{Theorem}: Some complicated stuff
+
+   \textbf{Idea}: For some function which depends on a bunch of variables
+   \[
+     f( \underline{x}) d \underline{x} 
+   \]  
+   where 
+   \[
+   \underline{x} = (x_1, x_2,  \hdots x_n)
+   \] 
+   \[
+   d\underline{x} = dx_1, dx_2,  \hdots dx_n
+   \] 
+
+   The integral over $ \mathbb{R}^n$ with respect to the volume element $d \underline{x}$ is
+   \[
+      \int_{ \mathbb{R}^n} f ( \underline{x}) d \underline{x} =
+        \int \left( 
+           \hdots \left( 
+              \int \left( 
+                 \int f dx_1
+              \right) dx_2
+           \right) 
+        \right)  dx_n
+   \]  
+
+   Most importantly: the order in which the integral is computed does not matter
+  
+\end{framed}
+
+\textbf{Example}
+For a function 
+\[
+  D = f(x, y) = x^2 + yy
+\] over the domain (rectangle) bound by $x = 1, x = 3, y = 0, y = 1$ \\
+
+The integral over $D $ is given by
+\[
+   \int_{D} x^2 + y\ dA = 
+   \int_{y=0}^{1}\int_{x=1}^{3} x^2 + y\ dx dy = 
+   \int_{x=1}^{3}\int_{y=0}^{1} x^2 + y\ dy dx
+\]
+
+Evaluating the integral
+\[
+\begin{align*}
+   \int_{D} x^2 + y\ dA &= \int_{y=0}^{1}\int_{x=1}^{3} x^2 + y\ dx dy \\
+                        &= \int_{y = 0}^{1} \left. \left(  
+                           \frac{x^3}{3} + xy
+                        \right) \right|_{x=1}^{3} dy \\
+                        &= \int_{y=0}^{1} (9+3y) - ( \frac{1}{3} + y) dy \\
+                        &=  \left. y^2 + \frac{26}{3}y \right|_{y=0}^{1} \\
+                        &= \frac{29}{3}
+\end{align*}
+\] 
+
+\textbf{Another example} \\
+
+Consider a density function
+\[
+  f = x^2 + y^2
+\] 
+
+
+Compute the mass of the domain $D$ bound by \[
+   y = x^{ \frac{1}{3}}, y = x^2
+\] 
+
+The set up of the double integral requires some thought \[
+   M = \int_{y = 0}^{1} \int_{x=y^3}^{\sqrt{y}} x^2 + y^2 dx dy
+\] 
+Note that
+\begin{itemize}
+   \item on the outermost integral, there can be no variables in the boundaries of integration because the integral is a \textbf{scalar} value
+   \item on the inner integrals, think about fixing $y$, and track the end points of the row at a given $y$, the end points should be a function $x = f(y)$. Computing the inner integral gives a density function of $y$
+\end{itemize}
+
+We can also set up the double integral as  \[
+   M = \int_{x = 0}^{1} \int_{y = x^2}^{\sqrt{x}} x^2 + y^2 dy dx
+\] 
+Note that
+\begin{itemize}
+   \item This time, to write down the limits of the inner integral, we fix $x$. Then, we keep track of the \textbf{column} at a given $x$, and we read off the upper and lower bounds of that column. Computing the integral would give us a density function with respect to $x$
+\end{itemize}
+
+\section{A note not covered in lecture videos}
+
+By Fubini's theorem, if all limits are constant, and if the integrand is a product of a function of one variable, then we can "split up the integrals"
+\[
+   \int_{c}^{d} \int_{a}^{b} f(x) g(y) dx dy = \int_{c}^{d} g(y) dy \int_{a}^{b} f(x) dx
+\] 
+
+An example
+\[
+   \int_{z = 2}^{5} \int_{y=-1}^{1} \int_{x=0}^{1} x^2 y^3 \sqrt{z} + x^4 z dx dy dz
+\] 
+
+This would take a while to compute, unless... \\
+
+Note that the integral of $x^2 y^3 \sqrt{z}$ cancels out because $f(y) = y^3$ is an odd function, and the domain is symmetrical, hence $\int_{y = 1}^{1} \int \int x^2 y^3 \sqrt{z} dx dz dy = 0$ \\
+
+Then, we can apply the above mentioned property, which states that the integral of a product is the product of integrals, provided all boundaries are constants \\
+
+
+\begin{align*}
+   \int_{z = 2}^{5} \int_{y=-1}^{1} \int_{x=0}^{1} x^2 y^3 \sqrt{z} + x^4 z dx dy dz &= \int_{z = 2}^{5} \int_{y=-1}^{1} \int_{x=0}^{1} dx dy dz \\
+                                                                                     &= \int_{z=2}^{5}z dz \int_{y=-1}^{1} dy \int_{x=0}^{1} x^4 dx \\
+                                                                                     &= \frac{21}{5}
+\end{align*}
+
+
+\section{A devilish example}
+
+Prove the following result
+\[
+   \int_{x=-1}^{1} \int_{y=0}^{\sqrt{1-x^2}} \int_{z=0}^{\sqrt{1-x^2 - y^2}}  1+ x \ dz \dy\ dz = \frac{\pi}{3}
+\] 
+
+We start by looking at the domain \\
+
+With respect to $z$ axis, $z$ is going from $z = 0$ to $z = \sqrt{1 - x^2 - y^2}$. Note that  $z^2 = 1 - x^2 - y^2$ is the equation for a unit sphere. \\
+
+Think of the first integral of collapsing 3-d mass along the $z$ axis into the $x-y$ plane. \\
+
+In the $xyz$ space, we are collapsing the upper hemisphere \\
+
+In the $xy$ plane, for the $y$ integral, we are collapsing the upper semicircle \\
+
+In the $x$ space, the domain goes from $-1 $ to $1$ \\
+
+For the whole integral, our domain is the quarter sphere, where $z$ goes from 0 to 1, $y$ goes from 0 to 1, and $x$ goes from $-1$ to $1$
+
+We split up the integral using the linear property of integrals
+
+\[
+   \int_{x=-1}^{1} \int_{y=0}^{\sqrt{1-x^2}} \int_{z=0}^{\sqrt{1-x^2 - y^2}}  1+ x \ dz \dy\ dz =
+   \iiint \limits_{D}^{}  1 \ dz \dy\ dz + 
+   \iiint \limits_{D}^{}  x \ dz \dy\ dz 
+\] 
+
+The first integral is the integral of the volume element
+\[
+   \int \limits_{x=-1}^{1} \int \limits_{y=0}^{\sqrt{1-x^2}} \int \limits_{z=0}^{\sqrt{1-x^2 - y^2}}  1 \ dz \dy\ dz  =  \iiint \limits_{D}^{} 1 dV = \frac{1}{4} \frac{4 \pi}{3}  = \frac{\pi}{3}
+\] 
+
+The second integral makes use of the fact that $f(x) = x$ is an odd function and the domain is symmetrical, hence it evaluates to 0
+
+\section{Another example}
+
+Recall that for $f$ on domain $D$ \\
+
+The average is given by
+\[
+   \overline_{f} = \frac{
+      \int_{D} f d \underline{x}
+   }{
+      \int_{D} 1 d \underline{x} 
+   } = VOL(D)
+\] 
+
+\section{Another example}
+Find the average of 
+\[
+  f = xy^2
+\] 
+
+Step 1: write the formula!!
+\[
+   \overline_{f} = \frac{\int_{D} f d \underline{x}}{\int_{D} 1 d \underline{x}}
+\] 
+
+Step 2: evaluate the denominator
+\[
+   \text{area of domain} = 2 \times 2 = 4
+\] 
+
+Step 3: evaluate the integral
+\[
+   \int_{0}^{2} \int_{0}^{2} xy^3\ dx\ dy = \left. \frac{x^2}{2} \right|_{0}^{2} \left. \frac{y^4}{4} \right|_{0}^{2} = 2 \times 4 = 8
+\] 
+
+Step 4
+\[
+  \frac{8}{4} = 2
+\] 
+
+\section{Another example with a weird domain}
+
+what if the domain is the square from $(0,0)$ to $(2,2)$, excluding the square from $(0,0)$ to $(1,1)$ \\
+
+step 1: compute the average on the domain $(0,0)$ to $(1,1)$
+\[
+   \overline{f} = \int_{0}^{1} \int_{0}^{1}  xy^3 dx dy = \frac{1}{2} \frac{1}{4} = \frac{1}{8}  
+\] 
+
+step 2: compute the average on the restricted domain
+\[
+   \overline{f}_{restricted} = \frac{2 \times 4 - \frac{1}{8}}{4 -1} = \frac{63}{24}
+\] 
+
+
+
+
+

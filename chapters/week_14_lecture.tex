@@ -1,0 +1,489 @@
+\chapter{Week 14}
+
+This week is the end. \\
+
+Bulk of this week will be spent understanding
+\[
+  \int_{\partial D}^{} \alpha = \int_{D}^{d\alpha}   
+\] 
+
+Where 
+\begin{itemize}
+   \item $\alpha$ is any $k$-form field
+   \item $D$ is some domain of dimension $k + 1$
+\end{itemize}
+
+This is \textbf{the} Stoke's Theorem, and this week's content covers a specific case of Stoke's Theorem. \\
+
+This is the same idea as 
+\begin{itemize}
+   \item Fundamental theorem of integral calculus
+   \item Independence of path (2-D)
+   \item Green's Theorem (2-D)
+   \item Gauss' Theorem (3-D)
+   \item Classical Stoke's Theorem (3-D)
+\end{itemize}
+
+\section{Relooking Green's Theorem}
+
+Recall from last week that Green's Theorem can be written in several different forms. 
+
+\subsection{Work / Circulation}
+
+Given a vector field \[
+  \vec{F} = F_x \underline{i} + F_y \underline{j}
+\] 
+
+The work done by the vector field along the boundary can be computed by taking the double integral of some density over the internal area. \\
+
+The density is related to the vector field. It is known as the curl. \\
+
+Curl is a concept that only makes sense in 3-D. In the case of 2-D, we are looking at the component of curl about the $ \underline{k}$  axis
+
+\[
+   \int_{\partial D}^{}  F_x dx + F_y dy = \iint_{D} \left( \nabla \times \vec{F} \right) \cdot \vec{k} dA  = \iint_D \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} dA
+\] 
+
+\subsection{Flux}
+
+The flux of the vector field over the boundary can be computed by some combination of the partial derivatives over the internal area. \\
+
+The integrand is known as the divergence. \\
+
+\[
+  \int_{\partial D}^{}  F_x dy - F_y dx  = \iint_D \left( \nabla \cdot \vec{F} \right) dA = \iint_D \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} dA
+\] 
+
+\subsection{Going back to the general equation}
+
+Note that these two are both in the form
+\[
+  \int_{\partial D}^{}  \alpha = \int_{D}^{} d\alpha  
+\] 
+
+What is $D$ and $d\alpha$??? \\
+
+In the 2-D cases mentioned above, 
+\begin{itemize}
+   \item  $D$ : 2-D domain
+   \item $d\alpha$ : 2-form in $\mathbb{R}^2$
+\end{itemize}
+
+Since in 2-D, there is only 1 2-form
+\[
+  d\alpha = f(x, y) dx \wedge dy
+\] 
+
+Hence, we \textbf{define by fiat} that in $\mathbb{R}^2$
+\[
+  \int_{D}^{} f dx \wedge dy = \iint_D f dA 
+\] 
+
+\subsection{Lifting up by 1 dimension}
+
+Consider the following integral. What is it?
+\[
+  \int_{S}^{} \beta 
+\] 
+
+Where 
+\begin{itemize}
+   \item $\beta$ is some 2-form field in 3-D
+   \item $S$ is some oriented surface in $\mathbb{R}^3$
+\end{itemize}
+
+Recall that given $\alpha$, a 1-form field, we integrate it over a path, since 1-form operates on a single vector each. \\
+
+Now, we consider surface in $\mathbb{R}^3$ \\
+
+Let $S$ be the parameterized surface in $\mathbb{R}^3$. Given an implicit surface 
+\[
+  z = x^2 + y^2
+\] 
+
+\[
+  S(s, t) = \begin{pmatrix} s \\ t \\ s^2 + t^2 \end{pmatrix}, s^2 + t^2 \leq R^2
+\] 
+
+Think of $S$ as mapping the 2-D plane of $s$ and $t$ (within the specified domain)  to a surface in 3-D \\
+
+Consider the integral
+
+\[
+  \int_{S}^{} dx \wedge dy + dy \wedge dz 
+\] 
+
+Note that 
+\begin{itemize}
+   \item $dx \wedge dy$ measures oriented projected area in the $x, y$ plane, $= \pi R^2$
+   \item $dy \wedge dz$ measures oriented projected area in the $y, z$ plane  $= 0$, because the parabola has two oriented projected areas, oriented in opposite directions
+\end{itemize}
+
+The integral is thus
+\begin{align*}
+   &\int_{S}^{} dx \wedge dy + dy \wedge dz  \\
+   =& \pi R^2 + 0 \\
+   =& \pi R^2
+\end{align*}
+
+Now we return to the theorem and compute the integral again \\
+
+Taking the derivative of $S$, 
+\[
+   S(s, t) = \begin{pmatrix} s \\ t \\ s^2 + t^2 \end{pmatrix} , 
+   \left[ D S \right]_{} = \begin{bmatrix} 
+      1 & 0 \\ 0 & 1 \\ 2s & 2t  
+   \end{bmatrix}
+\] 
+
+We now have another way to compute the integral over the surface $S$ 
+\begin{align*}
+   &\int_{S}^{} dx \wedge dy + dy \wedge dz \\
+   =& \iint_{s'} (dx \wedge dy + dy \wedge dz) \left[ D S \right]_{} ds dt  \text{ where $s'$ is the circular domain in $s, t$}\\ 
+   =& \iint_{s'}(dx \wedge dy) \begin{bmatrix} 
+      1 & 0 \\ 0 & 1 \\ 2s & 2t  
+   \end{bmatrix} + (dy \wedge dz) \begin{bmatrix} 
+      1 & 0 \\ 0 & 1 \\ 2s & 2t  
+   \end{bmatrix} ds dt \\
+      =& \iint_{s'} Det \begin{bmatrix} 
+         1 & 0 \\ 0 & 1  
+      \end{bmatrix} + Det \begin{bmatrix} 
+         0 & 1 \\ 2s & 2t  
+      \end{bmatrix} ds dt \\
+         =& \iint_{s'} 1 - 2s ds dt \\
+         =& \iint_{s'} dsdt - \iint 2s ds dt \\
+         =& \pi R^2 - 0 \text{ since $2s$ is an odd function integrated over a symmetric domain}
+\end{align*}
+
+Generalizing
+
+\[
+   \int_{S}^{} \beta = \iint_{S'} \beta_{S(s, t)} \left[ D S \right]_{} ds dt
+   = \iint_{S'}  \beta_{S(s, t)} \frac{\partial S}{\partial s} \frac{\partial S}{\partial t} ds dt
+\] 
+
+The question is why???? \\
+
+One good applications is flux, which is given by the flux 2-form
+
+\[
+   \Phi_{\vec{F}} = F_x dy \wedge dx + F_y dz \wedge dx + F_z dx \wedge dy
+\] 
+
+For some curve $S$, 
+
+\[
+   \int_{S}^{} \Phi_{\vec{F}} = \text{Flux of $\vec{F}$ across $S$} 
+\] 
+
+In the classical physics style, flux is calculated by taking some infinitesimal surface area element $d\sigma$, with an associated unit normal vector  $\hat{ \underline{n}}$
+\begin{align*}
+   \text{Flux} &= \iint \left( \vec{F} \cdot \hat{ \underline{n}} \right) d \sigma  \\
+               &= \int_{S}^{} \Phi_{\vec{F}} 
+\end{align*}
+
+\section{Green's Theorem in 3D}
+\begin{align*}
+   \text{"Gauss" } :& \text{ "Div"} \\
+   \text{"Stokes" } :& \text{ "Circulation?"} \\
+\end{align*}
+
+\subsection{Gauss' Theorem}
+
+Guass: What is the flux of $\vec{F}$ across the boundary of some 3-D domain?  \\
+
+The boundary of $D$, $\partial D$ is some \textbf{closed 2-D surface}
+
+\begin{framed}
+   \textbf{Theorem:} The flux over the boundary is equal to the integral of the derivative of the flux 2-form over the interior of the domain.
+
+   \begin{align*}
+      \int_{\partial D}^{} \Phi_{\vec{F}} &= \int_{D}^{} d \Phi_{\vec{F}}   \\
+                                          &= \iiint_{D} \left( \nabla \cdot \vec{F} \right) dV
+   \end{align*}
+
+   The classical physics version of the theorem is stated as 
+   \[
+      \iint_{\partial D} \left( \vec{F} \cdot \hat{ \underline{n}} \right)  d\sigma = \iiint{D} \left( \nabla \cdot \vec{F} \right) dV
+   \] 
+\end{framed}
+
+\subsection{Stokes' Theorem}
+
+What is the circulation of a vector field $\vec{F} $ in $\mathbb{R}^3$ over some oriented 2-D domain (some surface in 3-D) with a boundary $\partial D$ ? \\  
+
+
+Recall that the derivative of any 1-form field gives a 2-form field, which is itself the flux 2-form of some function 
+
+\begin{framed}
+   \textbf{Theorem:} The circulation over the boundary is equal to the integral of the flux 2-form of the curl of $\vec{F}$ over the interior of the domain.
+
+   \begin{align*}
+      \int_{\partial D}^{} \alpha_{\vec{F}} = \int_{D}^{} d \alpha_{\vec{F}}   
+   \end{align*}
+
+   \[
+     \int_{\partial D}^{} \vec{F} \cdot d \underline{x}  = \iint_D \left( \nabla \times \vec{F} \right) \cdot \hat{ \underline{n}} d\sigma
+   \] 
+
+   The circulation of $F$ on $\partial D$ is equal to the flux of $\nabla \times \vec{F}$ across $D$
+
+\end{framed}
+
+\subsection{Dropping back down to Greens in 2-D}
+
+Recall that 
+\begin{align*}
+   \text{circulation on $\partial D$} &= \text{Flux of $\nabla \times \vec{F} \cdot \hat{k}$} \rightarrow \text{Stokes} \\
+   \text{flux of $\vec{F}$ across $\partial D$} &= \iint_D Div(\vec{F}) \rightarrow \text{Gauss}
+\end{align*}
+
+
+\subsection{An example}
+
+Given
+\[
+  \vec{F} = \left( x^2 + y^2 \right) \hat{i} + 2e^z \hat{j} + (x^2 + z^2) \hat{k}
+\] 
+
+Compute the flux of $\vec{F}$ across a cube $0 \leq x \leq 1$, $0 \leq y \leq 1$,  $0 \leq z \leq 1$
+
+By Gauss,
+
+\begin{align*}
+   \text{Flux} &= \int_{0}^{1} \int_{0}^{1} \int_{0}^{1}  \nabla \cdot \vec{F} dx dy dz \\
+               &= \int_{0}^{1} \int_{0}^{1}    \int_{0}^{1}  2x + 2z dx dy dz \\
+               &= 1 + 1  \\
+               & 2
+\end{align*}
+
+
+\section{Thursday Lecture}
+
+
+Recall that by Stoke's Theorem, in $\mathbb{R}^n$
+
+\[
+  \int_{\partial D}^{} \alpha = \int_{D}^{}  d \alpha 
+\] 
+
+Where $\partial D$ is some boundary and $D$ is in $k$ dimensions, and $\alpha$ is a k-form
+
+\begin{center}
+   \begin{tabular}{c c c c} 
+      n & k & &\\
+      2 & 1 & Green's&\\
+      3 & 1 & Stokes&\\
+      3 & 2 & Gauss&\\
+      1 & 0 & FTIC &($f(b) - f(a) = \int_{{a, b}}^{} f - \int_{{a,b}}^{} df $)\\
+      n & 0 & IoP& \\
+   \end{tabular}
+\end{center}
+
+
+\subsection{Practice problem 1}
+
+Given a vector field 
+\[
+  \vec{F} = y^2 \hat{i} - x^2 \hat{j} + z \hat{k}
+\] 
+
+What is the flux of $\vec{F}$? \\
+
+When we see \textbf{flux}, we ask ourselves, is the question asking for the \textbf{flux of $f$} or \textbf{flux of the curl}? \\
+
+In this case, they are asking for the flux of $f$, so we know that we \textbf{don't need Stokes} \\
+
+Can we use Gauss? Gauss calculates flux but it applies to a closed surface. In this case, we want the flux over an open top hemisphere. Hence no Gauss \\
+
+What we can do is a direct integration 
+\[
+   \Phi_{\vec{F}} = y^2 dy \wedge dz - x^2 dz \wedge dx + 2 dx \wedge dy
+\] 
+
+This is doable, but it is not obvious / easy  \\
+
+
+\[
+  S(s, t) = \begin{pmatrix} s \\ t \\ \sqrt{R^2 - s^2 - t^2} \end{pmatrix} 
+\] 
+
+\[
+   \left[ D S \right]_{}  = \begin{bmatrix} 
+      1 & 0 \\
+      0 & 1 \\
+      ???? & ???
+   \end{bmatrix}
+\] 
+
+\textbf{THINK MARK THINK!!!}
+
+We go back to the flux two form
+\[
+   \Phi_{\vec{F}} = y^2 dy \wedge dz - x^2 dz \wedge dx + 2 dx \wedge dy
+\] 
+
+Because of the 2-forms, we are working with the projected area onto each of the 3 planes \\
+
+Consider the $y-z$ plane, the net flux is zero \textbf{by symmetry}
+\[
+   \int_{}^{}  y^2 dy\wedge dz = 0
+\] 
+
+Likewise in the $x-z$ plane, the net flux is also zero \textbf{by symmetry}
+\[
+   \int_{}^{}  -x^2 dx\wedge dz = 0
+\] 
+
+The only non-vanishing net flux is given by
+\[
+   \int_{}^{}  2 dx\wedge dy = 2 \text{, the oriented projected area in the $x, y $ plane} 
+\] 
+
+\textbf{NOTE}
+In general, \[
+  \int_{}^{} f(x, y) dx \wedge dy  = 0
+\] 
+Or
+\[
+  \int_{}^{} f(x_i, x_j) dx_i \wedge dx_j = 0 
+\] 
+
+\textbf{WE ARE NOT DONE}
+
+We will try using Gauss again, because we are stubborn \\
+
+We now make the domain a solid hemisphere, such that its boundary has two pieces \\
+
+By Gauss, the net flux is 
+\[
+   \int_{\text{spherical boundary}}^{} \Phi - \int_{\text{circular boundary at base}}^{}  \Phi  = \iiint_{D} \nabla \cdot \vec{F} dV 
+\] 
+
+We then show that the divergence is 0
+
+\[
+   \text{Verify!}
+\] 
+
+Hence 
+\[
+   \int_{\text{spherical boundary}}^{} \Phi - \int_{\text{circular boundary at base}}^{} \Phi   = \iiint_{D} \nabla \cdot \vec{F} dV  = 0
+\] 
+
+Now we find
+\[
+   \int_{\text{circular boundary at base}}^{} \Phi = \int_{}^{} 2 dx \wedge dy 
+\] 
+
+Which is the same computation we did above
+
+\subsection{Another example}
+
+Given a vector field
+\[
+   \vec{F} = (y + x sinx^2) \hat{i} + \left( x^2 + e^{y^2 -5y} \right)\hat{j} + (x^2 + y^2) \hat{k} 
+\] 
+
+Find the flux of the curl of $\vec{F}$ over the surface defined by \[
+  z = cos^3 \left( \frac{\pi}{2} \left( x^2 + y^2 \right)  \right), x^2 + y^2 \leq 1
+\] 
+
+By Stokes, the integral over the boundary of the surface of the work 1-form of $f$ is equal to the integral over the interior of $D$ of the derivative of the work 1-form
+
+\[
+   \int_{\partial S}^{}  \alpha_{\vec{F}} = \int_{S}^{} d \alpha_{\vec{F}} = \int_{S}^{} \Phi_{\nabla \times \vec{F}}
+\] 
+
+The right hand side is what the question asked for, the left hand side is easier to compute \\
+
+Along the boundary of $S$,
+\[
+  z = cos^3 \left(  \frac{\pi}{2} (x^2 + y^2) \right)  = cos^3 \frac{\pi}{2} = 0
+\] 
+
+\textbf{The strategy}
+
+We compute the circulation over the boundary, by computing
+\begin{align*}
+   \int_{\partial S}^{}  \alpha_{\vec{F}}  \int_{t = 0}^{2 \pi}  \left( sint + cost sint cos^2 t \right) \left( -sint \right) + \left( ???? \right) cost dt
+\end{align*}
+
+Where the boundary is parameterized as 
+\[
+  \gamma(t) = \begin{pmatrix} cos t \\ sint  \end{pmatrix} 
+\] 
+
+This is not going to work....
+
+\textbf{We try again}
+
+We use the independence of surface, as long as the boundary remains the same. \\
+
+We use the surface \[
+   z = 0, x^2 + y^2 \leq 1
+\] 
+
+We want to calculate
+\[
+   \int_{}^{} \Phi_{\nabla \times \vec{F}}  
+\] 
+
+We write down the work 1-form
+\[
+   \alpha_{\vec{F}} = \left( y^2 +xsinx^2 \right) dx + \left( x^2 + e^{y^2 - 5y} \right) dy + \left( x^2 + y^2 \right) dz
+\] 
+
+The derivative of work 1-form is
+\begin{align*}
+   d\alpha_{\vec{F}} &= dy \wedge dx + 2x dx \wedge dy + 2x dx \wedge dz + 2y dy \wedge dz \\
+                     &= (2x -1) dx \wedge dy + 2x dx \wedge dz + 2y dy \wedge dz
+\end{align*}
+
+The projected area of $2x$ in the $x-z$ plane is 0 \\
+
+The projected area of $2y$ in the $y-z$ plane is 0 \\
+
+Hence
+\[
+   \int_{\text{disc}}^{}  d \alpha_{\vec{F}} = \iint 2x - 1 dx \wedge dy = 2 \iint x dA - \iint dA = -\pi 
+\] 
+
+The derivative of the work 1-form is equal to the flux of the curl!!!
+
+\[
+   d\alpha_{\vec{F}} = \Phi_{\nabla \times \vec{F}}
+\] 
+
+\subsection{Another another example}
+
+For an object submerged in a fluid of constant uniform density $\rho$,
+
+The pressure exerted by the fluid is  \textbf{orthogonal} to the surface of the object \\
+
+The net force in the $x$ and $y$ directions are 0 \\
+
+Buoyancy is related to the oriented projected area in the $z$ direction, i.e. in the $x-y$ plane \\
+
+Hence, buoyancy is a 2-form! Taking into account that buoyancy is also a function of depth, given by the $z$ coordinate, we get
+
+\[
+  \beta = \rho z dx \wedge dy
+\] 
+
+The net buoyancy force is 
+\[
+   \int_{\text{skin}}^{}  \beta = \int_{\partial D}^{}  \beta 
+\] 
+
+By Gauss Theorem
+
+\begin{align*}
+   &\int_{\partial D}^{}  \beta  \\
+   =& \int_{D}^{} d\beta \\
+   =& \iiint_{D} \rho dz\wedge dx \wedge dy   \\
+   =& \iiint_{D} \rho dV \\
+   =& \rho \times \text{Volume}  \\
+   =& mass
+\end{align*} 
+

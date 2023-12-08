@@ -1,0 +1,258 @@
+\chapter{Week 5}
+
+\section{Multivariate functions}
+
+Some examples of multivariate functions covered so far include
+\begin{itemize}
+   \item Parameterized curves: \[
+     f: \mathbb{R} \to \mathbb{R}^n
+   \] 
+   \item Parameterized surfaces \[
+     f: \mathbb{R}^2 \to \mathbb{R}^n
+   \] 
+   \item Implicit curves \[
+     f: \mathbb{R}^2 \to \mathbb{R}
+      \] 
+   \item Implicit surfaces
+      \[
+        f: \mathbb{R}^3 \to \mathbb{R}
+      \]  
+\end{itemize}
+
+\subsection{Multivariate functions as non-linear transforms}
+
+Multivariate functions can be used to describe non-linear transformations, just as matrices describe linear transformations. \\
+
+For example, translating between polar and euclidean coordinates
+
+\[
+   \begin{pmatrix} 
+     x \\ y  
+   \end{pmatrix} = f \begin{pmatrix} r \\ \theta \end{pmatrix}  = \begin{pmatrix} r cos \theta \\ r sin \theta \end{pmatrix} 
+\] 
+  
+
+\[
+   \begin{pmatrix} r \\ \theta \end{pmatrix}= f^{-1} \begin{pmatrix} x \\ y \end{pmatrix}   = \begin{pmatrix} \sqrt{x^2 + y^2} \\ ARCTAN( \frac{y}{x}) \end{pmatrix} 
+\] 
+
+\subsection{Multivariate functions example - Market Equilibrium}
+
+Suppose a market has \begin{itemize}
+   \item Supply: \[
+     S(P) = S_0 + aP
+   \] 
+   \item Demand: \[
+     D(P) = D_0 - bP
+   \] 
+\end{itemize}
+
+Then the market has some equilibrium price and quantity $P_m$ and $Q_m$ respectively, where
+\[
+  Q_m = S_0 + aP_m = D_0 - bP_m
+\] 
+
+Equating demand and supply, and making $P_m$ the subject of the equation, we get \[
+  P_m = \frac{D_0 - S_0}{a+b}
+\] 
+and \[
+  Q_m \frac{aD_0 + bS_0}{a + b}
+\] 
+
+Hence, we see that $P_m$ and $Q_m$ are two outputs of a function of four inputs $D_0, S_0, a, b$, or \[
+  \begin{pmatrix} P_m \\ Q_m \end{pmatrix} = f \begin{pmatrix} D_0 \\ S_0 \\ a \\ b \end{pmatrix}
+\] 
+
+\section{Partial Derivatives}
+
+\begin{framed}
+   The \textbf{partial derivative} of a function $f(x)$ with respect to the $jth$ input $x_j$ is 
+   \[
+      \frac{\partial f}{\partial x_j} = \lim_{h \to 0} \frac{f( \underline{x} + h \underline{e}_j) - f(x)}{h}
+   \] 
+\end{framed}
+
+\subsection{Computing the partial derivative and implicit differentiation}
+
+For a function \[
+  f \begin{pmatrix} x \\ y \\ z \end{pmatrix} = x ^ 3 y - 5 x y z ^2 
+\] 
+
+We can compute the following partial derivatives
+\[
+\begin{array}{c |c  |c}
+   \frac{\partial f}{\partial x} = 3x^2 y - 5y^2 &
+   \frac{\partial f}{\partial y} = x^3 - 5 x z^2 &
+   \frac{\partial f}{\partial z} = -10xyz 
+\end{array}
+\] 
+
+Recall that for for implicit differentiation,
+\[
+  df = (3x^2y - 5y^2) dx + (x^3 - 5xz^2) dy + (-10xyz) dz 
+\] 
+\[
+  df = \frac{\partial f}{\partial x} dx + \frac{\partial y}{\partial y} dy + \frac{\partial f}{\partial z} dz
+\] 
+
+\subsection{Partial derivatives and rates of change}
+
+For a function that takes 2 inputs $x, y$ and returns 3 outputs $u, v, w$, 
+\[
+  \begin{pmatrix} u \\v \\ w \end{pmatrix}  = f \begin{pmatrix} x \\ y  \end{pmatrix} = \begin{pmatrix}
+    -x^4 \\
+    y^2 - xy \\
+    5x - 2y
+  \end{pmatrix}
+\] 
+
+We can compute the following partial derivatives 
+\[
+   \begin{array}{c | c}
+      \frac{\partial u}{ \partial x} = -4x^3 & 
+      \frac{\partial u}{ \partial y} = 0 \\
+      \frac{\partial v}{ \partial x} = -y & 
+      \frac{\partial v}{ \partial y} = 2y-x \\
+      \frac{\partial w}{ \partial x} = 5& 
+      \frac{\partial w}{ \partial y} = -2 \\
+   \end{array}
+\] 
+
+
+\section{The Derivative}
+
+\begin{framed}
+   The derivative of a function \[
+     f: \mathbb{R}^n \to \mathbb{R}^m
+   \]  can be written as a $m \times n$ matrix where the partial derivative of the $j th$ output to the $ i -th$ input makes up the $j-th$ row and $i-th$ column element \[
+   [Df] = \left[ \frac{\partial f_i}{ \partial x_j}\right]_{ij}
+   \] 
+
+   The derivative transforms vectors of rates of change of inputs to vectors of rates of change of outputs
+\end{framed}
+
+\subsection{A note on notation}
+\begin{framed}
+For a function $f$ that maps input $ \underline{x}$ to $ \underline{y}$, we can denote
+\begin{itemize}
+   \item rate of change of input: $ \underline{h} = (h_j) $ or $ \underline{\dot x} = ( \dot x_j)$
+   \item rate of change of output: $ \underline{l} = (l_j) $ or $ \underline{\dot y} = ( \dot y_j)$ 
+   \item derivative as $[Df]$ or $ \frac{\partial \underline{y}}{\partial \underline{x}}$
+\end{itemize}
+
+Hence the relationship between the input and output rates of change can be expressed as \[
+         \underline{l} = [Df] \underline{h}
+   \] 
+Or 
+   \[
+     \underline{\dot y} = \frac{\partial \underline{y}}{\partial \underline{x}} \underline{\dot x}
+   \] 
+\end{framed}
+
+\subsection{Computing inputs and outputs rates of change}
+
+For function \[
+   \begin{pmatrix} u \\ v \end{pmatrix}  = f \begin{pmatrix} x \\y\\z \end{pmatrix}  = \begin{pmatrix} 
+     xy^2 - x^2 z \\ 3xy + z^3  
+   \end{pmatrix}
+\] 
+
+With inputs changing at \[
+  \underline{h} = \begin{pmatrix} -1 \\2 \\0 \end{pmatrix} 
+\]
+At a point \[
+  \underline{a} = \begin{pmatrix}  2 \\ -1 \\3 \end{pmatrix} 
+\] 
+
+We can find the derivative by \[
+   [Df] = \begin{bmatrix}
+      y^2 - 2xz & 2xy & -x^2 \\
+      3y & 3x & 3z^2 \\
+   \end{bmatrix}
+\] 
+
+Evaluating the derivative at $ \underline{a}$, we get
+\[
+   [Df]_{ \underline{a}} = \begin{bmatrix}
+      -11 & -4 & -4 \\
+      -3 & 6 & 27
+   \end{bmatrix}
+\]  
+
+We can find the rate of change of outputs by applying the linear transformation $[Df]_{ \underline{a} }$ to $ \underline{h}$
+\begin{align*}
+   \begin{pmatrix} \dot u \\ \dot v \end{pmatrix}  &= [Df]_{ \underline{a} } \underline{h} \\
+                                                   &= \begin{bmatrix} 
+                                                      -11 & -4 & -4 \\ 
+                                                      -3 & 6 & 27
+                                                   \end{bmatrix} \begin{pmatrix} -1 \\ 2 \\ 0 \end{pmatrix} \\
+                                                         &= \begin{pmatrix} 13 \\ 5 \end{pmatrix} 
+\end{align*}
+
+\subsection{Definition of the derivative}
+
+\begin{framed}
+   \textbf{Definition:} A function $f( \underline{x})$ is differentiable at $ \underline{x} = \underline{a} $ if and only if there is a \textbf{linear transformation} $[Df]_{ \underline{a}}$, the derivative of $f$ at $ \underline{a} $ such that \[
+      \lim_{ \underline{ \lVert h \rVert } \to 0} \frac{\left(f \left(  \underline{a} + \underline{h} \right)  - f \left( \underline{a} \right) \right)-[Df]_{ \underline{a}} \underline{h})}{ \underline{ | h | }} = \underline{0}
+   \]  
+\end{framed}
+
+\subsection{A Taylor Perspective}
+\begin{framed}
+Recall from single variable calculus that for a function $f$, at very small values of $h$,
+\[
+  f(x + h) = f(x) + f'(x)h + \hdots
+\] 
+
+In the multivariate case
+
+\[
+   f( \underline{x} + \underline{h}) = f( \underline{x}) + [Df] \underline{h} + \hdots
+\] 
+
+Where \begin{itemize}
+   \item $f( \underline{x})$ is the $0-th$ term
+   \item $[Df] \underline{h}$ is the linear term
+\end{itemize}
+
+This \textbf{is} the definition of the derivative!! $\rightarrow$ it is the coefficient of the linear term in the Taylor series
+\end{framed}
+
+\subsubsection{A weird example}
+
+For a function
+\[
+  S(A) = A^2
+\] 
+Where $A$ is a $2$ by $2$ matrix, and the function $S$ has $4$ inputs and $4$ outputs
+
+\[
+  S(A+H) = (A+H)^2 = A^2 + AH + HA + H^2
+\] 
+\begin{align*}
+   S(A+H) &= S(A) + [DS]_{A}H \quad + \hdots\\
+          &= (A^2)  + (AH + HA) \quad +  H^2
+\end{align*}
+
+Hence,
+\[
+   [DS]_{A}H = AH + HA
+\] 
+
+\subsection{Existence of the derivative}
+\begin{framed}
+The derivative does not exist, even if all the partial derivatives exist, if
+\[
+      \lim_{ \underline{ \lVert h \rVert } \to 0} \frac{\left(f \left(  \underline{a} + \underline{h} \right)  - f \left( \underline{a} \right) \right)-[Df]_{ \underline{a}} \underline{h})}{ \underline{ | h | }} \neq \underline{0}
+\] 
+\end{framed}
+
+
+
+
+
+
+
+
+
+

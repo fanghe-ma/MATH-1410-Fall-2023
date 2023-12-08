@@ -1,0 +1,494 @@
+\chapter{Week 7}
+
+\section{Gradient}
+
+\subsection{The level set}
+
+\begin{framed}
+   For functions of the form \[
+     f: \mathbb{R}^m \rightarrow R
+   \] 
+
+   We can consider its level sets, which are subsets of the domain given by the implicit equations
+   \[
+     f( \underline{x}) = c
+   \] for some constant $c$
+
+   We denote level sets with
+   \[
+      f^{-1} (c) = { \underline{x} : f( \underline{x}) = c}
+   \] 
+
+   \textbf{Note} this does not imply $f$ is invertible
+\end{framed}
+
+\subsection{Definition of the gradient}
+
+For scalar-value functions, there is a more primitive approach to the derivative
+
+\begin{framed}
+   For $ f: \mathbb{R}^n \rightarrow \mathbb{R}$, the \textbf{gradient} is the \textbf{vectorized derivative}
+
+   \[
+     \nabla f = \begin{bmatrix} 
+        \frac{\partial f}{\partial x_1} \\
+        \frac{\partial f}{\partial x_2} \\
+        \vdots \\
+        \frac{\partial f}{\partial x_n}
+     \end{bmatrix}
+   \] 
+   Note that: 
+   \begin{itemize}
+      \item $\nabla f$ is a \textbf{vector} at $\underline{a}$
+      \item $ \left[ D f \right]_{ \underline{a}} $ is a \textbf{linear transformation} acting on vectors at $\underline{a}$
+   \end{itemize}
+\end{framed}
+
+\subsection{Gradients and level sets}
+
+\begin{framed}
+   \textbf{Lemma}: At each point, the gradient is \textbf{orthogonal} to that point's level set and is oriented in the direction of \textbf{maximally increasing value}
+\end{framed}
+
+\textbf{Proof}
+
+For a point $ \underline{a}$ where $ f( \underline{a}) = c$, let $ \underline{u}$ be a unit vector at $ \underline{a}$ \\
+
+Let the rate of change of $ f$ along $ \underline{u}$ be denoted by $ D_{ \underline{u}}f$. \\
+
+Recall that the rate of change of outputs can be given by \[
+   D_{ \underline{u}}f = \left[ D f \right]_{ \underline{a}}  \underline{u}  = \nabla f \cdot \underline{u}
+\] 
+
+Since $ \left[ D f \right]_{} \underline{u}  $ is equivalent to $ \nabla f \cdot \underline{u}$  and $ \nabla f \cdot u$ is the length of projection of $ \nabla f$ onto $ \underline{u}$, we can conclude that 
+
+\begin{itemize}
+   \item when $ \underline{u}$ is tangent to $ f^{-1}(c)$, $f$ is not changing, hence \[
+         \nabla f \bot f^{-1} (c)
+   \] 
+   \item when $ \underline{ u}$ points along $\nabla f$, the rate of change is maximized, hence gradient points in the direction of maximal increasing value
+\end{itemize}
+
+\subsection{Directional Derivatives}
+
+There is only one derivative, but another set of terminology exists
+
+\begin{framed}
+   For a real value function, to compute the derivative along a direction given by the unit vector $\underline{u}$, the \textbf{directional derivative} is defined as \[
+      D_{ \underline{u}}f = \nabla f \cdot \underline{u} = \left[ D f \right]_{} \underline{u}
+   \]  
+\end{framed}
+
+\section{Tangent Spaces}
+
+\subsection{The tangent space of an implicit surface}
+
+For an implicit surface in $3d$ given by $F(x, y, z) = 0$, we can find the tangent plane to a point $ \underline{x}_0$ by using the gradient
+\[
+  \nabla F \cdot ( \underline{x} - \underline{x}_0) = 0
+\] 
+
+\subsection{The tangent space of an parameterized curve}
+
+For a parameterized curve
+\[
+  f(t) =  \begin{pmatrix} 
+    x(t) \\ y(t) \\ z(t)  
+  \end{pmatrix}
+\] 
+
+The velocity is
+\[
+  \left[ D f \right]_{}  = \begin{pmatrix} 
+    \frac{dx}{dt} \\ \frac{dy}{dt} \\ \frac{dz}{dt}  
+  \end{pmatrix}
+\] 
+
+The tangent line at $t_0$ is parameterized by another variable, $s$. A point on the tangent line can be expressed as 
+\[
+  \underline{u}(s) = f(t_0) + \left[ D f \right]_{t_0} s
+\] 
+
+\subsection{The tangent space of a parameterized surface}
+
+Generalizing to a case in $3d$, for a parameterized surface of the form
+\[
+  f: \mathbb{R}^2 \rightarrow \mathbb{R}^3
+\] 
+
+Given a parameterization
+\[
+  \underline{x} = f( \underline{t})  
+\]  where
+
+\[
+  \underline{x} = \begin{pmatrix} x \\ y\\ z \end{pmatrix} , \underline{t} = \begin{pmatrix} t_1 \\t_2 \end{pmatrix} 
+\] 
+
+The tangent plane at  $f(t_0)$ is given by the same formula 
+\[
+  \underline{x} = f( \underline{t}_0) + \left[ D f \right]_{}  \underline{s}
+\]
+where there are two parameters $s_1$ and $s_2$ in $ \underline{s}$
+\[
+  s = \begin{pmatrix} s_1 \\ s_2 \end{pmatrix} 
+\] 
+
+The two columns in $\left[ Df \right]_{} $ form the basis vectors of the tangent plane, a point in which is specified by two parameters $s_1$ and $s_2$
+
+\textbf{Parametric to implicit!!}: to find the implicit equation of the plane, recall that a plane can be implicitly defined using the normal to the plane, which can be found by taking the cross product of the two columns in $\left[ D f \right]_{} $
+
+\subsection{Images, Kernels, and tangent spaces in higher dimensions}
+Bonus content, will fill in later
+
+\section{Linearization}
+
+Finding tangent spaces is essentially a linearization of a function about a certain point, which provides a locally valid approximation
+
+\subsection{Differentials vs derivatives}
+
+Differentials and derivatives provide two different notations for the same idea \\
+
+For a function
+\[
+  f( \underline{x}) =f(x_1, x_2, \hdots x_n)
+\] 
+
+\textbf{Differentials}
+
+$df$ is a linear combination of differentials
+\[
+   df = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i} dx_i
+\] 
+
+\textbf{Derivatives}
+\[
+\left[ D f \right]_{}  = \frac{\partial f}{\partial \underline{x}} = \begin{bmatrix} 
+   \frac{\partial f}{\partial x_1} & \frac{\partial f}{\partial x_2} & \hdots & \frac{\partial f}{\partial x_n}  
+\end{bmatrix}
+\] 
+
+$ \left[ D f \right]_{} $ is a linear transformation that acts on vectors of rates of change of inputs \\
+
+if $ d \underline{x}$ is a vector of differentials $ x_i$, then the rate of change of output is
+\[
+   \frac{\partial f}{\partial \underline{x}} d \underline{x} = df
+\] 
+
+\subsection{Relative rates of change and percentage errors}
+
+\begin{framed}
+   For a quantity $u$, the relative rate of change of u is given by
+   \[
+     d(ln u) = \frac{du}{u}
+   \] 
+\end{framed}
+
+The rate of change of output is a linear combination of rate of change of inputs  \\
+
+\textbf{Given}: 
+\[
+  u( \underline{x)} = u (x_1, x_2, \hdots , x_n)
+\] 
+
+Assume that $u$ is of the form
+\[
+   u = K \Pi_{i=1}^{n} x_i^{c_i}
+\] 
+
+Then
+\begin{align*}
+   \frac{du}{u} &= d (ln u) \\
+                &= d(ln k + \sum_{i=1}^{n} ln(x_i^{c_i})) \\
+                &= \sum_{i=1}^{n} c_i d(ln(x_i)) \\
+                &= \sum_{i=1}^{n} c_i \frac{dx_i}{x_i}\\
+\end{align*}
+
+\section{Taylor Series}
+
+\subsection{Single variable case}
+\begin{framed}
+   Recall that for a function
+   \[
+     f: \mathbb{R} \rightarrow \mathbb{R}
+   \] 
+
+   The Taylor series is
+   \begin{align*}
+      f(x) &= \sum_{i=0}^{\infty} \frac{1}{i!} \left. \frac{d^i f}{dx^i} \right|_{0} x^i  \\
+      f(x) &= \sum_{i=0}^{\infty} \frac{1}{i!} \left. D^i f \right|_{0} x^i  \\
+      f(a + h) &= \sum_{i=0}^{\infty} \frac{1}{i!} \left. D^i f \right|_{a} h^i  \\
+      f(x) &= \sum_{i=0}^{\infty} \frac{1}{i!} \left. D^i f \right|_{a} (x-a)^i 
+   \end{align*}
+\end{framed}
+
+\subsection{Multivariable case}
+
+\begin{framed}
+   For a function 
+   \[
+     f : \mathbb{R}^n \rightarrow \mathbb{R}
+   \] 
+
+   The Taylor Series is given by
+   \[
+      f( \underline{x}) = \sum_{I} \frac{1}{I!} \left. D^I f \right|_{ \underline{0}} \underline{x}^I
+   \]  
+
+   \[
+      f (\underline{x}) = \sum_{I}  \frac{1}{I!} \left. D^I f  \right|_{ \underline{a} } ( \underline{x} - \underline{a})^I
+   \] 
+   \[
+      f (\underline{a} + \underline{h}) = \sum_{I}  \frac{1}{I!} \left. D^I f  \right|_{ \underline{a} } ( \underline{h})^I
+   \] 
+\end{framed}
+
+\textbf{The multi-index}
+
+  Given $n$ variables
+  \[
+     \underline{x} = (x_1, x_2, x_3, \hdots x_n)
+  \] 
+
+  The multi-index is $n$ ordered indices
+  \[
+    I = (i_1, i_2, i_3, \hdots, i_n)
+  \] 
+
+\textbf{The degree of a multi-index}
+  Where the degree is given by
+  \[
+    |I| = i_1+ i_2 + \hdots + i_n
+  \] 
+
+\textbf{Taking a vector to the power of the multi-index}: given $ \underline{x}$ and $I$, 
+\[
+  \underline{x}^I = x_1^{i_1}x_2^{i_2} \hdots x_{n}^{i_n}
+\]
+
+
+\textbf{Taking the factorial of a multi-index}
+For a multi-index $ I$,
+\[
+  I = (i_1, i_2, \hdots, i_n)
+\] 
+
+The factorial is defined as
+\[
+   I! = i_1!  i_2 ! \hdots i_{n}!
+\] 
+
+\textbf{Multi-index and the derivative}
+
+Given \[
+  f = f( \underline{x)} = f(x_1, x_2, \hdots , x_n)
+\] 
+
+We define \[
+   D^I f = \frac{\partial^{i_1} }{\partial x_1^{i_1}} \frac{\partial^{i_2} }{\partial x_2^{i_2}} \hdots \frac{\partial^{i_n} }{\partial x_n^{i_n}} f
+\] 
+
+\section{Computing Taylor Series}
+
+\subsection{Commonly used Taylor Series}
+
+\begin{framed}
+
+   \iffalse
+ Exponentials
+ \renewcommand{\arraystretch}{1.5}
+ \[
+    \begin{array}{l  c  l l}
+      e^x 
+      & \text{all } x
+      & \sum\limits_{n=0}^{\infty} \frac{x^n}{n!} 
+      & = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \frac{x^6}{6!} + \hdots\\
+      a^x  = e^{x ln (a)}
+      & \text{all } x
+      & \sum\limits_{n=0}^{\infty} \frac{(x ln(a))^n}{n!} 
+      & = 1 + x ln(a) + \frac{(xln(a))^2}{2!} + \frac{(x ln(a))^3}{3!} + \hdots\\
+   \end{array}
+ \] 
+
+ Logarithms
+ \[
+    \begin{array}{l c l l}
+      ln(1-x)
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=1}^{\infty} \frac{1}{n} -x^n
+      & = -x - \frac{x^2}{2} -\frac{x^3}{3} - \frac{x^4}{4} - \frac{x^5}{5} - \frac{x^6}{6} - \hdots\\ 
+      ln(x)
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}(x-1)^n
+      & = (x-1) - \frac{(x-1)^2}{2} + \frac{(x-1)^3}{3} - \frac{(x-1)^4}{4} + \hdots\\
+      ln(x + 1)
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}  x^n
+      & = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} - \frac{x^6}{6}\\
+   \end{array}
+ \] 
+
+ Geometric series
+ \[
+    \begin{array}{l  c  l l}
+      \frac{1}{x}
+      & \text{for } 0 < x < 2 
+      & \sum\limits_{n=1}^{\infty} (-1)^n (x-1)^n
+      & = 1 - (x - 1) + (x-1)^2 - (x-1)^3 + (x-1)^4\\
+      \frac{1}{1+x}
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=0}^{\infty} (-1)^n (x)^n
+      & 1 -x + x^2 - x^3 + x^4 -x^5 + x^6 \\
+      \frac{1}{1-x}
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=0}^{\infty} (x)^n
+      &= 1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + \hdots\\
+      \frac{1}{1-x}
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=0}^{\infty} (x)^n
+      &= 1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + \hdots\\
+      \frac{1}{1+x^2}
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=0}^{\infty} (-1)^n (x)^{2n}
+      &= 1 -x^2 + x^4 - x^6 + x^8  + \hdots\\
+      \frac{1}{1-x^2}
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=0}^{\infty} (x)^{2n}
+      &= 1 +x^2 + x^4 + x^6 + x^8  + \hdots\\
+      \frac{1}{(1+x)^2}
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=1}^{\infty} (-1)^{n-1} nx^{n-1}
+      &= 1 -2x + 3x^2 -4x^3 + 5x^4 - 6x^5 + 7x^6  + \hdots\\
+      \frac{1}{(1-x)^2}
+      & \text{for } \left| x \right| < 1
+      & \sum\limits_{n=1}^{\infty}  nx^{n-1}
+      &= 1 +2x + 3x^2 +4x^3 + 5x^4 + 6x^5 + 7x^6  + \hdots\\
+      \sqrt{1 + x}
+      & \text{for } -1 < x \leq 1
+      & \sum\limits_{n=0}^{\infty} \frac{(-1)^n (2n)!}{4^n (n!)^2 (1-2n)}  x^n
+      &=  1 + \frac{1}{2}x - \frac{1}{8}x^2 + \frac{1}{16}x^3 - \frac{5}{128}x^4 + \frac{7}{256}x^5 + \hdots\\
+      \sqrt{1 - x}
+      & \text{for } -1 < x \leq 1
+      & \sum\limits_{n=0}^{\infty} \frac{ (2n)!}{4^n (n!)^2 (1-2n)}  x^n
+      &=  1 - \frac{1}{2}x - \frac{1}{8}x^2 - \frac{1}{16}x^3 - \frac{5}{128}x^4 - \frac{7}{256}x^5 - \hdots\\
+      \sqrt{1 + x^2}
+      & \text{for } -1 < x \leq 1
+      & \sum\limits_{n=0}^{\infty} \frac{ (-1)^n (2n)!}{4^n (n!)^2 (1-2n)}  x^{2n}
+      &=  1 + \frac{1}{2}x^2 - \frac{1}{8}x^4 + \frac{1}{16}x^6 - \frac{5}{128}x^8 + \frac{7}{256}x^{10} - \hdots\\
+      \sqrt{1 - x^2}
+      & \text{for } -1 < x \leq 1
+      & \sum\limits_{n=0}^{\infty} \frac{ (2n)!}{4^n (n!)^2 (1-2n)}  x^{2n}
+      &=  1 - \frac{1}{2}x^2 - \frac{1}{8}x^4 - \frac{1}{16}x^6 - \frac{5}{128}x^8 - \frac{7}{256}x^{10} - \hdots\\
+   \end{array}
+ \] 
+
+ Binomial Expansion
+
+ Trigonometric functions
+
+ Inverse trigonometric functions
+
+ Hyperbolic functions
+
+ Inverse Hyperbolic functions
+\fi
+
+For all $x$
+\[
+   \begin{array}{l r l}
+   e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^2}{3!} + \hdots &= \sum\limits_{n=0}^{\infty}  \frac{x^n}{n!} \\
+   sin\ x &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \hdots &= \sum\limits_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)! } \\
+   cos\ x &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \hdots &= \sum\limits_{n=0}^{\infty}  \frac{(-1)^n x^{2n}}{(2n)!} \\
+   sinh\ x &= x + \frac{x^3}{3!} + \frac{x^5}{5!} + \frac{x^7}{7!} + \hdots &= \sum\limits_{n=0}^{\infty} \frac{x^{2n+1}}{(2n+1)! } \\
+   cosh\ x &= 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \frac{x^6}{6!} + \hdots &= \sum\limits_{n=0}^{\infty}  \frac{ x^{2n}}{(2n)!}
+\end{array}
+\] 
+
+For $x$ in restricted interval
+
+\[
+\begin{array}{l r l l}
+   \frac{1}{1-x} &= 1 + x + x^2 + x^3 + \hdots &= \sum\limits_{n=0}^{\infty}  x^n & \text{ for $x \in (-1, 1)$} \\
+   \frac{1}{(1-x)^2} &= 1 + 2x + 3x^2 + 4x^3 + \hdots &= \sum\limits_{n=1}^{\infty}  nx^{n-1} & \text{ for $x \in (-1, 1)$} \\
+   ln(1+x) &= x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \hdots &= \sum\limits_{n=0}^{\infty} \frac{(-1)^n x^{n+1}}{n+1} & \text{ for $x \in (-1, 1]$} \\
+   arctan\ x &= x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \hdots &= \sum\limits_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1} & \text{ for $x \in [-1, 1]$} \\
+   (1+x)^k &= 1 + kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)(k-3)}{3!} + \hdots & & \text{ for $x \in (-1, 1)$} \\
+  
+\end{array}
+\] 
+
+
+
+\end{framed}
+
+\subsection{Computing the Taylor Expansion of a function with 2 inputs and 1 output}
+
+\begin{framed}
+   For a planar function about the origin, 
+   \begin{align*}
+      f(x, y) &= f(0,0)  \\
+              &+ \left. \frac{\partial f}{\partial x} \right|_{ \underline{0}} x + \left. \frac{\partial f}{\partial y} \right|_{ \underline{0}} y \\
+              &+ \frac{1}{2} \left. \frac{\partial^2 f}{\partial x^2} \right|_{ \underline{0}} x^2 
+                 + \left. \frac{\partial^2 f}{\partial x \partial y} \right|_{ \underline{0} } xy + \frac{1}{2} \left. \frac{\partial^2f }{\partial y^2} \right|_{ \underline{0}} y^2 \\
+              &+ \frac{1}{6} \left. \frac{\partial^3 f}{\partial x^3} \right|_{ \underline{0}} x^3 + \frac{1}{2} \left. \frac{\partial^3 f}{\partial x^2 \partial y} \right|_{ \underline{0}} x^2 y + \frac{1}{2} \left. \frac{\partial^3 f}{\partial x \partial y^2} \right|_{ \underline{0}} xy^2 + \frac{1}{6} \left. \frac{\partial^3 f}{\partial y^3} \right|_{ \underline{0}} y^3
+   \end{align*}
+\end{framed}
+
+\subsection{Taylor Series and the Chain Rule}
+\begin{framed}
+   The composition of Taylor Series is the Taylor Series of the composition
+\end{framed}
+
+\subsection{Using Taylor Series for local analysis}
+
+Taylor Series can be used to analyze functions locally \\
+
+For example, given a system
+\[
+   sin(xy) = e^{x^3} - cos(x^2y)
+\] 
+
+We can find solutions locally near $(0.0)$ by taking the Taylor series of both sides
+\[
+  xy - O((xy)^3) = \left( 1+ x^3 + O(X^6) - (1- O(x^2y)^2) \right)
+\] 
+
+Simplifying, we get
+\[
+  xy - x^3 = 0
+\] 
+
+\subsection{Taylor Series up to the second order}
+
+\begin{framed}
+   \[
+     f ( \underline{a} + \underline{h}) = f ( \underline{a}) + \frac{1}{1!} \left[ D f \right]_{ \underline{a}} \underline{h} + \frac{1}{2!} h^T \left[ D^2 f \right]_{ \underline{a}} \underline{h} + O( \lVert h \rVert^3)
+   \] 
+\end{framed}
+
+\subsection{The Hessian}
+\begin{framed}
+   \textbf{Definition}: 
+   \[
+   \left[ D^2 f \right]_{ \underline{a} i, j} = \frac{\partial^2 f}{\partial x_i \partial x_j}
+   \] 
+
+   Hence, 
+
+   \[
+     \left[ D^2 f \right]_{}  = \begin{bmatrix} 
+        \frac{\partial^2 f}{\partial x_1^2} & \hdots & \frac{\partial^2 f}{\partial x_n \partial x_1}   \\
+        \vdots & \frac{\partial^2 f}{\partial x_j^2} & \vdots   \\
+        \frac{\partial^2 f}{\partial x_1 \partial x_n} & \hdots & \frac{\partial^2 f}{\partial x_n^2 }   \\
+     \end{bmatrix}
+   \] 
+\end{framed}
+
+
+
+
+
+
+
+
+

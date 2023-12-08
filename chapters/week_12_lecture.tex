@@ -1,0 +1,448 @@
+\chapter{Week 12 lectures - Fields}
+
+\section{Fields}
+
+Recall from the whole semester that we have seen
+
+\textbf{scalar fields}, which have the form
+\[
+  f: \mathbb{R}^n \rightarrow \mathbb{R}
+\] 
+\textbf{vector fields}, an example of which is the \textbf{gradient}
+\[
+  \nabla f
+\] 
+
+\textbf{ \textit{smiley} fields}, where every point is a \textit{smiley}
+\begin{itemize}
+   \item smiley can be anything
+   \item it can be a matrix, such as in
+      \[
+        F: \mathbb{R}^n \rightarrow \mathbb{R}^m
+      \]
+   \item the derivative $\left[ D F \right]_{}$ is a matrix field
+\end{itemize}
+
+Moving on to think about integrals, given a scalar field $f: \mathbb{R}^n \rightarrow \mathbb{R}$, we can compute the integral over a domain, or we can compute a path integral
+
+The path can be parameterized by $\gamma(t)$
+\[
+   \gamma: [a,b] \rightarrow \mathbb{R}^n
+\] 
+
+The path integral can be computed by integrating the arc length element, weighted by the scalar field
+\begin{align*}
+   &\int_{\gamma} f\ dl \\
+   &= \int_{\gamma} f\ \left| \gamma ' \right|  dt
+\end{align*}
+
+For example, given $r(t) = \begin{pmatrix} t \\ t^2 -1 \end{pmatrix} $ and a scalar field $f = x^2 + y^2 $ for  $0 \leq t \leq 2$, we can compute that
+ \[
+  dl = \left| \begin{pmatrix} 1 \\ 2t \end{pmatrix}  \right| dt = \sqrt{1 + 4t^2} dt
+\] 
+
+The path integral is 
+\[
+   \int_{\gamma}f\ dl &= \int_{t=0}^{2} \left( t^2 + \left( t^2 -1 \right)^2 \right) \sqrt{1 + 4t^2} dt
+\] 
+
+\textbf{Note}: the path integral $\int_{\gamma} f\ dl$ is independent of the parameterization of $\gamma$
+ \begin{itemize}
+    \item this can be proved via the Change of Variables Theorem
+    \item this makes sense intuitively!
+\end{itemize}
+
+\section{Something new!! - the 1-form}
+
+Recall that for a scalar field $f$, we have the differential $df$ 
+\[
+  df = \frac{\partial f}{\partial x_1} dx_1 + \frac{\partial f}{\partial x_2} dx_2 + \hdots + \frac{\partial f}{\partial x_n} dx_n
+\] 
+
+The question we must ask ourselves is
+\[
+   \text{What is $dx$?}
+\] 
+
+It is a \textbf{1-form}!! A 1-form on $ \mathbb{R}^n$
+\begin{itemize}
+   \item it takes in a vector and returns a scalar linearly
+\end{itemize}
+
+For example, in $ \mathbb{R}^3$, for a vector $ \underline{v}$ 
+\[
+  \underline{v} = \begin{pmatrix} v_x \\ v_y \\ v_z \end{pmatrix} 
+\] 
+\begin{align*}
+   dx \left( \underline{v} \right) & = v_x  \\
+   dy \left( \underline{v} \right) & = v_y  \\
+   dz \left( \underline{v} \right) & = v_z  \\
+\end{align*}
+
+\textbf{Why is this useful?}: we can do math with it! \\
+
+For example, we could define a 1-form $ \alpha$
+\[
+  \alpha = dx - 2dy + 5dz
+\] 
+
+\begin{align*}
+   \alpha \left(  \underline{v} \right) & = dx( \underline{v}) - 2dy ( \underline{v}) + 5 dz (\underline{v})  \\
+                                        &= v_x - 2v_y + 5v_z
+\end{align*}
+
+We can effectively think of $dx$ as the operator
+\[
+   dx \sim i \cdot \text{ OR } \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \cdot 
+\] 
+
+\subsection{1-form fields!}
+A 1-form field has a 1-form at every point
+\[
+  \alpha = y\ dx + x^2\ dy - 3(x^2 + y^2)\ dz
+\] 
+
+This is \textbf{very different from a vector field}!!
+
+Consider the scalar field
+\[
+  f = x^2 - 2xy + y^2
+\] 
+
+The gradient (vector field) is 
+\[
+  \nabla f = \left( 2x-2y \right) \hat{i} + (2y-2x) \hat{j}
+\] 
+\begin{itemize}
+   \item each point nudges in the direction of maximum increase
+\end{itemize}
+
+The differential (1-form field) is
+\[
+  df = \left( 2x-2y \right) dx + (2y-2x) dy
+\] 
+\begin{itemize}
+   \item $dx$ are measurement devices that measures small changes in $x$ 
+   \item $df$ can be thought of an operator, which is equivalent to $\nabla f \cdot$
+\end{itemize}
+
+\subsection{Something new!!}
+
+\textbf{Given} a 1-form field $\alpha$ and path $\gamma$,  \\
+
+\textbf{Define}
+\[
+   \int_{\gamma} \alpha
+\]  
+
+\textbf{Think!!} What does it mean to take the dot product of the \textbf{velocity vector} along a path and the 1-form at that point?
+
+\[
+   \int_{\gamma} \alpha = \int_{\gamma} \left( \alpha_{\gamma(t)} \right) \left( \gamma ' \left( t \right)  \right) dt
+\]  
+
+\textbf{Example}
+
+For a 1-form field
+\[
+  \alpha = y\ dx - 2x\ dy
+\] 
+
+and a path
+\[
+  \gamma(t) = \begin{pmatrix} t \\ t^2 \end{pmatrix} , 0 \leq t \leq 1
+\]  
+
+The velocity vector is 
+\[
+  \gamma ' = \begin{pmatrix} 1 \\ 2t \end{pmatrix} 
+\] 
+
+The path integral is 
+\begin{align*}
+   \int_{\gamma} \alpha &=  \int_{\gamma} y\ dx - 2x\ dy \\
+                        &= \int_{t=0}^{1} \left( t^2\ dx - 2t\ dy \right) \cdot \begin{pmatrix} 1 \\ 2t \end{pmatrix}  dt \\
+                        &= \int_{t=0}^{1}  t^2 \cdot 1 - 2t \cdot 2t dt \\
+                        &= \int_{t=0}^{1}  -3t^2 dt  
+\end{align*}
+
+\textbf{Why go through all the trouble?}
+
+This is useful!! The standard definite integral that we know and love
+\[
+  \int_{x=a}^{b}  f(x) dx 
+\] 
+
+is really the integral of the one form field \[
+  \alpha = f(x) dx
+\] 
+
+over a parameterized path
+\[
+  \gamma(t) = t, a \leq t \leq b
+\] 
+
+Hence, if we follow all the steps outlined above
+\[
+  \int_{x=a}^{b}  f(x) dx = \int_{t=a}^{b} f(t) dt  
+\] 
+
+More concretely....
+
+\textbf{Why integrate 1-form fields?}
+\begin{itemize}
+   \item Work
+   \item Flux
+   \item etc etc
+\end{itemize}
+
+\section{The APEX}
+
+Consider a gradient (vector field), it has an associated gradient 1-form field. \\
+
+Just as not every vector field is a gradient vector field, not very 1-form field is a gradient 1-form field \\
+
+\begin{framed}
+   \textbf{Independence of Path Theorem}: integrating over a gradient 1-form field, the integral is independent of the path and only depends on the endpoints \\
+
+   For a gradient one form field $df$, over a path $\gamma$ from $a$ to $b$
+
+   \[
+      \int_{\gamma} df = f( \gamma(b)) - f(\gamma(a))
+   \] 
+
+   \textbf{Note} the similarity of this idea to the fundamental theorem of integral calculus
+\end{framed}
+
+\section{Thursday Lecture - Recap}
+
+Recall that the biggest themes this week are
+\begin{itemize}
+   \item 1-form fields in a form similar to
+      \[
+        \alpha = y^2\ dx - x\ dy
+      \] 
+   \item integrating over a 1-form field along a parameterized path
+\end{itemize}
+
+\subsection{Work, circulation \& Flux}
+
+Consider the planar vector field denoting the force at every point in planar space
+\[
+  \vec{F} = F_x \hat{i} + F_y \hat{j}
+\] 
+
+We can define the work 1-form
+\[
+   \alpha_{ \vec{F}} = F_x\ dx + F_y\ dy
+\] 
+
+Instead of using the unit vectors $ \hat{i}$ and $ \hat{ j}$ to denote the force in each component at every point, we use the 1-form $dx$ and $dy$ to measure the work done in each component. \\
+
+We can also define the flux 1-form
+\[
+   \Phi_{ \vec{F}} = F_x\ dy - F_y\ dx
+\] 
+
+\textbf{Example}
+
+For a parameterized path $\gamma$ along a circle of radius $2$, counter-clockwise (positive) \\
+
+Note that the integral over a 1-form field is independent of the parameterization, only the geometric path \\
+
+Given a vector field in $ \mathbb{R}^2$ 
+\[
+  \vec{F} = y \hat{i} - x^2 \hat{j}
+\] 
+
+We write down the work 1-form
+\[
+   \alpha_{ \vec{F}} = ydx - x^2 dy
+\]  
+
+One possible parameterization of $\gamma$ is
+\[
+  \gamma(t) = \begin{pmatrix} 2 cos t \\ 2 sin t  \end{pmatrix}, 0 \leq t \leq 2\pi
+\] 
+
+The work done is 
+\[
+   \int_{\gamma} \alpha_{ \vec{F}} = \int_{\gamma } y dx - x^2 dy
+\] 
+
+Finding the velocity vector (to relate $dx, dy$ to $dt$
+ \[
+  \gamma ' = \begin{pmatrix} -2sint \\ 2 cost \end{pmatrix} 
+\] 
+
+We can now express work done in terms of $t$ 
+\begin{align*}
+   \int_{\gamma} \alpha_{ \vec{F}} &= \int_{\gamma } y dx - x^2 dy \\
+                                   &= \int_{t = 0}^{2 \pi} (2 sint ) (-2sint) - (4cos^2 t) (2 cost) dt 
+\end{align*}
+
+Some trigonometric tricks to remember!!
+\begin{itemize}
+   \item to integrate $sin^2 t$, use double angle formula
+   \item to integrate  $cos^3 t$, pull out a $cos^2 t = (1 - sin^2 t)$, splitting one term into two terms can be integrated individually
+\end{itemize}
+
+\section{Independence of path theorem}
+
+The main idea is that for some \textit{special} 1-form fields, the integral is independent of the path \\
+
+More formally, if the 1-form field is a gradient 1-form field, the integral is independent of the path and depends only on the end points
+\[
+   \int_{\gamma} df = \left. f \right|_{ \gamma(b)}^{\gamma(a)}  = f( \gamma(b)) - f( \gamma(a))
+\] 
+
+BUT!!! two complications
+\begin{itemize}
+   \item gradient 1-forms are rate, when is $\alpha$ a gradient?
+   \item how do you find $f$?
+\end{itemize}
+
+\subsection{Example}
+
+Given a 1-form field $\alpha$
+\[
+   \int_{\gamma} \alpha = \int_{\gamma}^{} \left( \frac{2x}{y} - 1 \right) dx + \left( 3y^2 - \frac{x^2}{y^2} \right)  dy
+\] 
+
+and a path
+\[
+  \gamma(t) = \begin{pmatrix} 
+    1 + arctan \left( t^2 - t \right)    \\ t + 2 cos 3\pi t
+  \end{pmatrix}
+\] 
+
+\textbf{Prof-g's nugget of wisdom: the more complicated an integral looks, the more relaxed you should feel.  }
+
+\textbf{Step 1}: look for a potential, $f$ (i.e. $df$ is gradient)
+
+$f$ is a potential if 
+\[
+  \alpha = df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy
+\] 
+
+We check that
+\[
+  \frac{2x}{y} -1 = \frac{\partial f}{\partial x}, f = \frac{x^2}{y} - x + C(y)
+\] 
+
+We take the partial w.r.t $y$, getting
+\[
+  \frac{\partial }{\partial y} \frac{x^2}{y} - x + C(y) = -\frac{x^2}{y^2} + C'(y)
+\] 
+
+We also check that
+\[
+   \frac{\partial f}{\partial y} = 3y^2 - \frac{x^2}{y^2} = - \frac{x^2}{y^2} + C'(y) 
+\] 
+
+\textbf{ANSATZ}: We try to find $f$ by writing down
+\[
+  f = \frac{x^2}{y} - x + y^3
+\] 
+
+\textit{ANSATZ is the German word for an unverified guess. but it is in German. so it is an intelligent guess. pronounce it like you are shouting at someone -- Prof G}
+
+We verify
+\[
+  \frac{\partial }{\partial x}  \frac{x^2}{y} - x + y^3 = \frac{2x}{y} - 1
+\] 
+\[
+  \frac{\partial }{\partial y }  \frac{x^2}{y} - x + y^3 = 3y^2 - \frac{x^2}{y^2} 
+\] 
+
+Hence, our \textbf{ANSATZ} is no longer an \textbf{ANSATZ} \\
+
+Now the problem is easy, we find the start and end points by
+\[
+  \gamma(0) = \begin{pmatrix} 1 + arctan(0) \\ 0 + 2 cos 0 \end{pmatrix}   = \begin{pmatrix} 1 \\2 \end{pmatrix} 
+\] 
+
+\[
+  \gamma(1) = \begin{pmatrix} 1 + arctan(0) \\ 1 + 2 cos 3 \pi \end{pmatrix}   = \begin{pmatrix} 1 \\-1 \end{pmatrix} 
+\] 
+
+By independence of path theorem
+\begin{align*}
+   \int_{\gamma}^{} df &= f(\gamma(b)) - f(\gamma(a)) \\ 
+                       &= -1 - \frac{15}{2}  \\
+                       &= - 17 / 2
+\end{align*}
+
+\subsection{Another example}
+
+Given a 1-form field
+\[
+   \int_{\gamma}^{}  y e^{xy} dx + \left( xe^{xy} - ze^{-yz} \right) dy + \left( e^z - ye^{-yz} \right) dz
+\] 
+
+And a path
+\[
+  \gamma(t) = \begin{pmatrix} t \\ 2t \\ 3t \end{pmatrix} , 0 \leq t \leq 1
+\] 
+
+\textit{You can write down an unsubstantiated ANSATZ, as long as you show that it works!}
+
+Our logic in approaching is problem is
+
+\textbf{If} $ye^{xy} $ is $ \frac{\partial f}{\partial x}$,
+\[
+   f = e^{xy} + C(y, z)
+\] 
+
+\textbf{If} $ xe^{xy} - z e^{-yz} $ is $ \frac{\partial f}{\partial y}$, 
+\[
+   f = e^{xy} + e^{-yz} + C_2 \left( x, z \right) 
+\] 
+
+
+\textbf{If} $ e^{z} -  ye^{-yz} $ is $ \frac{\partial f}{\partial z}$, 
+\[
+   f = e^{z} + e^{-yz} + C_3 \left( x, y \right) 
+\] 
+
+Merging it all
+\[
+   f = e^{xy} + e^{-yz} + e^z
+\] 
+
+\section{Parameterizing paths}
+
+Make sure you know how to parameterize paths
+\begin{itemize}
+   \item straight line paths
+      \begin{itemize}
+         \item for a line from $ \begin{pmatrix} -1 \\ 2 \\ 0 \end{pmatrix} $ to $ \begin{pmatrix}  3 \\ 5 \\ -3 \end{pmatrix} $, we can parameterize it with
+            \[
+              \gamma(t) = \begin{pmatrix} -1 \\ 2 \\ 0 \end{pmatrix} + t \begin{pmatrix}  3 - (-1) \\ 5 - 2 \\ -3 - 0 \end{pmatrix} , 0 \leq t \leq 1
+            \] 
+      \end{itemize}
+   \item circular paths
+\end{itemize}
+
+
+\section{Prof-g's favorite 1-form}
+\[
+  \alpha = xdy
+\] 
+
+Note that that this is not a gradient
+\[
+  f = xy, df = ydx + xdy \neq xdy
+\] 
+ 
+Is there a way to get from a point in the 3rd quadrant into the 1st quadrant without a movement being detected by  $\alpha$???? \\
+
+Yes, you move in a path parallel to the $x$ axis ($dy = 0$), and then move along the  $y$ axis ($x = 0$), and finally along a path parallel to the axis again. \\
+
+This is not why it is his favorite 1-form, it just helps with checking your understanding of 1-forms
+
+
+
+
+
+

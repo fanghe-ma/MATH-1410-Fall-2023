@@ -1,0 +1,349 @@
+\chapter{Week 13}
+
+\section{Green's Theorem}
+
+\subsection{The Theorem}
+\begin{framed}
+   Let $D \in \mathbb{R}^2$ be a bounded domain with oriented boundary $ \partial D$. Then, for $ P, Q$ differentiable on all of $D$, 
+   \[
+      \int_{\partial D}^{ } Pdx + Qdy = \iint_{D} \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} dA 
+   \] 
+\end{framed}
+
+Green's Theorem relates the integral of a 1-form over the \textbf{boundary of a domain} in the plane to the integral of a certain derivative over the \textbf{domain interior} \\
+
+\textbf{For some special 1-forms...}, the resulting integral is equal to the area of the bounded domain
+\begin{itemize}
+   \item $\alpha = xdy $
+      \[
+         \int_{\gamma}^{}   xdy= \iint_{D} \frac{\partial }{\partial x}x dA = A
+      \] 
+\end{itemize}
+
+\subsection{Orientation and Boundaries}
+
+Orientation on a planar domain can either be
+\begin{itemize}
+   \item positive: counterclockwise (by default)
+   \item negative: clockwise
+\end{itemize}
+
+The default is to assume a positive orientation on a planar domain. Such an orientation induces a counterclockwise rotation on the boundary. \\
+
+A simply connected domain has one boundary component. \\
+
+A multiply connected domain has multiple boundary components, consistent with the notion of a infinitesimal counterclockwise rotation.
+
+\subsection{Differentiability, orientation \& Green's Theorem}
+
+Recall that in order to apply Green's Theorem over $D$, the 1-form must be differentiable on \textbf{all of $D$}
+
+Consider a 1-form
+\[
+  \alpha = \frac{-y}{x^2 + y^2} dx + \frac{x}{x^2 + y^2}dy
+\] 
+
+Suppose we want to integrate the 1-form on $\mathbb{R}^2$ over the counterclockwise unit circle $u$, we can compute the integral using u-sub
+\begin{align*}
+   \int_{u}^{}  \frac{-y}{x^2 + y^2} dx + \frac{x}{x^2 + y^2}dy &= 
+   \int_{t = 0 }^{2\pi}  \frac{-sint (-sint)}{sin^2 t + cos^2 t} + \frac{cost (cost)}{sin^2 t + cos^2 t} dt \\
+                                                                &= 2\pi
+\end{align*}
+
+However, if we try to use Green's Theorem, the same integral becomes
+
+\[
+   \iint_{D} \frac{\partial }{\partial x} \frac{x}{x^2 + y^2} - \frac{\partial }{\partial y} \frac{-y}{x^2 + y^2} dA = \iint_{D} \frac{(x^2 + y^2) - 2x^2 + (x^2 + y^2) - 2y^2}{(x^2+ y^2)^2 } = 0 \neq 2\pi
+\] 
+
+This is because the 1-form is not differential at the origin \\
+
+Now, if we want to integrate the 1-form over some arbitrarily complicated, singly connected domain $D_0$ that includes the origin, we can compute the integral by instead computing the integral over a \textbf{multiply connected} domain $D_1$ with the unit circle cut out \\
+
+Note that $D_1$ has 2 boundaries, the outer boundary identical to $D_0$, and an inner \textbf{clockwise boundary}  $u$, which is the unit circle. \\
+
+Green's Theorem now applies to $D_1$, and the integral, as computed previously, is
+\[
+   \iint_{D_1} \frac{\partial }{\partial x} \frac{x}{ x^2 + y^2} - \frac{\partial }{\partial y} \frac{-y}{ x^2  + y^2} dA = 0
+\] 
+
+Let the outer boundary be $\gamma$, inner boundary be $u$
+ \[
+  \int_{\gamma - u}^{ }  \alpha = \int_{\gamma}^{}  \alpha - \int_{u}^{} \gamma = 0
+\] 
+
+\section{Gradient, Curl \& Divergence}
+This section combines differentiation, 1-forms and what we learned previously about the gradient
+
+\subsection{Curl and divergence densities}
+
+For a vector field 
+\[
+  \vec{F} = F_x  \underline{i} + F_y \underline{j}
+\] 
+
+We can write down two new versions of Green's Theorem, for circulation and flux respectively
+
+\textbf{Circulation}
+\[
+  \int_{\partial D}^{}  F_x dx + F_y dy = \iint_D \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}  dA
+\] 
+
+\textbf{Flux}
+\[
+  \int_{\partial D}^{}  F_x dy - F_y dx = \iint_D \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y}  dA
+\] 
+
+We can think of the integrands of the double integrals as some form of \textbf{densities}. In fact, they are two different types of \textbf{derivatives} of the vector fields
+
+\textbf{Curl}
+\begin{framed}
+   \textbf{Curl} indicates, at each point in a vector field, the infinitesimal counterclockwise spin exhibited by the vector field. It is a limiting intensity of circulation \\
+ 
+   Density is given by
+
+   \[
+     \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}
+   \] 
+
+   It is denoted as 
+   \[
+     \nabla \times \vec{F}
+   \] 
+
+\end{framed}
+
+\textbf{Divergence}
+\begin{framed}
+   \textbf{Divergence} indicates, at each point in a vector field, the infinitesimal expansion or contraction exhibited by the vector field. It is a limiting intensity of flux \\
+
+   Density is given by
+
+   \[
+     \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y}
+   \] 
+
+   It is denoted as 
+   \[
+     \nabla \cdot \vec{F}
+   \] 
+\end{framed}
+
+\subsection{Green Theorem through the perspective of curl and divergence}
+
+Given a vector field
+\[
+  \vec{F} = F_x \underline{i} + F_y \underline{j}
+\] 
+
+For $D \in \mathbb{R}^2$ a domain with oriented boundary $ \partial D$
+
+%\begin{align*}
+%   \int_{\partial D}^{}  F_x dx + F_y dy  = \iint_{D} \left( 
+%      \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y    \right)  dA &= \iint_D \left( \nabla \times \vec{F} \right) dA \\
+%      \int_{\partial D}^{} - F_y dx + F_x dy  = \iint_{D} \left( 
+%      \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y    \right)  dA &= \iint_D \left( \nabla \cdot \vec{F} \right) dA
+%\end{align*}
+
+\subsection{Divergence in 3-D}
+\begin{framed}
+   The divergence of a 3-D vector field is a scalar field. \\
+
+   The divergence at a point indicates the local expansion or contraction of the \textbf{volume element}
+
+   \[
+     \nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+   \] 
+\end{framed}
+
+\subsection{Curl in 3-D}
+\begin{framed}
+   The curl of a 3-D vector field is another vector field. \\
+
+   The formula for curl has as its components the three circulation densities in each plane
+
+   \[
+     \nabla \times \vec{F} = Det \begin{bmatrix} 
+        i & \frac{\partial }{\partial x} & F_x   \\
+        j & \frac{\partial }{\partial y} & F_y   \\
+        k & \frac{\partial }{\partial z} & F_z   \\
+     \end{bmatrix}
+   \] 
+
+   \[
+     \nabla \times \vec{F} = 
+     \left( \frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}  \right)  \underline{i} + 
+     \left( \frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}  \right)  \underline{j} + 
+     \left( \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}  \right)  \underline{k} 
+   \] 
+  
+\end{framed}
+
+
+\section{Differential Forms in 3-D}
+
+\subsection{Euclidean Forms}
+
+\subsubsection{1-forms}
+
+In 3-D, we have the basis 1-forms which give \textbf{oriented projected length} along the basis axes
+\[
+  dx, dy, dz
+\] 
+
+From the basis 1-forms, a \textbf{linear} 1-form is of the following form, and returns \textbf{oriented projected length} along some direction
+\[
+  \alpha = a\ dx + b\ dy + c\ dz
+\] 
+
+A 1-form field is one of the form
+\[
+  \alpha = f_1 dx + f_2 dy + f_3 dz
+\] 
+
+\subsubsection{2-forms}
+
+In general, a k-form takes $k$ ordered vectors and returns a scalar
+
+In 3-D, we have basis 2-forms which give \textbf{oriented projected area} 
+\[
+  dx \wedge dy, dy \wedge dz, dz \wedge dx
+\] 
+
+Each basis 2-form takes 2 vectors and returns some scalar, where 
+\begin{itemize}
+   \item $dx$ extracts the $x$ component
+   \item $dy$ extracts the $y$ component
+   \item $dz$ extracts the $z$ component
+\end{itemize}
+
+The 2-forms are thus
+\begin{align*}
+   \left( dx \wedge dy \right) ( \underline{u}, \underline{v}) &= Det \begin{bmatrix} 
+      u_x & v_x \\ u_y & v_y  
+   \end{bmatrix} \\
+   \left( dy \wedge dz \right) ( \underline{u}, \underline{v}) &= Det \begin{bmatrix} 
+      u_y & v_y \\ u_z & v_z  
+   \end{bmatrix} \\
+   \left( dz \wedge dx \right) ( \underline{u}, \underline{v}) &= Det \begin{bmatrix} 
+      u_z & v_z \\ u_x & v_x  
+   \end{bmatrix}
+\end{align*}
+
+A linear 2-form is one of the form
+\[
+  \beta = a\ dx \wedge dy + b\ dy \wedge dx + c\ dz \wedge dx
+\] 
+
+A 2-form field is one of the form
+\[
+  \beta = f_1 dx \wedge dy + f_2 dy \wedge dz + f_3 dz \wedge dx
+\] 
+
+\subsubection{3-form}
+
+The basis 3-form is 
+\[
+  dx \wedge dy \wedge dz
+\] 
+
+The basis 3-form gives the oriented volume when given an ordered triplet of vectors $ \left( \underline{u}, \underline{v}, \underline{w} \right) $ in $ \mathbb{R}^3$
+
+\[
+   \left( dx \wedge dy \wedge dz \right) \left(  \underline{u},  \underline{v}, \underline{w} \right)  = Det \begin{bmatrix} 
+      u_x & v_x & w_x \\  
+      u_y & v_y & w_y \\  
+      u_z & v_z & w_z
+   \end{bmatrix}
+\] 
+
+
+\subsection{The Wedge}
+
+The wedge product is a symbolic representation of stacking vectors into a determinant. 
+
+The rules are
+\begin{itemize}
+   \item $ dx_i \wedge dx_j = - dx_j \wedge dx_i$, 
+   \item $ dx_i \wedge dx_i = 0$
+\end{itemize}
+
+\subsection{Differentiation of form fields}
+
+Recall that the derivative of a scalar field $f$ (0-form field) is a gradient 1-form
+
+\[
+  df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y}dy + \frac{\partial f}{\partial z}dz
+\] 
+
+Differentiating a 1-form field, we have
+\[
+  d(f dx_i) = df \wedge dx_i
+\] 
+
+For example,
+\begin{align*}
+   d(f\ dx) &= df \wedge dx \\
+            &= \frac{\partial f}{\partial y} dy \wedge dx + \frac{\partial f}{\partial z} dz \wedge dx
+\end{align*}
+
+In general, taking the derivative of a $k$-form field gives a $k+1$ form field
+
+\subsubsection{Flux}
+\begin{framed}
+\[
+   \phi_{\vec{F}} ( \underline{u}, \underline{v}) = Det \left[ \vec{F} | \underline{u} | \underline{v} \right]
+\] 
+
+\[
+   \phi_{\vec{F} } = F_x dy \wedge dz + F_y dz \wedge dx + F_z dx \wedge dy
+\] 
+\end{framed}
+
+\subsubsection{Curl}
+\begin{framed}
+Computing the derivative of 
+\[
+  \alpha = f_1 dx + f_2 dy + f_3 dz
+\] 
+
+\[
+  d \alpha = df_1 \wedge dx + df_2 \wedge dy + df_3 \wedge dz
+\] 
+
+Where
+\[
+  df_i = \frac{\partial f_i}{\partial x }  dx + \frac{\partial f_i}{\partial y} dy + \frac{\partial f_i}{\partial z}dz
+\] 
+
+\begin{align*}
+   d\alpha &= 
+   \left( \frac{\partial f_1}{\partial y}dy  + \frac{\partial f_1}{\partial z} dz\right) \wedge dx + 
+   \left( \frac{\partial f_2}{\partial x}dx  + \frac{\partial f_2}{\partial z} dz\right) \wedge dy + 
+   \left( \frac{\partial f_3}{\partial x}dx  + \frac{\partial f_3}{\partial y} dy\right) \wedge dz  \\
+           &= 
+           \left( \frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z} \right) dy \wedge dz
+           \left( \frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x} \right) dz \wedge dx
+           \left( \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right) dx \wedge dy
+\end{align*}
+
+Hence 
+\[
+   d \alpha_{ \vec{F}} = \phi_{\nabla \times \vec{F}}
+\] 
+\end{framed}
+
+
+\subsubsection{Divergence}
+\begin{framed}
+Finding the derivative of
+\[
+  \beta = f_1 dy \wedge dx + f_2 dz \wedge dx + f_3 dx \wedge dy
+\] 
+
+\[
+  d \beta = \left( \frac{\partial f_1}{\partial x} + \frac{\partial f_2}{\partial y} + \frac{\partial f_3}{\partial z} \right) dx \wedge dy \wedge dz
+\] 
+\end{framed}
+
+

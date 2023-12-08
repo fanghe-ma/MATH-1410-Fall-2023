@@ -1,0 +1,130 @@
+\chapter{Week 3 Lecture}
+
+\section{Matrix Algebra}
+
+\subsection{Matrix-Vector Multiplication}
+\begin{framed}
+   Think about a matrix-vector multiplication as a weighted sum of the individual column elements based on the vector
+
+   Find the product of matrix $ \begin{pmatrix} 
+      1 & 7 & 2 & 0 \\
+      -1 & 5 & 0 & 3 \\
+      0 & -4 & 2 & 1 
+   \end{pmatrix}
+   $ and vector $ \begin{pmatrix} 1 \\ 0 \\ -1 \\ 2 \end{pmatrix} =$  \\
+   $1 \begin{pmatrix} 1\\-1\\0 \end{pmatrix} -1 \begin{pmatrix} 2 \\ 0 \\ 2 \end{pmatrix} + 2 \begin{pmatrix} 0 \\ 3 \\1 \end{pmatrix} = $  
+   $ \begin{pmatrix} -1 \\ 5 \\ 0 \end{pmatrix} $
+\end{framed}
+
+\begin{framed}
+   For two vectors $ \underline{u} \text{ and } \underline{v} \in \mathbb{R}^n$, \[
+     \underline{u}^T \underline{v} = \underline{u} \cdot \underline{v}
+   \] 
+   
+   \textbf{Fact}: For two matrices $A, B$
+   \[
+      \left( AB \right) ^T = B^T A^T 
+   \] 
+   \[
+      \left( AB \right) ^{-1} = B^{-1}A^{-1}
+   \] 
+
+   \textbf{Proof of the inverse}
+   The inverse has to satisfy the condition \[
+      A A^{-1} = I
+   \] 
+
+   Hence for $B^{-1}A^{-1}$ \[
+      (B^{-1}A^{-1}(AB) = B^{-1}(A^{-1}A)B = B^{-1}IB = B^{-1}B = I
+   \] 
+
+   \textbf{Proof of the transpose}
+
+   Recall from lecture video that $ \left( AB \right)_{ij} = \sum_{k=1}^{n} A_{ik}B_{kj}$
+
+   \[
+      \left( AB \right)_{ij}^T = \left( AB \right)_{ji} = \sum_{k=1}^{n} A_{jk} B_{ki}
+   \] 
+   \[
+      \left( A^T B^T \right)_{ij} = \left( A^T_{ik} B^T_{kj} \right) = \sum_{k=1}^{n} A_{jk} B_{ki}
+   \] 
+  
+\end{framed}
+
+\subsection{Gaussian elimination / Row reduction}
+
+\begin{framed}
+   Recall from last week that to find the line of intersection of two planes, we used the point and tangent vector method \\
+
+   Alternatively, for two planes 
+   \begin{align*}
+      x - 2y + 5z &= 10 \\
+      6x - 2y + 3z &= -1
+   \end{align*}
+
+   We can solve for $x$ and $y$ with $z$ as a parameter, which would give the parameterized equation of the line at the intersection of the two planes
+
+  \[
+    \begin{pmatrix} 
+       1 & -1 & 5 10\\
+       6 & -2 & 1 & -1
+    \end{pmatrix}
+  \]  
+  
+\end{framed}
+
+
+\subsection{Block-diagonal matrices}
+\begin{framed}
+   Consider the matrix block diagonal matrix $A$\[
+     \begin{pmatrix} 
+        3 & 4 & 0 & 0 & 0 \\  
+        2 & 3 & 0 & 0 & 0 \\  
+        0 & 0 & -4 & 0 & 0 \\  
+        0 & 0 & 0 & 5 & -2 \\  
+        0 & 0 & 0 & 6 & -3 
+     \end{pmatrix}
+   \] 
+
+   $A^{-1}$ is also a block diagonal matrix, where each "sub-block" is the inverse of the original block 
+   \[
+     \begin{pmatrix} 
+        3 & -4 & 0 & 0 & 0 \\  
+        -2 & 3 & 0 & 0 & 0 \\  
+        0 & 0 & - \frac{1}{4} & 0 & 0 \\  
+        0 & 0 & 0 & 1 & -\frac{2}{3} \\  
+        0 & 0 & 0 & 2 & -\frac{5}{3}
+     \end{pmatrix}
+   \] 
+\end{framed}
+
+\subsection{Finding the inverse via row reduction}
+\begin{framed}
+   To find the inverse of the matrix \[
+     \begin{pmatrix} 
+        1 & 2 & 0 \\  
+        3 & 4 & 0 \\  
+        0 & 0 & 4 \\  
+     \end{pmatrix}
+   \] 
+
+   We row reduce the following matrix \[ 
+  \left( 
+      \begin{array}{c c c | c c c}
+      1 & 2 & 0 & 1 & 0 & 0\\  
+      3 & 4 & 0 & 0 & 1 & 0\\  
+      0 & 0 & 4 & 0 & 0 & 1\\  
+      \end{array}
+  \right) 
+   \] 
+
+  
+\end{framed}
+
+
+
+
+
+
+
+

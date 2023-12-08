@@ -1,0 +1,217 @@
+\chapter{Week 2 lecture notes}
+
+\section{Recap from previous week}
+From last week
+\begin{itemize}
+ \item The n-dimensional euclidean space $\mathbb{R}^n$
+ \item functions where \[
+   f : \mathbb{R}^n \rightarrow \mathbb{R}^m
+ \]  
+\end{itemize}
+
+\section{This week}
+
+\begin{itemize}
+   \item   enrich algebraic manipulation of vectors where $ \underline{v} = \begin{pmatrix} v_1 \\v_2 \\ v_3 \\\vdots \\ v_n \end{pmatrix} $ 
+   \item preview of calculus with vectors
+  
+\end{itemize}
+
+
+\section{The dot product}
+
+\begin{framed}
+   For two vectors $ \underline{v}$ and $ \underline{u}$, their dot product is
+   \begin{align*}
+      \underline{u} \cdot \underline{v} &= \sum_{k = 1}^{n} u_k v_k
+   \end{align*}
+
+   Note the similarity with finding the \emph{norm} of a vector
+   \begin{align*}
+      \lVert \underline{v} \rVert  &= \sqrt{v_1^2 + v_2^2 + v_3^2 + \hdots + v_n^2} \\
+      \underline{v} \cdot \underline{v} &= \lVert \underline{v} \rVert^2
+   \end{align*}
+
+   Note some intuitive rules for the dot product, and their geometric meaning
+   \begin{align*}
+      \underline{u} \cdot ( \underline{v} + \underline{w}) &= \underline{u} \cdot \underline{v} + \underline{u} \cdot \underline{w} \\
+      \underline{v} \cdot \underline{0} &= 0
+   \end{align*}
+
+   \textbf{IMPORTANT - Commit to memory!!} \\
+   For vectors $ \underline{v}$ and $ \underline{u}$ separated by angle $ \theta$
+   \begin{align*}
+      \underline{u} \cdot \underline{v} &= \lVert \underline{u} \rVert  \lVert \underline{v} \rVert cos \theta
+   \end{align*}
+
+   Hence the angle $ \theta $ is  \[
+     arccos \frac{ \underline{u} \cdot \underline{v}}{ \lVert \underline{u} \rVert \lVert \underline{v} \rVert }
+   \] 
+
+
+   For example, for vector $ \underline{v} = \begin{pmatrix} 2 \\ 6 \\0\\-1\\5 \end{pmatrix}$, find a vector $ \underline{u}$ where all the elements are non-zero, which is orthogonal to \underline{v} \\
+
+   one such vector is \[
+     \underline{u} = \begin{pmatrix} 
+       -6 \\ 2 \\ 343738943948390 \\ 3 \\ 1  
+     \end{pmatrix}
+     :)
+   \] 
+
+\end{framed}
+
+\subsection{The Cross Product}
+\begin{framed}
+   Note that unlike the dot product which works in \emph{all dimensions}, the cross product only works in
+   \begin{itemize}
+      \item $\mathbb{R}^3$
+      \item $\mathbb{R}^2$, if you cheat :)
+   \end{itemize}
+
+   The dot product of two vectors $ \underline{u }$ and $ \underline{v}$ is 
+   \begin{align*}
+      \underline{u} \times \underline{v} = \begin{pmatrix} 
+        u_2 v_3-u_3 v_2 \\  
+        u_3 v_1-u_1 v_3 \\  
+        u_1 v_2-u_2 v_1 
+      \end{pmatrix}
+   \end{align*}
+
+   Note the anti-commutative property of the cross product 
+   \begin{align*}
+     \underline{u} \times \underline{v} = - \underline{v} \times \underline{u}
+   \end{align*}
+
+   \textbf{IMPORTANT - Commit to memory!! }
+
+   Note the geometric understanding of the cross product, where the length of the cross product contains information about the length of  $ \underline{u}$ and $ \underline{v}$ and the angle between them $\theta$
+
+    \begin{align*}
+      \lVert \underline{u} \times \underline{v} \rVert = \lVert \underline{u} \rVert \lVert \underline{v} \rVert sin \theta
+   \end{align*}
+
+   The length of $ \underline{u} \times \underline{v}$ also gives the \emph{area of the parallelogram} with sides $ \underline{u}$ and $ \underline{v}$ \\
+
+   Note that instead of detecting orthogonality like the dot product, the cross product detects parallel vectors \\
+
+   Also note the \emph{mutual orthogonality} of the cross product $ \underline{u} \times \underline{v}$ to $ \underline{u}$ and $ \underline{v}$
+\end{framed}
+
+\subsection{The Scalar Triple Product}
+
+\begin{framed}
+   \textbf{Don't need to commit to memory!!} \\
+   The scalar triple product takes as its arguments three vectors in $ \mathbb{R}^3$:
+      $ \underline{u}$, 
+      $ \underline{v}$, 
+      $ \underline{w}$,
+   And returns a scalar
+   \[
+     \underline{u} \cdot \left( \underline{v} \times \underline{w} \right)
+   \] 
+
+   However, know the geometric interpretation of the scalar triple product, which contains information about the 3-d volume spanned by $ \underline{u}, \underline{v}, \underline{w}$, in the shape of parallelopiped \\
+
+   Also note the anti-symmetrical properties of the scalar triple product
+  \begin{align*}
+       &  \underline{u} \cdot \left( \underline{v} \times \underline{w} \right) \\
+     = &  \underline{v} \cdot \left( \underline{w} \times \underline{u} \right) \\
+     = &  \underline{w} \cdot \left( \underline{u} \times \underline{v} \right) \\
+     = & - \underline{u} \cdot \left( \underline{w} \times \underline{v} \right) \\
+     = & - \underline{w} \cdot \left( \underline{v} \times \underline{u} \right) \\
+     = & - \underline{v} \cdot \left( \underline{u} \times \underline{w} \right) 
+  \end{align*}
+\end{framed}
+
+
+\textbf{A note on PrepQuiz, Practice problems, and the Friday Quiz}
+\begin{itemize}
+   \item PrepQuiz is for conceptual understanding. Problems are different from those found in the Friday quiz
+   \item Practice problems found on canvas are more similar to the problems expected on Friday
+\end{itemize}
+
+
+\subsection{Calculus with parameterized curves}
+
+\begin{framed}
+   For a curve 
+   \begin{align*}
+     \gamma (t) = \begin{pmatrix} 
+       x(t) \\ y(t) \\ z(t)  
+     \end{pmatrix}
+   \end{align*}
+
+   The derivative is trivial
+   \begin{align*}
+     \gamma ^{\prime} (t) = \begin{pmatrix} 
+       x ^{\prime}(t) \\ y ^{\prime}(t) \\ z ^{\prime}(t)  
+     \end{pmatrix}
+   \end{align*}
+
+   If the position vector is denoted by $ \gamma(t)$, then 
+    \begin{align*}
+       \text{velocity }& \underline{v} = \gamma ^{\prime} \\
+       \text{speed }& s = \lVert \underline{v} \rVert  \\
+       \text{acceleration }& \underline{a} = \gamma ^{\prime\prime}
+   \end{align*}
+
+   \textbf{Ability to decompose acceleration into its orthogonal components is NOT needed for 1410}
+   
+   The acceleration vector $ \underline{a}$ can be decomposed into
+   \begin{align*}
+      \underline{a} = \underline{a}_{TAN} + \underline{a}_{NORMAL}
+   \end{align*}
+
+   Note the unit tangent vector, especially note that all derivatives are w.r.t parameter $t$
+   \begin{align*}
+      \hat{\underline{T}} &= \frac{\gamma ^{\prime}}{ \lVert \gamma ^{\prime} \rVert } \\
+   \end{align*}
+
+   and the unit normal vector
+   \begin{align*}
+      \hat{\underline{N}} &= \frac{ \frac{d}{dt} \hat{ \underline{T}}}{ \lVert \frac{d}{dt} \hat{ \underline{T} }\rVert } \\
+                          &= \frac{ \underline{T} ^{\prime}}{ \lVert \underline{T} \rVert }
+   \end{align*}
+\end{framed}
+
+
+\subsection{Rules for derivatives of vectors}
+\begin{framed}
+
+   For two vectors $ \underline{ u}$ and $ \underline{v}$, 
+   \begin{align*}
+      \left( \underline{ u} \cdot \underline{v} \right) ^{\prime} &= \underline{u} ^{\prime} \cdot \underline{v} + \underline{u} \cdot \underline{v} ^{\prime} \\
+      \left( \underline{ u} \times \underline{v} \right) ^{\prime} &= \underline{u} ^{\prime} \times \underline{v} + \underline{u} \times \underline{v} ^{\prime}
+   \end{align*}
+\end{framed}
+
+\subsection{Arclength of a curve}
+\begin{framed}
+   For a curve \[
+      \gamma: [a. b] \rightarrow \mathbb{R}^n
+   \] 
+
+   As covered in 1400, don't memorize complicated formulae for volume or work done! Write down \[
+     l = \int dl
+   \] where $dl$ can be understood as a velocity vector, hence the arclength element $dl$ is the "speed" of moving along curve $\times$ the "time elapsed" \[
+     dl = \lVert \gamma ^{\prime} \rVert dt
+   \] hence \[
+   l = \int dl = \int_{a}^{b} \lVert \gamma ^{\prime} \rVert dt
+   \] 
+
+
+  
+\end{framed}
+
+
+
+
+
+
+
+
+
+
+
+
+

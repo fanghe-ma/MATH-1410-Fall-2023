@@ -1,0 +1,250 @@
+\chapter{Week 8 Lecture}
+
+
+In week 7, we focused on \textbf{scalar fields}, or functions of the form 
+\[
+  f: \mathbb{R}^n \rightarrow \mathbb{R}
+\] 
+
+It is a scalar field because it assigns a scalar to every point in the field \\
+ 
+The derivative $\left[ D f \right]_{} $ is still a linear transformation that takes rates of change of inputs and gives rate of change of the output
+
+\[
+  \left[ D f \right]_{}  = \begin{bmatrix} 
+     \frac{\partial f}{\partial x_1}   & \frac{\partial f}{\partial x_2} & \hdots & \frac{\partial f}{\partial x_n}
+  \end{bmatrix} 
+\] 
+
+For scalar fields, we can find the gradient \[
+   \nabla f = \begin{bmatrix} 
+     \frac{\partial f}{\partial x_1}   \\ \frac{\partial f}{\partial x_2} \\ \vdots \\ \frac{\partial f}{\partial x_n}
+   \end{bmatrix}
+\] 
+
+\section{Optimization}
+
+Recall from high school calculus that for a function $f: \mathbb{R} \rightarrow \mathbb{R}$, $a$ is a critical point if it satisfies a few tests \\
+
+Consider for a point near $a$, we can approximate such point via the Taylor Series
+\[
+  f(a+h) = f(a) + f'(a)h + \frac{1}{2}f''(a)h^2
+\] 
+
+The derivatives $f'(a)$ and $f''(a)$ determine what the function looks like near $a$.
+\begin{itemize}
+   \item if $f'(a)=0$, we can infer the shape of $f(a)$ about $a$ via $f''(a)$
+   \item if $f''(a)=0$, we can infer the shape of $f(a)$ about $a$ via $f'(a)$
+\end{itemize}
+
+\textbf{In the multivariate case}
+\[
+  f: \mathbb{R}^n \rightarrow \mathbb{R}
+\] 
+
+Locally at $ \underline{a}$
+\[
+   f( \underline{a} + \underline{h}) = f( \underline{a}) + \left[ D f \right]_{ \underline{a}} \underline{h} + \frac{1}{2} \underline{h}^T \left[ D^2 f \right]_{ \underline{h}}  + \hdots
+\] 
+
+\begin{framed}
+   $ \underline{a}$ is critical if $\left[ D f \right]_{ \underline{a}} = 0$ (i.e. all partial derivatives are $0$ ) or undefined
+\end{framed}
+
+\textbf{The second order derivative}
+In true multivariate case, the second order derivative is a tensor, which is beyond the scope of this course \\
+
+For scalar functions, the second order derivative is a square, symmetrical matrix where
+\[
+\left[ D^2 f \right]_{ij}  = \frac{\partial^2 f}{\partial x_i y_j}
+\] 
+
+For example
+\[
+  f = x^2 -3xy + \frac{y^2}{2}
+\] 
+
+\[
+  \left[ D f \right]_{} = \begin{bmatrix} 
+     2x - 3y & -3x + y  
+  \end{bmatrix}
+\] 
+\[
+  \left[ D^2 f \right]_{} = \begin{bmatrix} 
+     2 & -3 \\ -3 & 1  
+  \end{bmatrix}
+\] 
+
+For critical points, this course will focus on $2d$ scalar fields
+\[
+  f: \mathbb{R}^2 \rightarrow \mathbb{R}
+\] 
+where critical points are either
+\begin{itemize}
+   \item local minima
+   \item local maxima
+   \item saddle point
+   \item degenerate
+\end{itemize}
+
+\textbf{Algorithm for determining the nature of a critical point}
+
+For a critical point $ \underline{a}$
+\begin{itemize}
+   \item look at $Det \left[ D^2 f \right]_{ \underline{a}} $
+      \begin{itemize}
+         \item if $det < 0$ then saddle point 
+         \item if $det = 0$ then degenerate case, test fails
+         \item if $det > 0$ then compute the trace 
+            \begin{itemize}
+               \item if the trace $>0$,               
+                  \begin{itemize}
+                     \item local minima
+                  \end{itemize}
+               \item if the trace $<0$,               
+                  \begin{itemize}
+                     \item local maxima
+                  \end{itemize}
+               \item if the trace $=0$?
+                  \begin{itemize}
+                     \item this case will never show up, if trace is $0$, determinant would have been $0$, think about why!
+                  \end{itemize}
+            \end{itemize}
+      \end{itemize}
+\end{itemize}
+
+\section{Extension - Game theory}
+
+Consider a 2-player game, each with 2 strategies, with the following payout matrix
+\[
+  P = \begin{bmatrix} 
+     -1 & 2 \\ 3 & -2  
+  \end{bmatrix}
+\] 
+
+Suppose the players play at random, but with a probability distribution of their strategies \\
+
+Let the two players be $A$ and $B$ 
+\[
+  \underline{a} = \begin{pmatrix} x \\ 1-x \end{pmatrix} ,  \underline{b} = \begin{pmatrix} y \\ 1-y \end{pmatrix} 
+\] 
+
+The average payout to $A$ is a function of $x, y$ 
+\begin{align*}
+   f(x, y) &= \underline{a}^T P \underline{b} \\
+           &= \underline{a}^T \begin{bmatrix} 
+              -1 & 2 \\ 3 & 2  
+           \end{bmatrix} \begin{pmatrix} y \\ 1-y \end{pmatrix} 
+            \\
+           &=  \underline{a}^T \begin{pmatrix} -y + 2(1-y) \\ 3y - 2(1-y) \end{pmatrix}  \\
+           &=  \begin{pmatrix} x \\ 1-x \end{pmatrix} \begin{pmatrix} -y + 2(1-y) \\ 3y - 2(1-y) \end{pmatrix}  \\ 
+           &= -8xy + 4x + 5y -2
+\end{align*}
+
+To find the critical point of $P$, we take the derivative
+\[
+  \left[ D f \right]_{} = \begin{bmatrix} 
+     -8y + 4 & -8x + 5  
+  \end{bmatrix}
+\] 
+
+At critical point, all partial derivatives are $0$, hence
+\[
+  x = \frac{5}{8}, y = \frac{1}{2}
+\] 
+
+To find the nature of the critical point
+\[
+   \left[ D^2 f \right]_{} = \begin{bmatrix} 
+      0 & -8 \\ -8 & 0
+   \end{bmatrix}
+\] 
+
+Since $Det \left[ D^2 f \right]_{} < 0$, the critical point is a saddle point
+
+\section{Constrained Optimization}
+
+We want to maximize a function of the form
+\[
+  F: \mathbb{R}^n \rightarrow \mathbb{R}
+\] 
+
+subject to some constraints \\
+
+Recall that in a simpler case, if we subject our system to the constraint that \[
+  x + y = 10
+\] 
+
+We can \textbf{parameterize} the system, by expressing $y$ as a function of $x$, i.e. $y = 10 -x$, and solve for the optimization accordingly\\
+
+In the real world, most optimization problems are \textbf{implicit}, and hence we need the \textbf{Lagrange} \\
+
+\subsection{The Lagrange equations}
+
+Suppose we want to \textbf{extremize} F subject to $G = c$
+ \begin{itemize}
+    \item $G = c$ is some constraint
+    \item $G = c$ represents a level set
+\end{itemize}
+
+\begin{framed}
+We need to solve for where the vectors of $\nabla F$ and $\nabla G$ are parallel, and the constraints are satisfied
+\[
+  \nabla F  = \lambda \nabla G
+\] 
+\[
+  G = c
+\] 
+where $\lambda$ is the Lagrange Multiplier
+\end{framed}
+
+\textbf{Example}
+
+Suppose we want to solve
+\[
+  F = x^2 + y^2
+\] 
+Constrained to the implicit constraint
+\[
+  G = 3x + 2y = 6
+\] 
+
+Now we resist the urge to parameterize the system and solve for a single variable optimization, and turn instead to Lagrange \\
+
+We begin by finding the gradients
+\[
+  \nabla F = \begin{pmatrix} 2x \\ 2y \end{pmatrix} , \nabla G = \begin{pmatrix} 3 \\2 \end{pmatrix} 
+\] 
+
+By the Lagrange Equation, 
+\begin{align*}
+   \nabla F &= \lambda \nabla G \\
+   \begin{pmatrix} 2x \\ 2y \end{pmatrix} &= \lambda \begin{pmatrix} 3 \\2 \end{pmatrix} 
+\end{align*}
+
+We obtain 3 equations and 3 unknowns
+\begin{align*}
+   2x &= 3 \lambda \\
+   2y &= 2 \lambda \\
+   3x + 2y &= 6
+\end{align*}
+
+Solving for $x, y$, we get
+\[
+  x = \frac{18}{13}, y = \frac{12}{13}
+\] 
+
+Can we tell whether this point is a local minima or maxima?
+\begin{itemize}
+   \item Yes, but we need eigenvalues
+   \item Out of scope for 1400
+\end{itemize}
+
+
+
+
+
+
+
+
+

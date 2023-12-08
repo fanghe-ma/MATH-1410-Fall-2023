@@ -1,0 +1,223 @@
+\chapter{Week 1}
+
+\section{Lines \& Planes}
+
+\subsection{Lines in 2-D}
+
+\begin{framed}
+Recall that Lines in 2-D can be defined in the following forms
+   \begin{itemize}
+      \item The Slope-Intercept form \[
+      y = mx + b
+      .\] 
+      where $m$ is the gradient, and $b$ is the $y$ intercept
+      \item The Point-Slope form \[
+      y - y_0 = m(x-x_0)
+      .\]   
+      where $(x_0, y_0)$ is a point on the line
+      \item The Intercept form \[
+      \frac{x}{a} + \frac{y}{b} = 1
+      .\]  where $a$ is the $x$ intercept and $b$ is the $y$ intercept
+   \end{itemize}
+\end{framed}
+
+\subsection{Planes in 3-D}
+\begin{framed}
+   For a plane in standard coordinates, the points $(x, y, z)$ can be defined by
+   \begin{itemize}
+      \item Point-"Slope" form \[
+        n_x(x-x_0) + n_y(y-y_0) + n_z(z - z_0) = 0
+      .\] where $ \big(\begin{smallmatrix}
+        n_x \\ 
+        n_y \\
+        n_z
+      \end{smallmatrix} \big)$
+      is a vector normal to the plane, and $(x_0, y_0, z_0)$ is a point on the plane
+
+   \item Intercept form \[
+     \frac{x}{a} + \frac{y}{b} + \frac{z}{c} = 1
+   .\] where $a$,  $b$, $c$ are the respective intercepts on the $x$, $y$, $z$ axis.
+
+   \end{itemize}
+\end{framed}
+
+
+
+\subsection {Lines in 3D}
+\begin{framed}
+   Lines in 3-D can be defined by a system of equations w.r.t parameter $t$, for example
+   \begin{align*}
+         x(r) &= 3r - 5 \\
+         y(r) &= r + 3\\
+         z(r) &= -4r + 1\\
+   \end{align*}
+   which is a line that contains the point $\begin{pmatrix}-5 \\ 3\\ 1\\ \end{pmatrix}$ and parallel to the vector $\begin{pmatrix} 3 \\ 1 \\ -4 \end{pmatrix}$ 
+\end{framed}
+
+
+
+\section{Curves \& surfaces in 3D}
+
+Planar curves and surfaces in n-d can be described \emph{implicitly} or \emph{parametrically}
+
+\begin{center}
+   \begin{tabular}{|c|l|}
+      \hline
+      implicit & parametric \\
+
+      \hline
+      $y = x^2 - 3$ & $x(t) = t$ \\
+                    & $y(t) = t^2 - 3$ \\
+      \hline
+
+      $x^2 + y^2 = 4$ & $x(t) = 2cost$ \\
+                    & $y(t) = 2sint$ \\
+      \hline
+      $z = 3x^2 + y^2 -5$ & $x(t) = s$ \\
+                          & $y(t) = t$ \\
+                          & $z(t) = 3s^2 + t^2 -5$ \\
+      \hline
+      $x^2 + y^2 + z^2 =4$ & $x(t) = 2cosssint$ \\
+                           & $y(t) = 2sinssintt$ \\
+                           & $z(t) = 2cost$ \\
+      \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Classical Quadratic Surfaces}
+
+\begin{framed}
+The follow classical quadratic surfaces are implicitly defined by 
+   \begin{itemize}
+      \item Sphere \[
+        \frac{(x-x_0)^2}{r^2} + \frac{(y - y_0)^2}{r^2} + \frac{(z-z_0)^2}{r^2} = 1
+      \] 
+   \item Ellipsoid \[
+     \frac{(x-x_0)^2}{a^2} + \frac{(y - y_0)^2}{b^2} + \frac{(z-z_0)^2}{c^2} = 1
+   \] 
+   \item 1-sheeted hyperboloid \[
+     \frac{(x-x_0)^2}{a^2} + \frac{(y - y_0)^2}{b^2} - \frac{(z-z_0)^2}{c^2} = 1
+   \] 
+   \item 2-sheeted hyperboloid \[
+     \frac{(x-x_0)^2}{a^2} - \frac{(y - y_0)^2}{b^2} - \frac{(z-z_0)^2}{c^2} = 1
+   \] 
+   \item Elliptic Paraboloid \[
+     z - z_0 = \frac{(x-x_0)^2}{a^2} + \frac{(y - y_0)^2}{b^2}
+   \] 
+   \item Hyperbolic Paraboloid \[
+     z - z_0 = \frac{(x-x_0)^2}{a^2} - \frac{(y - y_0)^2}{b^2}
+   \] 
+   \item Cones \[
+     \frac{(z-z_0)^2}{c^2}= \frac{(x-x_0)^2}{a^2} - \frac{(y - y_0)^2}{b^2}
+   \] 
+     
+   \end{itemize}
+   
+  
+\end{framed}
+
+
+\section{Coordinates \& Points}
+
+The n-dimensional plane is coordinatized via \[
+   \mathbb{R}^n = {(x_1, x_2, ..., x_{n-1}, x_n)} 
+.\] 
+
+Distance between 2 points 
+\begin{framed}
+   The distance between two points in 2-d is \[
+      \sqrt{(Q_1 - P_1)^2 + (Q_2-P_2)^2}
+   \] 
+
+   The distance between two points in 3-d is \[
+      \sqrt{(Q_1 - P_1)^2 + (Q_2-P_2)^2 + (Q_3-P_3)^2}
+   \] 
+
+   Generalizing for n-dimensions \[
+      D = \sqrt{\sum_{i}(Q_i - P_i)^2}
+   \] 
+\end{framed}
+
+
+\section{Vectors}
+\begin{framed}
+A vector $\underline{v}$ in  $\mathbb{R}^n$ is specified by \[
+   \underline{v} = \begin{pmatrix} v_1\\v_2\\ \vdots \\ v_n
+  \end{pmatrix}
+\] 
+
+A vector $\vec{QP}$ is the vector between points $Q$ and $P$. It can also be denoted as \underline{v}
+\end{framed}
+
+\subsection{Vector Algebra}
+\begin{framed}
+
+Vectors can be scaled and added (only if they have the same number of components.
+   \begin{itemize}
+      \item Addition: $(\underline{u} + \underline{v})_n = \underline{u_n} + \underline{v_n}$
+      \item Scaling: $(c \underline{u})_n = c \underline{u}_n$
+   \end{itemize}
+
+Vectors have the following properties
+\begin{itemize}
+      \item Comutativity:  $ \underline{u} + \underline{v} = \underline{v} + \underline{u}$
+      \item Addition of zero  $ \underline{u} + \underline{0} = \underline{u} $
+      \item Subtraction  $ \underline{u} - \underline{v} = \underline{u} + (-\underline{v})$
+\end{itemize}
+
+\end{framed}
+
+
+
+\subsection{Norm of a Vector}
+\begin{framed}
+The norm or "length" of a vector is given by \[
+    \lVert \underline{v} \rVert = \sqrt{\sum_{i} v_i^2}
+\] 
+
+and has the following properties
+   \begin{itemize}
+      \item $ \lVert \underline{u} + \underline{v} \rVert \le \lVert \underline{u} \rVert + \lVert \underline{v} \rVert$
+      \item $ \lVert \underline{u}\rVert = 0 \leftrightarrow \lVert \underline{u}\rVert = \underline{0} $
+      \item $ c \lVert \underline{u}\rVert = |c| \lVert \underline{u}\rVert$
+   \end{itemize}
+\end{framed}
+
+
+
+
+\subsection{Application of vectors in parameterization}
+\begin{framed}
+Vectors can be used to parameterize lines and planes, where the parameter is a scalar of the tangent vector. For example
+
+   \begin{itemize}
+      \item A line can be parameterized  as  \[
+        \underline{x}t = \underline{x}_0 + t \underline{v}
+      \]
+      \item A plane can be parameterized as \[
+        \underline{x}(s, t) = \underline{x}_0 + s \underline{u} + t \underline{v}
+      \] 
+   \end{itemize}
+\end{framed}
+
+
+\subsection{Basis vectors}
+\begin{framed}
+A vector $\underline{v} $ in $\mathbb{R}^n$ has $n$ basis vectors \[
+  \underline{e}_k = \begin{pmatrix}
+    0 \\ 0 \\ 0 \\ \vdots\\ 1 \\ \vdots \\ 0 \\ 0
+  \end{pmatrix}
+\] 
+
+where only the $k$-th term is 1
+
+The vector $\underline{v}$ is given by
+
+\[
+   \underline{v} = \sum_{k=1}{n} v_{k}e_k
+\] 
+\end{framed}
+
+
+
+

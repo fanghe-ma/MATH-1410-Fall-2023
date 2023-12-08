@@ -1,0 +1,44 @@
+\documentclass[a4paper, 10pt]{report}
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{framed}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{1em}{}
+
+
+\setlength{\parindent}{0em}
+\newcolumntype{L}{>{\arraybackslash}m{10cm}}
+\newcolumntype{T}{>{\arraybackslash}m{6cm}}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead[HR]{MATH-1410 \\ Fall'23}
+\fancyhead[HL]{}
+
+
+\tableofcontents
+\include{"chapters/week_1.tex"}
+\include{"chapters/week_2.tex"}
+\include{"chapters/week_3.tex"}
+\include{"chapters/week_4.tex"}
+\include{"chapters/week_5.tex"}
+\include{"chapters/week_6.tex"}
+\include{"chapters/week_7.tex"}
+\include{"chapters/week_8.tex"}
+\include{"chapters/week_9.tex"}
+\include{"chapters/week_10.tex"}
+\include{"chapters/week_11.tex"}
+\include{"chapters/week_12.tex"}
+\include{"chapters/week_13.tex"}
+\include{"chapters/week_14.tex"}
+
+\end{document}	
