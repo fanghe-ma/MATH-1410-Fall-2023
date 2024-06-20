@@ -1,0 +1,202 @@
+\contentsline {chapter}{\numberline {1}Week 1}{5}{}%
+\contentsline {section}{\numberline {1.1}Lines \& Planes}{5}{}%
+\contentsline {subsection}{\numberline {1.1.1}Lines in 2-D}{5}{}%
+\contentsline {subsection}{\numberline {1.1.2}Planes in 3-D}{5}{}%
+\contentsline {subsection}{\numberline {1.1.3}Lines in 3D}{5}{}%
+\contentsline {section}{\numberline {1.2}Curves \& surfaces in 3D}{6}{}%
+\contentsline {subsection}{\numberline {1.2.1}Classical Quadratic Surfaces}{6}{}%
+\contentsline {section}{\numberline {1.3}Coordinates \& Points}{6}{}%
+\contentsline {section}{\numberline {1.4}Vectors}{7}{}%
+\contentsline {subsection}{\numberline {1.4.1}Vector Algebra}{7}{}%
+\contentsline {subsection}{\numberline {1.4.2}Norm of a Vector}{7}{}%
+\contentsline {subsection}{\numberline {1.4.3}Application of vectors in parameterization}{8}{}%
+\contentsline {subsection}{\numberline {1.4.4}Basis vectors}{8}{}%
+\contentsline {chapter}{\numberline {2}Week 2}{9}{}%
+\contentsline {section}{\numberline {2.1}The Dot Product}{9}{}%
+\contentsline {subsection}{\numberline {2.1.1}Orthogonality and the dot product}{9}{}%
+\contentsline {subsection}{\numberline {2.1.2}Orthogonal Projection}{9}{}%
+\contentsline {subsection}{\numberline {2.1.3}Implicit definition of hyperplanes using the dot product}{10}{}%
+\contentsline {section}{\numberline {2.2}The Cross Product}{10}{}%
+\contentsline {subsection}{\numberline {2.2.1}Properties of the cross product}{10}{}%
+\contentsline {subsection}{\numberline {2.2.2}Geometric understanding of the cross product}{10}{}%
+\contentsline {subsection}{\numberline {2.2.3}Distance to a line and the cross product}{10}{}%
+\contentsline {subsection}{\numberline {2.2.4}The Scalar Triple product}{10}{}%
+\contentsline {section}{\numberline {2.3}Intro to vector calculus}{11}{}%
+\contentsline {subsection}{\numberline {2.3.1}Derivative of a vector}{11}{}%
+\contentsline {subsection}{\numberline {2.3.2}Arclength of a parameterized curve}{11}{}%
+\contentsline {subsection}{\numberline {2.3.3}Rules of vector differentiation}{11}{}%
+\contentsline {section}{\numberline {2.4}Vectors \& Physical Motion}{12}{}%
+\contentsline {subsection}{\numberline {2.4.1}Finding the velocity and position vector with acceleration}{12}{}%
+\contentsline {subsection}{\numberline {2.4.2}Unit tangent and normal vectors}{12}{}%
+\contentsline {subsection}{\numberline {2.4.3}The osculating circle}{13}{}%
+\contentsline {subsection}{\numberline {2.4.4}The unit binormal vector}{13}{}%
+\contentsline {chapter}{\numberline {3}Week 3}{14}{}%
+\contentsline {section}{\numberline {3.1}Matrix Equations}{14}{}%
+\contentsline {subsection}{\numberline {3.1.1}Linear System of Equations}{14}{}%
+\contentsline {section}{\numberline {3.2}Gaussian elimination, or row reduction}{14}{}%
+\contentsline {section}{\numberline {3.3}Inverse matrices}{15}{}%
+\contentsline {subsection}{\numberline {3.3.1}Inverse 2-by-2 matrices}{15}{}%
+\contentsline {subsection}{\numberline {3.3.2}Uniqueness of the inverse}{15}{}%
+\contentsline {subsection}{\numberline {3.3.3}Solving a system of linear equations with the inverse}{15}{}%
+\contentsline {subsection}{\numberline {3.3.4}Finding the inverse via Gaussian Elimination or row reduction}{16}{}%
+\contentsline {subsection}{\numberline {3.3.5}Finding the inverse of a block diagonal matrix}{16}{}%
+\contentsline {chapter}{\numberline {4}Week 4}{17}{}%
+\contentsline {section}{\numberline {4.1}Linear Transformations}{17}{}%
+\contentsline {subsection}{\numberline {4.1.1}Diagonal matrices as rescaling function}{17}{}%
+\contentsline {subsection}{\numberline {4.1.2}Shearing matrices}{17}{}%
+\contentsline {subsection}{\numberline {4.1.3}Rotation matrices}{17}{}%
+\contentsline {subsection}{\numberline {4.1.4}Matrix composition}{18}{}%
+\contentsline {subsection}{\numberline {4.1.5}Example in Euler Angles, 3D, and 4D matrices}{18}{}%
+\contentsline {section}{\numberline {4.2}Change in Basis}{18}{}%
+\contentsline {subsection}{\numberline {4.2.1}Basis vectors}{18}{}%
+\contentsline {subsection}{\numberline {4.2.2}Coordinate changes}{19}{}%
+\contentsline {section}{\numberline {4.3}The Determinant}{19}{}%
+\contentsline {subsection}{\numberline {4.3.1}Computing the determinant}{19}{}%
+\contentsline {subsection}{\numberline {4.3.2}By formula}{19}{}%
+\contentsline {subsection}{\numberline {4.3.3}By Minor Expansion}{20}{}%
+\contentsline {subsection}{\numberline {4.3.4}By Row Operations}{20}{}%
+\contentsline {subsection}{\numberline {4.3.5}By Block Diagonal Matrices}{20}{}%
+\contentsline {section}{\numberline {4.4}Geometry of determinants}{20}{}%
+\contentsline {subsection}{\numberline {4.4.1}Properties of the determinant}{21}{}%
+\contentsline {chapter}{\numberline {5}Week 5}{22}{}%
+\contentsline {section}{\numberline {5.1}Multivariate functions}{22}{}%
+\contentsline {subsection}{\numberline {5.1.1}Multivariate functions as non-linear transforms}{22}{}%
+\contentsline {subsection}{\numberline {5.1.2}Multivariate functions example - Market Equilibrium}{22}{}%
+\contentsline {section}{\numberline {5.2}Partial Derivatives}{23}{}%
+\contentsline {subsection}{\numberline {5.2.1}Computing the partial derivative and implicit differentiation}{23}{}%
+\contentsline {subsection}{\numberline {5.2.2}Partial derivatives and rates of change}{23}{}%
+\contentsline {section}{\numberline {5.3}The Derivative}{23}{}%
+\contentsline {subsection}{\numberline {5.3.1}A note on notation}{24}{}%
+\contentsline {subsection}{\numberline {5.3.2}Computing inputs and outputs rates of change}{24}{}%
+\contentsline {subsection}{\numberline {5.3.3}Definition of the derivative}{24}{}%
+\contentsline {subsection}{\numberline {5.3.4}A Taylor Perspective}{25}{}%
+\contentsline {subsubsection}{A weird example}{25}{}%
+\contentsline {subsection}{\numberline {5.3.5}Existence of the derivative}{25}{}%
+\contentsline {chapter}{\numberline {6}Week 6}{26}{}%
+\contentsline {section}{\numberline {6.1}The Chain Rule}{26}{}%
+\contentsline {subsection}{\numberline {6.1.1}The classical chain rule}{26}{}%
+\contentsline {subsection}{\numberline {6.1.2}The multivariate chain rule}{26}{}%
+\contentsline {subsection}{\numberline {6.1.3}Note on notation}{26}{}%
+\contentsline {subsection}{\numberline {6.1.4}Classical chain rules as a variation on the ONE single chain rule}{27}{}%
+\contentsline {section}{\numberline {6.2}Differentiation rules: Linearity of the derivative}{28}{}%
+\contentsline {section}{\numberline {6.3}Differentiation rules: Product Rule}{28}{}%
+\contentsline {subsection}{\numberline {6.3.1}The Material Derivative}{29}{}%
+\contentsline {section}{\numberline {6.4}The Inverse Function Theorem}{29}{}%
+\contentsline {subsection}{\numberline {6.4.1}Inverse multivariate functions}{30}{}%
+\contentsline {subsection}{\numberline {6.4.2}Linearization of nonlinear functions}{30}{}%
+\contentsline {subsection}{\numberline {6.4.3}The Inverse Rule}{30}{}%
+\contentsline {subsection}{\numberline {6.4.4}The Inverse Function Theorem}{30}{}%
+\contentsline {section}{\numberline {6.5}The Implicit Function theorem}{31}{}%
+\contentsline {subsection}{\numberline {6.5.1}Implicit differentiation and implicit functions}{31}{}%
+\contentsline {subsection}{\numberline {6.5.2}The Implicit Function Theorem}{31}{}%
+\contentsline {chapter}{\numberline {7}Week 7}{32}{}%
+\contentsline {section}{\numberline {7.1}Gradient}{32}{}%
+\contentsline {subsection}{\numberline {7.1.1}The level set}{32}{}%
+\contentsline {subsection}{\numberline {7.1.2}Definition of the gradient}{32}{}%
+\contentsline {subsection}{\numberline {7.1.3}Gradients and level sets}{32}{}%
+\contentsline {subsection}{\numberline {7.1.4}Directional Derivatives}{33}{}%
+\contentsline {section}{\numberline {7.2}Tangent Spaces}{33}{}%
+\contentsline {subsection}{\numberline {7.2.1}The tangent space of an implicit surface}{33}{}%
+\contentsline {subsection}{\numberline {7.2.2}The tangent space of an parameterized curve}{33}{}%
+\contentsline {subsection}{\numberline {7.2.3}The tangent space of a parameterized surface}{33}{}%
+\contentsline {subsection}{\numberline {7.2.4}Images, Kernels, and tangent spaces in higher dimensions}{34}{}%
+\contentsline {section}{\numberline {7.3}Linearization}{34}{}%
+\contentsline {subsection}{\numberline {7.3.1}Differentials vs derivatives}{34}{}%
+\contentsline {subsection}{\numberline {7.3.2}Relative rates of change and percentage errors}{34}{}%
+\contentsline {section}{\numberline {7.4}Taylor Series}{35}{}%
+\contentsline {subsection}{\numberline {7.4.1}Single variable case}{35}{}%
+\contentsline {subsection}{\numberline {7.4.2}Multivariable case}{35}{}%
+\contentsline {section}{\numberline {7.5}Computing Taylor Series}{36}{}%
+\contentsline {subsection}{\numberline {7.5.1}Commonly used Taylor Series}{36}{}%
+\contentsline {subsection}{\numberline {7.5.2}Computing the Taylor Expansion of a function with 2 inputs and 1 output}{37}{}%
+\contentsline {subsection}{\numberline {7.5.3}Taylor Series and the Chain Rule}{37}{}%
+\contentsline {subsection}{\numberline {7.5.4}Using Taylor Series for local analysis}{37}{}%
+\contentsline {subsection}{\numberline {7.5.5}Taylor Series up to the second order}{37}{}%
+\contentsline {subsection}{\numberline {7.5.6}The Hessian}{37}{}%
+\contentsline {chapter}{\numberline {8}Week 8}{38}{}%
+\contentsline {section}{\numberline {8.1}Critical points and extrema}{38}{}%
+\contentsline {subsection}{\numberline {8.1.1}Critical points}{38}{}%
+\contentsline {subsection}{\numberline {8.1.2}Trace-Determinant Method}{38}{}%
+\contentsline {section}{\numberline {8.2}Optimization \& Linear regression}{39}{}%
+\contentsline {subsection}{\numberline {8.2.1}Least-squares method}{39}{}%
+\contentsline {subsection}{\numberline {8.2.2}Optimization \& Nash Equilibria}{40}{}%
+\contentsline {subsection}{\numberline {8.2.3}The Minimax Theorem}{41}{}%
+\contentsline {subsection}{\numberline {8.2.4}Constrained Optimization}{41}{}%
+\contentsline {subsection}{\numberline {8.2.5}The Lagrange Multiplier}{41}{}%
+\contentsline {chapter}{\numberline {9}Integration}{42}{}%
+\contentsline {section}{\numberline {9.1}Computing integrals and the Fubini theorem}{43}{}%
+\contentsline {section}{\numberline {9.2}Double \& Triple Integrals}{43}{}%
+\contentsline {subsection}{\numberline {9.2.1}Finding the area in 2 dimensions}{43}{}%
+\contentsline {subsection}{\numberline {9.2.2}Changing the limits}{43}{}%
+\contentsline {section}{\numberline {9.3}Averages}{44}{}%
+\contentsline {chapter}{\numberline {10}Week 10}{45}{}%
+\contentsline {section}{\numberline {10.1}Centroids \& Centers of mass}{45}{}%
+\contentsline {subsection}{\numberline {10.1.1}Centroids in 2D}{45}{}%
+\contentsline {subsection}{\numberline {10.1.2}Centroids in 3D}{45}{}%
+\contentsline {subsection}{\numberline {10.1.3}Center of Mass}{45}{}%
+\contentsline {section}{\numberline {10.2}Moments of inertia}{46}{}%
+\contentsline {subsection}{\numberline {10.2.1}Parallel Axis Theorem}{46}{}%
+\contentsline {subsection}{\numberline {10.2.2}Radius of Gyration}{46}{}%
+\contentsline {section}{\numberline {10.3}Inertia Matrix}{46}{}%
+\contentsline {section}{\numberline {10.4}Solid Body Mechanics}{46}{}%
+\contentsline {section}{\numberline {10.5}Probability \& Integration}{46}{}%
+\contentsline {section}{\numberline {10.6}Independence \& Covariance}{47}{}%
+\contentsline {section}{\numberline {10.7}Covariance Matrices}{47}{}%
+\contentsline {chapter}{\numberline {11}Week 11}{48}{}%
+\contentsline {section}{\numberline {11.1}Polar \& Cylindrical coordinates}{48}{}%
+\contentsline {subsection}{\numberline {11.1.1}Polar Coordinates}{48}{}%
+\contentsline {subsection}{\numberline {11.1.2}Cylindrical Coordinates}{48}{}%
+\contentsline {section}{\numberline {11.2}Spherical coordinates}{48}{}%
+\contentsline {section}{\numberline {11.3}Change in Variables Theorem}{49}{}%
+\contentsline {subsection}{\numberline {11.3.1}Linear transformations and the volume element}{49}{}%
+\contentsline {subsection}{\numberline {11.3.2}Non-linear transformations and the volume element}{49}{}%
+\contentsline {subsection}{\numberline {11.3.3}Change of variables theorem}{49}{}%
+\contentsline {section}{\numberline {11.4}Surface Integrals}{50}{}%
+\contentsline {subsection}{\numberline {11.4.1}Parameterized surfaces}{50}{}%
+\contentsline {chapter}{\numberline {12}Week 12}{51}{}%
+\contentsline {section}{\numberline {12.1}Fields}{51}{}%
+\contentsline {subsection}{\numberline {12.1.1}Vector Fields}{51}{}%
+\contentsline {subsection}{\numberline {12.1.2}Other fields}{51}{}%
+\contentsline {section}{\numberline {12.2}Path Integrals}{51}{}%
+\contentsline {subsection}{\numberline {12.2.1}Integrating a scalar field}{51}{}%
+\contentsline {subsection}{\numberline {12.2.2}The standard single-variable integral as a path integral}{52}{}%
+\contentsline {subsection}{\numberline {12.2.3}Rules for a scalar path integral}{52}{}%
+\contentsline {subsection}{\numberline {12.2.4}Independence of path in scalar fields}{52}{}%
+\contentsline {section}{\numberline {12.3}Integrating 1-forms}{52}{}%
+\contentsline {subsection}{\numberline {12.3.1}1-Forms}{52}{}%
+\contentsline {subsection}{\numberline {12.3.2}Gradient vector field, gradient 1-form field, and the derivative}{53}{}%
+\contentsline {subsection}{\numberline {12.3.3}Integrating 1-forms}{53}{}%
+\contentsline {section}{\numberline {12.4}Independence of Path}{53}{}%
+\contentsline {section}{\numberline {12.5}Detecting gradients}{53}{}%
+\contentsline {section}{\numberline {12.6}Work, Circulation and Flux}{53}{}%
+\contentsline {subsection}{\numberline {12.6.1}Work}{53}{}%
+\contentsline {subsection}{\numberline {12.6.2}Circulation}{54}{}%
+\contentsline {subsection}{\numberline {12.6.3}Flux}{54}{}%
+\contentsline {chapter}{\numberline {13}Week 13}{55}{}%
+\contentsline {section}{\numberline {13.1}Green's Theorem}{55}{}%
+\contentsline {subsection}{\numberline {13.1.1}The Theorem}{55}{}%
+\contentsline {subsection}{\numberline {13.1.2}Orientation and Boundaries}{55}{}%
+\contentsline {subsection}{\numberline {13.1.3}Differentiability, orientation \& Green's Theorem}{55}{}%
+\contentsline {section}{\numberline {13.2}Gradient, Curl \& Divergence}{56}{}%
+\contentsline {subsection}{\numberline {13.2.1}Curl and divergence densities}{56}{}%
+\contentsline {subsection}{\numberline {13.2.2}Green Theorem through the perspective of curl and divergence}{57}{}%
+\contentsline {subsection}{\numberline {13.2.3}Divergence in 3-D}{57}{}%
+\contentsline {subsection}{\numberline {13.2.4}Curl in 3-D}{57}{}%
+\contentsline {section}{\numberline {13.3}Differential Forms in 3-D}{57}{}%
+\contentsline {subsection}{\numberline {13.3.1}Euclidean Forms}{57}{}%
+\contentsline {subsubsection}{1-forms}{57}{}%
+\contentsline {subsubsection}{2-forms}{58}{}%
+\contentsline {subsection}{\numberline {13.3.2}The Wedge}{58}{}%
+\contentsline {subsection}{\numberline {13.3.3}Differentiation of form fields}{58}{}%
+\contentsline {subsubsection}{Flux}{59}{}%
+\contentsline {subsubsection}{Curl}{59}{}%
+\contentsline {subsubsection}{Divergence}{59}{}%
+\contentsline {chapter}{\numberline {14}Week 14}{60}{}%
+\contentsline {section}{\numberline {14.1}Integrating 2-forms}{60}{}%
+\contentsline {subsection}{\numberline {14.1.1}Computing the integral}{60}{}%
+\contentsline {subsection}{\numberline {14.1.2}Computing flux}{60}{}%
+\contentsline {section}{\numberline {14.2}Gauss' Theorem}{61}{}%
+\contentsline {subsection}{\numberline {14.2.1}The Theorem}{61}{}%
+\contentsline {section}{\numberline {14.3}Stoke's Theorem}{61}{}%
+\contentsline {subsection}{\numberline {14.3.1}Independence of surface}{62}{}%
+\contentsline {section}{\numberline {14.4}Which theorem to use?}{62}{}%
